@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-card>
-    <img alt="..." src="../../../assets/icon/logo.png" />
+    <img alt="..." src="../../../assets/logo.png" />
     <ion-card-content>
       <ion-item>
         <ion-input [(ngModel)]="nombre" label="Ingrese su nombre: "></ion-input>
@@ -18,32 +18,35 @@
         <ion-input [(ngModel)]="apellido" label="Ingrese su apellido"></ion-input>
       </ion-item>
       <ion-list>
-        <ion-item>
-          <ion-select [(ngModel)]="opcionSeleccionada" aria-label="educacion" placeholder="Nivel de educación: ">
+        <ion-item>Nivel de educación:
+          <ion-select [(ngModel)]="opcionSeleccionada" aria-label="educacion">
             <ion-select-option value="basica">Básica</ion-select-option>
             <ion-select-option value="media">Media</ion-select-option>
             <ion-select-option value="universitaria">Universitaria</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
-      <ion-datetime-button datetime="datetime" text="Fecha de Nacimiento"></ion-datetime-button>
 
-    <ion-modal class="fechaNacimiento" [keepContentsMounted]="true">
-      <ng-template>
-        <ion-datetime
-          id="datetime"
-          presentation="date"
-          value="2023-11-02"
-          [formatOptions]="{
-            date: {
-              weekday: 'short',
-              month: 'long',
-              day: '2-digit',
-            }
-          }"
-        ></ion-datetime>
-      </ng-template>
-    </ion-modal>
+    <ion-item>Fecha de nacimiento:
+      <ion-datetime-button datetime="datetime" aria-placeholder="Fecha de Nacimiento"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime
+            id="datetime"
+            presentation="date"
+            value="2023-11-02"
+            [formatOptions]="{
+              date: {
+                weekday: 'short',
+                month: 'short',
+                day: '2-digit',
+              }
+            }"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
     </ion-card-content>
     <div style="display: flex; justify-content: center; padding: 20px;">
       <ion-button (click)="limpiarCampo()" slot="start" size="default">Limpiar</ion-button>
