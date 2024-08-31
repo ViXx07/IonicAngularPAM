@@ -9,26 +9,26 @@
 
 <ion-content>
   <ion-card>
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <img alt="Silhouette of mountains" src="../../../assets/icon/logo.png" />
     <ion-card-content>
       <ion-item>
-        <ion-input label="Input with placeholder" placeholder="Enter company name"></ion-input>
+        <ion-input label="Ingrese su nombre: "></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Input with placeholder" placeholder="Enter company name"></ion-input>
+        <ion-input label="Ingrese su apellido"></ion-input>
       </ion-item>
       <ion-list>
         <ion-item>
-          <ion-select aria-label="fruit" placeholder="Select fruit">
-            <ion-select-option value="apples">Básica</ion-select-option>
-            <ion-select-option value="oranges">Media</ion-select-option>
-            <ion-select-option value="bananas">Universitario</ion-select-option>
+          <ion-select aria-label="fruit" placeholder="Nivel de educación: ">
+            <ion-select-option value="basica">Básica</ion-select-option>
+            <ion-select-option value="media">Media</ion-select-option>
+            <ion-select-option value="universitaria">Universitaria</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
       <ion-datetime-button datetime="datetime"></ion-datetime-button>
 
-    <ion-modal [keepContentsMounted]="true">
+    <ion-modal class="fechaNacimiento" [keepContentsMounted]="true">
       <ng-template>
         <ion-datetime
           id="datetime"
@@ -45,7 +45,7 @@
       </ng-template>
     </ion-modal>
     </ion-card-content>
-    <ion-button size="default">Limpiar</ion-button>
+    <ion-button slot="start" size="default">Limpiar</ion-button>
     <ion-button size="default">Mostrar</ion-button>
   </ion-card>
 </ion-content>
