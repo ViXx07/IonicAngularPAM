@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  nombre: string = '';
+  apellido: string = '';
+  opcionSeleccionada: string | null = null;
+
   constructor() {}
 
+  limpiarCampo() {
+    this.nombre = '';
+    this.apellido = '';
+    this.opcionSeleccionada = null;
+  }
 }
