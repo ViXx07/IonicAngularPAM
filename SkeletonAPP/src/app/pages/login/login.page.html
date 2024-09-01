@@ -1,26 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button menu="m1"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+  <ion-item slot="start">
+    <img alt="..." src="assets/logo.png" class="logo"/>
+    <ion-title>Login</ion-title>
+  </ion-item>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <img alt="..." src="../../../assets/logo.png" />
     <ion-card-content>
       <ion-item>
-        <ion-input [(ngModel)]="usuario" label="Ingrese su usuario: " minlength="3" maxlength="8"   
-        helperText=""
-        errorText="Usuario invalido"
-        ngModel
-        ></ion-input>
+        <ion-input [(ngModel)]="usuario"
+          minlength="3" 
+          maxlength="8"   
+          errorText="Usuario invalido"
+          ngModel
+        >Ingrese su usuario:</ion-input>
       </ion-item>
+
       <ion-item>
-        <ion-input [(ngModel)]="contrasena" label="Ingrese su contraseña: " type="password" value="" maxlength="4"></ion-input>
+        <ion-input [(ngModel)]="contrasena" 
+          type="password" 
+          maxlength="4"
+        >Ingrese su contraseña:</ion-input>
       </ion-item>
+
     </ion-card-content>
     <div style="display: flex; justify-content: center; padding: 20px;">
       <ion-button (click)="login()" size="default">Ingresar</ion-button>
