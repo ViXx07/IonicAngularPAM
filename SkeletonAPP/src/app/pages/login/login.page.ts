@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -7,7 +8,19 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  usuario: string = "";
+  contrasena: string= "";
+
+  login() {
+    if
+  (this.usuario === 'admin' &&
+    this.contrasena === '1234')
+    {
+      this.router.navigate(['/home'])
+    }
+
+  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

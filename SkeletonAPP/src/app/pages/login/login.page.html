@@ -12,18 +12,18 @@
     <img alt="..." src="../../../assets/logo.png" />
     <ion-card-content>
       <ion-item>
-        <ion-input label="Ingrese su usuario: " minlength="3" maxlength="8"   
+        <ion-input [(ngModel)]="usuario" label="Ingrese su usuario: " minlength="3" maxlength="8"   
         helperText=""
         errorText="Usuario invalido"
         ngModel
         ></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Ingrese su contraseña: " type="password" value="" maxlength="4"></ion-input>
+        <ion-input [(ngModel)]="contrasena" label="Ingrese su contraseña: " type="password" value="" maxlength="4"></ion-input>
       </ion-item>
     </ion-card-content>
     <div style="display: flex; justify-content: center; padding: 20px;">
-      <ion-button size="default">Ingresar</ion-button>
+      <ion-button (click)="login()" size="default">Ingresar</ion-button>
     </div>
   </ion-card>
 </ion-content>
