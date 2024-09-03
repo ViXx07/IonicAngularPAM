@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-item slot="start">
+      <img alt="..." src="assets/logo.png" class="logo"/>
+      <ion-title>Opina</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card-content>
+        <div id="emoji">
+          <input type="radio" id="enojado" name="emoji" value="Enojado"><label for="enojado">😒</label>
+          <input type="radio" id="neutral" name="emoji" value="Neutral"><label for="neutral">😐</label>
+          <input type="radio" id="feliz"   name="emoji" value="Feliz"><label   for="feliz">  😁</label>
+        </div>
+
+        <ion-item>Resultado:
+          <ion-text id="estado">Feliz</ion-text>
+        </ion-item>    
+
+        <ion-item>
+          <ion-button class="enviar" (click)="resultado()">Enviar</ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-text>Enojados: <a id="enojados">0</a></ion-text>
+          <ion-text>Neutrales: <a id="neutrales">0</a></ion-text>
+          <ion-text>Felices: <a id="felices">0</a></ion-text>
+        </ion-item>
+
+    </ion-card-content>
+      
+
+
+
+</ion-content>
