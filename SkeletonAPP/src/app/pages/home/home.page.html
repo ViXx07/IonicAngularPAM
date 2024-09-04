@@ -11,50 +11,46 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card-content>
+    <ion-item>
+      <ion-input [(ngModel)]="nombre"
+        minlength="2"   
+        errorText="Minimo dos cáracteres."
+        ngModel
+      >Ingrese su nombre:</ion-input>
+    </ion-item>
 
-    <ion-card-content>
+    <ion-item>
+      <ion-input [(ngModel)]="apellido" label=""
+        minlength="2"   
+        errorText="Minimo dos cáracteres."
+        ngModel
+      >Ingrese su apellido</ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>Nivel de educación:</ion-item>
       <ion-item>
-        <ion-input [(ngModel)]="nombre"
-          minlength="2"   
-          errorText="Minimo dos cáracteres."
-          ngModel
-        >Ingrese su nombre:</ion-input>
+        <ion-select [(ngModel)]="opcionSeleccionada" interface="popover" placeholder="Seleccione su nivel educacional:">
+          <ion-select-option value="basica">Ninguna</ion-select-option>
+          <ion-select-option value="basica">Básica</ion-select-option>
+          <ion-select-option value="media">Media</ion-select-option>
+          <ion-select-option value="universitaria">Universitaria</ion-select-option>
+        </ion-select>
       </ion-item>
-
+    </ion-list>
+  
+    <ion-list>
+      <ion-item>Fecha de nacimiento:</ion-item>
       <ion-item>
-        <ion-input [(ngModel)]="apellido" label=""
-          minlength="2"   
-          errorText="Minimo dos cáracteres."
-          ngModel
-        >Ingrese su apellido</ion-input>
+        <ion-datetime presentation="date" [(ngModel)]="fechaNacimiento" (ionChange)="showdate()" [max]=fechaMax></ion-datetime>
       </ion-item>
+    </ion-list>
 
-      <ion-list>
-        <ion-item>Nivel de educación:</ion-item>
-        <ion-item>
-          <ion-select [(ngModel)]="opcionSeleccionada" interface="popover" placeholder="Seleccione su nivel educacional:">
-            <ion-select-option value="basica">Ninguna</ion-select-option>
-            <ion-select-option value="basica">Básica</ion-select-option>
-            <ion-select-option value="media">Media</ion-select-option>
-            <ion-select-option value="universitaria">Universitaria</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-    
-      <ion-list>
-        <ion-item>Fecha de nacimiento:</ion-item>
-        <ion-item>
-          <ion-datetime presentation="date" [(ngModel)]="fechaNacimiento" (ionChange)="showdate()" [max]=fechaMax></ion-datetime>
-        </ion-item>
-      </ion-list>
-
-
-    </ion-card-content>
     <div style="display: flex; justify-content: center; padding: 20px;">
       <ion-button (click)="limpiarCampo()" slot="start" size="default">Limpiar</ion-button>
       <ion-button (click)="validacionCampos()" size="default">Mostrar</ion-button>
-      
     </div>
-  </ion-card>
+    
+  </ion-card-content>
 </ion-content>

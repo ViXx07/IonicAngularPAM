@@ -6,12 +6,6 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
-  /*
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },*/
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
@@ -19,9 +13,14 @@ const routes: Routes = [
   {
     path: 'splash',
     loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
-  },  {
+  },
+  {
     path: 'opina',
     loadChildren: () => import('./pages/opina/opina.module').then( m => m.OpinaPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin-sys/admin-sys.module').then( m => m.AdminSysPageModule)
   },
 
 
