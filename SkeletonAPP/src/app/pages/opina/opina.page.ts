@@ -17,12 +17,12 @@ export class OpinaPage implements OnInit{
 
     ngOnInit() { 
         const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('#emoji input');
-        const updateValue = (e: Event): void => {
-            const target = e.target as HTMLInputElement;
-            document.querySelector('#estado')!.innerHTML = target.value;
+        const updateValue = (evento: Event): void => {
+            const estado = evento.target as HTMLInputElement;
+            document.querySelector('#estado')!.innerHTML = estado.value;
         };
         
-        inputs.forEach((el: HTMLInputElement) => el.addEventListener('click', (e: Event) => updateValue(e)));
+        inputs.forEach((elemento: HTMLInputElement) => elemento.addEventListener('click', (evento: Event) => updateValue(evento)));
         
     }
 
