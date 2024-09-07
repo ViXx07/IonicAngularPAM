@@ -21,7 +21,13 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./pages/admin-sys/admin-sys.module').then( m => m.AdminSysPageModule)
+  },  {
+    path: 'codigo-encuesta',
+    loadChildren: () => import('./pages/codigo-encuesta/codigo-encuesta.module').then( m => m.CodigoEncuestaPageModule)
   },
+
+
+
 
 
 ];

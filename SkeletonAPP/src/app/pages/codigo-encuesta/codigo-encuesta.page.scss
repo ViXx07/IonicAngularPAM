@@ -1,0 +1,24 @@
+ion-card-content{
+    min-height: 37vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  
+  .logo{
+    height: 4vh;
+    border-radius: 50%;
+  }
+  
+  ion-thumbnail {
+    --size: 40vh;
+    --border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  
+  ion-button {
+    width: 20vw;
+    font-size: 1.5vh;
+  }
