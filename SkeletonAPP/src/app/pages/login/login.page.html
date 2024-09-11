@@ -28,7 +28,10 @@
           maxlength="4"
         >Ingrese su contraseña:</ion-input>
       </ion-item>
-
+      <ion-item>
+        <a [routerLink]="['/recordar']">¿Olvidate tu contraseña?</a>
+      </ion-item>
+      
     </ion-card-content>
     <div style="display: flex; justify-content: center; padding: 20px;">
       <ion-button (click)="login()" size="default">Ingresar</ion-button>

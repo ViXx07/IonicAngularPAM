@@ -26,6 +26,11 @@ const routes: Routes = [
     path: 'codigo',
     loadChildren: () => import('./pages/codigo-encuesta/codigo-encuesta.module').then( m => m.CodigoEncuestaPageModule)
   },
+  {
+    path: 'recordar',
+    loadChildren: () => import('./pages/recordar-contrasena/recordar-contrasena.module').then( m => m.RecordarContrasenaPageModule)
+  },
+
 
 
 

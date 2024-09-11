@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>recordarContrasena</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="emailForm">
+    <ion-grid>
+      <ion-row class="ion-text-center">
+          <ion-input
+          formControlName="email"
+          label="Ingrese su correo de recuperación:" labelPlacement="stacked" 
+          type="email"
+          placeholder="email@domain.com"   
+          errorText="Correo incorrecto"
+          [required]="true"
+          ngModel>
+          </ion-input>
+      </ion-row>
+
+      <ion-row>
+        <ion-button 
+          [routerLink]="['/login']"
+          [disabled]="!emailForm.valid"
+          >Enviar</ion-button>
+      </ion-row>
+      
+    </ion-grid>
+  </form>
+</ion-content>
