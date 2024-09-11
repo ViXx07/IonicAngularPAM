@@ -13,8 +13,8 @@ export class LoginPage implements OnInit {
 
   login() {
     if
-  (this.usuario === '' &&
-    this.contrasena === '')//Cambiar al tener registro de usuario/contraseña
+  (this.usuario === 'admin' &&
+    this.contrasena === 'admin')//Cambiar al tener registro de usuario/contraseña
     {
       this.router.navigate(['/home']);
     }
