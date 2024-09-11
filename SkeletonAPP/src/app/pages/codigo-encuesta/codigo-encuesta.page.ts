@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-codigo-encuesta',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CodigoEncuestaPage implements OnInit {
 
-  constructor() { }
+  public codigoForm: FormGroup;
+
+  constructor( 
+    private formBuilder: FormBuilder
+  ) {
+    this.codigoForm = this.formBuilder.group({
+      codigo: [undefined, Validators.required],
+    });}
 
   ngOnInit() {
   }

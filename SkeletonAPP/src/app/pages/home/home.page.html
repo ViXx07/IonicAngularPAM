@@ -19,21 +19,27 @@
 
     <div style="display: flex; justify-content: center; padding: 20px;">
       <ion-button slot="start">Escanear QR</ion-button>
-      <ion-button>Ingresar código</ion-button>
+      <ion-button [routerLink]="['/codigo']">Ingresar código</ion-button>
     </div>
   </ion-card-content>
   
-  <h3>Contactos:</h3>
+  
     <ion-item> 
+      <ion-title>Contactos:</ion-title>
+    </ion-item>
+
+    <ion-item>
       <ion-grid>
         <ion-row>
           <ion-col>Whatsapp:</ion-col>
-          <ion-col>Correo:</ion-col>
-          <ion-col>Página Web:</ion-col>
+          <ion-col>+123456789</ion-col>
         </ion-row>
         <ion-row>
-          <ion-col>+123456789</ion-col>
-          <ion-col>correocorre.ito</ion-col>
+          <ion-col>Correo:</ion-col>
+          <ion-col>correo&commat;corre.ito</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Página Web:</ion-col>
           <ion-col>www.QueOpinas.cl</ion-col>
         </ion-row>
       </ion-grid>

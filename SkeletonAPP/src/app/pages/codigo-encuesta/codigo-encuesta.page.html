@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-item slot="start">
       <img alt="..." src="assets/logo.png" class="logo"/>
-      <ion-title>Opina</ion-title>
+      <ion-title>Encuesta por código</ion-title>
     </ion-item>
   </ion-toolbar>
 </ion-header>
@@ -17,16 +17,39 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card-content>
+  <ion-card>
     
     <ion-thumbnail>
       <img alt="..." src="assets/logo.png" />
     </ion-thumbnail>
 
-    <div style="display: flex; justify-content: center; padding: 20px;">
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </div>
-  </ion-card-content>
+    <form [formGroup]="codigoForm">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-input
+            formControlName="codigo"
+            label="Ingrese el código:" labelPlacement="stacked" 
+            helperText="(6 digitos)"
+            minlength="6" 
+            maxlength="6"
+            type="tel"   
+            errorText="Código incorrecto (6 digitos)"
+            [required]="true">
+            </ion-input>
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <ion-button 
+              [routerLink]="['/opina']"
+              [disabled]="!codigoForm.valid"
+              >Enviar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+
+  </ion-card>
+
+
 </ion-content>
