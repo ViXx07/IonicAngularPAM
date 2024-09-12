@@ -30,6 +30,11 @@ const routes: Routes = [
     path: 'recordar',
     loadChildren: () => import('./pages/recordar-contrasena/recordar-contrasena.module').then( m => m.RecordarContrasenaPageModule)
   },
+  {
+    path: 'registroAdmin',
+    loadChildren: () => import('./pages/registro-admin/registro-admin.module').then( m => m.RegistroAdminPageModule)
+  },
+
 
 
 

@@ -1,17 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button menu="m1"></ion-menu-button>
-    </ion-buttons>
-    <ion-item slot="start">
-      <img alt="..." src="assets/logo.png" class="logo"/>
-      <ion-title>Home</ion-title>
-    </ion-item>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content >
-  <ion-card-content>
+  <ion-card>
     <div *ngIf="estado == 'correcto'">
       <p>Bienvenido {{usuario}}</p>
     </div>
@@ -23,8 +11,6 @@
       <ion-button slot="start">Escanear QR</ion-button>
       <ion-button [routerLink]="['/codigo']">Ingresar código</ion-button>
     </div>
-  </ion-card-content>
-  
   
     <ion-item> 
       <ion-title>Contactos:</ion-title>
@@ -47,6 +33,5 @@
       </ion-grid>
     </ion-item>
 
-    
-
+  </ion-card>
 </ion-content>
