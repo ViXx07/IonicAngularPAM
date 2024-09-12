@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  usuario: any;
+  estado: string = "";
+  usuario: string = "";
 
-  constructor() {
-  
+  async ngOnInit() {
+    this.usuario = await this.storage.get('nombre_usuario');
+
+    if (this.usuario === 'admin'){
+      this.estado = "correcto";
+    }else {
+      this.estado = "";
     }
+  }
 
-
+  constructor(private storage: Storage) {}
 }

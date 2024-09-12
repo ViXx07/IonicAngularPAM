@@ -12,7 +12,9 @@
 
 <ion-content >
   <ion-card-content>
-    
+    <div *ngIf="estado == 'correcto'">
+      <p>Bienvenido {{usuario}}</p>
+    </div>
     <ion-thumbnail>
       <img alt="..." src="assets/logo.png" />
     </ion-thumbnail>
