@@ -1,11 +1,12 @@
 <ion-content >
   <ion-card>
-    <div *ngIf="estado == 'correcto'">
-      <p>Bienvenido {{usuario}}</p>
-    </div>
     <ion-thumbnail>
       <img alt="..." src="assets/logo.png" />
     </ion-thumbnail>
+
+    <ion-item>
+      <ion-title>Bienvenido {{ receivedUserName }}!</ion-title>
+    </ion-item>
 
     <div style="display: flex; justify-content: center; padding: 20px;">
       <ion-button slot="start">Escanear QR</ion-button>

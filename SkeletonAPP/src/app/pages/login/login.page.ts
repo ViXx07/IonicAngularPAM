@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Storage } from '@ionic/storage-angular';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +8,26 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class LoginPage implements OnInit {
 
+  usuario: string = "";
+  contrasena: string = "";
 
-  constructor(private router: Router, private storage: Storage) { }
+  constructor(private router: Router) { }
+
+  login() {
+    if (this.usuario === 'admin' && this.contrasena === '1234'){ //Cambiar al tener registro de usuario/contraseña
+      const navigationExtras: NavigationExtras = {
+        queryParams: {
+          user: this.usuario,
+        }
+      }
+      this.router.navigate(['/home'], navigationExtras);
+    }
+  }
 
   ngOnInit() {
   }
 
-  usuario: string = "";
-  contrasena: string = "";
 
-  login() {
-    if (this.usuario === 'admin' && this.contrasena === '1234'){ //Cambiar al tener registro de usuario/contraseña
-      
-      this.storage.set('nombre_usuario', this.usuario);
-      this.router.navigate(['/home']);
-    }
-  }
+
+
 }
