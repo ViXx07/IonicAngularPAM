@@ -8,6 +8,7 @@
     <ion-item>
       <ion-input [(ngModel)]="usuario"
         label="Ingrese su usuario: "
+        labelPlacement="stacked"
         minlength="3" 
         maxlength="8"   
         errorText="Usuario inválido."
@@ -19,6 +20,7 @@
     <ion-item>
       <ion-input [(ngModel)]="contrasena"
         label="Ingrese su contraseña:" 
+        labelPlacement="stacked"
         type="password" 
         maxlength="4"
         errorText="Contraseña inválida."
