@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  titulo: string | undefined;
   
   constructor(public router: Router) {
     this.initializeApp();

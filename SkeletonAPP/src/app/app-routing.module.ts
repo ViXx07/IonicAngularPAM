@@ -4,35 +4,43 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    title: 'QuéOpinas?'
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    title: 'QuéOpinas?'
   },
   {
     path: 'splash',
-    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
+    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule),
+    title: 'QuéOpinas?'
   },
   {
     path: 'opina',
-    loadChildren: () => import('./pages/opina/opina.module').then( m => m.OpinaPageModule)
+    loadChildren: () => import('./pages/opina/opina.module').then( m => m.OpinaPageModule),
+    title: 'QuéOpinas?'
   },
   {
     path: 'admin',
-    loadChildren: () => import('./pages/admin-sys/admin-sys.module').then( m => m.AdminSysPageModule)
+    loadChildren: () => import('./pages/admin-sys/admin-sys.module').then( m => m.AdminSysPageModule),
+    title: 'QuéOpinas?'
   },
   {
     path: 'codigo',
-    loadChildren: () => import('./pages/codigo-encuesta/codigo-encuesta.module').then( m => m.CodigoEncuestaPageModule)
+    loadChildren: () => import('./pages/codigo-encuesta/codigo-encuesta.module').then( m => m.CodigoEncuestaPageModule),
+    title: 'QuéOpinas?'
   },
   {
     path: 'recordar',
-    loadChildren: () => import('./pages/recordar-contrasena/recordar-contrasena.module').then( m => m.RecordarContrasenaPageModule)
+    loadChildren: () => import('./pages/recordar-contrasena/recordar-contrasena.module').then( m => m.RecordarContrasenaPageModule),
+    title: 'QuéOpinas?'
   },
   {
     path: 'registroAdmin',
-    loadChildren: () => import('./pages/registro-admin/registro-admin.module').then( m => m.RegistroAdminPageModule)
+    loadChildren: () => import('./pages/registro-admin/registro-admin.module').then( m => m.RegistroAdminPageModule),
+    title: 'QuéOpinas?'
   },
 
 

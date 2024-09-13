@@ -7,14 +7,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  receivedUserName!: string;
+  nombreUsuarioRecibido!: string;
+  titulo= 'Home';
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
 
     this.route.queryParams.subscribe(params => {
-      this.receivedUserName = params['user'];
+      this.nombreUsuarioRecibido = params['nombreUsuario'];
     })
   }
 

@@ -15,12 +15,12 @@ export class LoginPage implements OnInit {
 
   login() {
     if (this.usuario === 'admin' && this.contrasena === '1234'){ //Cambiar al tener registro de usuario/contraseña
-      const navigationExtras: NavigationExtras = {
+      const datosEnviados: NavigationExtras = {
         queryParams: {
-          user: this.usuario,
+          nombreUsuario: this.usuario,
         }
       }
-      this.router.navigate(['/home'], navigationExtras);
+      this.router.navigate(['/home'], datosEnviados);
     }
   }
 
