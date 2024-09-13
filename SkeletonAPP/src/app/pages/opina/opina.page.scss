@@ -55,4 +55,18 @@ ion-button {
     min-width: 25vw;
     --background: #00446d;
     color: white;
-  }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ion-text{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ion-title{
+    text-align: center;
+    font-size: 3vh;
+}
