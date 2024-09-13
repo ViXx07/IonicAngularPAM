@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomePage {
   nombreUsuarioRecibido!: string;
-  titulo= 'Home';
 
   constructor(private route: ActivatedRoute) {}
 

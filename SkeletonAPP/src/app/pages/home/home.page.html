@@ -1,38 +1,47 @@
 <ion-content >
   <ion-card>
-    <ion-thumbnail>
-      <img alt="..." src="assets/logo.png" />
-    </ion-thumbnail>
 
     <ion-item>
-      <ion-title>Bienvenido {{ nombreUsuarioRecibido }}!</ion-title>
+      <img class="logoMain" alt="..." src="assets/logo.png" />
     </ion-item>
 
-    <div style="display: flex; justify-content: center; padding: 20px;">
-      <ion-button slot="start">Escanear QR</ion-button>
-      <ion-button [routerLink]="['/codigo']">Ingresar código</ion-button>
-    </div>
-  
-    <ion-item> 
-      <ion-title>Contactos:</ion-title>
+    <ion-item class="ion-text-center">
+      <ion-title>Bienvenido {{ nombreUsuarioRecibido }}!</ion-title>
     </ion-item>
 
     <ion-item>
       <ion-grid>
-        <ion-row>
-          <ion-col>Whatsapp:</ion-col>
-          <ion-col>+123456789</ion-col>
+        <ion-row class="ion-text-center">
+          <ion-col col="6">
+            <ion-button>Escanear QR</ion-button>
+          </ion-col>
+          <ion-col col="6">
+            <ion-button [routerLink]="['/codigo']">Ingresar código</ion-button>
+          </ion-col>
         </ion-row>
-        <ion-row>
-          <ion-col>Correo:</ion-col>
-          <ion-col>correo&commat;corre.ito</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>Página Web:</ion-col>
-          <ion-col>www.QueOpinas.cl</ion-col>
-        </ion-row>
-      </ion-grid>
+      </ion-grid>  
     </ion-item>
 
   </ion-card>
+
+  <ion-grid class="footer">
+    <ion-row>
+      <ion-col>
+        <ion-title>Contactos:</ion-title>
+        <br>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Whatsapp:</ion-col>
+      <ion-col>+123456789</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Correo:</ion-col>
+      <ion-col>correo&commat;corre.ito</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Página Web:</ion-col>
+      <ion-col>www.QueOpinas.cl</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
