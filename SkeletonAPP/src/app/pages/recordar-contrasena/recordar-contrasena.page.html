@@ -1,5 +1,10 @@
 <ion-content [fullscreen]="true">
   <ion-card>
+
+    <ion-thumbnail>
+      <img alt="..." src="assets/logo.png" />
+    </ion-thumbnail>
+
     <form [formGroup]="emailForm">
       <ion-grid>
         <ion-row class="ion-text-center">
@@ -14,11 +19,13 @@
             </ion-input>
         </ion-row>
 
-        <ion-row>
-          <ion-button 
+        <ion-row class="ion-text-center">
+          <ion-col col="4">
+            <ion-button 
             [routerLink]="['/login']"
             [disabled]="!emailForm.valid"
             >Enviar</ion-button>
+          </ion-col>
         </ion-row>
         
       </ion-grid>

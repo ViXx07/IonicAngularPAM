@@ -1,11 +1,10 @@
-ion-card{
-    min-height: 40vh;
-    margin-top: 10vh;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    max-width: 80vw;
-  }
+ion-card {
+  width: 60vw;
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 
 
 .logo{
@@ -14,11 +13,10 @@ ion-card{
 }
   
 ion-thumbnail {
-  --size: 20vh;
+  --size: 40vh;
   --border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2vh;
   display: block;
 }
   

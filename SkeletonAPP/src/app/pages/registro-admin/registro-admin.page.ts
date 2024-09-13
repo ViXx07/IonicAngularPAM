@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registro-admin.page.scss'],
 })
 export class RegistroAdminPage implements OnInit {
+empresa: any;
+contrasena2: any;
+correo: any;
+registro() {
+throw new Error('Method not implemented.');
+}
+usuario: any;
+contrasena: any;
 
   constructor() { }
 
