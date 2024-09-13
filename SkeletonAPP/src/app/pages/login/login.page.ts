@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router'; //Servicios para enviar datos al navegar a otra página.
 
 @Component({
   selector: 'app-login',
@@ -14,20 +14,16 @@ export class LoginPage implements OnInit {
   constructor(private router: Router) { }
 
   login() {
-    if (this.usuario === 'admin' && this.contrasena === '1234'){ //Cambiar al tener registro de usuario/contraseña
+    if (this.usuario === 'admin' && this.contrasena === '1234'){ //Cambiar al tener registro de usuario/contraseña.
       const datosEnviados: NavigationExtras = {
         queryParams: {
-          nombreUsuario: this.usuario,
+          nombreUsuario: this.usuario,//Definimos el dato a enviar.
         }
       }
-      this.router.navigate(['/home'], datosEnviados);
+      this.router.navigate(['/home'], datosEnviados);//Enviamos los datos seleccionados mientras redireccionamos.
     }
   }
 
   ngOnInit() {
   }
-
-
-
-
 }

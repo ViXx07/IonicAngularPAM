@@ -1,17 +1,19 @@
 <ion-content [fullscreen]="true">
   <ion-card>
 
+    <!--Titulo-->
     <ion-item>
       <ion-title>Recordar contraseña</ion-title>
     </ion-item>
-
+    <!--Logo-->
     <ion-item>
       <img class="logoMain" alt="..." src="assets/logo.png" />
     </ion-item>
-
+    <!--Form-->
     <form [formGroup]="emailForm">
       <ion-grid>
         <ion-row class="ion-text-center">
+            <!--Input de correo de recuperación-->
             <ion-input
             formControlName="email"
             label="Ingrese su correo de recuperación:" labelPlacement="stacked" 
@@ -22,7 +24,7 @@
             ngModel>
             </ion-input>
         </ion-row>
-
+        <!--Botón 'Enviar' que se activa al ingresar un correo correcto-->
         <ion-row class="ion-text-center">
           <ion-col col="4">
             <ion-button 

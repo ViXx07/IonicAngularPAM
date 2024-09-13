@@ -1,14 +1,15 @@
 <ion-content>
   <ion-card>
 
+    <!--Titulo-->
     <ion-item>
-      <ion-title>Login</ion-title>
+      <ion-title>Login</ion-title> 
     </ion-item>
-    
+    <!--Logo-->
     <ion-item>
       <img class="logoMain" alt="..." src="assets/logo.png" />
     </ion-item>
-
+    <!--Input de usuario, con restricción de largo, mensaje de ayuda y de error-->
     <ion-item>
       <ion-input [(ngModel)]="usuario"
         label="Ingrese su usuario: "
@@ -20,7 +21,7 @@
         ngModel>
       </ion-input>
     </ion-item>
-
+    <!--Input de contraseña, con restricción de largo, mensaje de ayuda y de error-->
     <ion-item>
       <ion-input [(ngModel)]="contrasena"
         label="Ingrese su contraseña:" 
@@ -31,11 +32,11 @@
         helperText="Largo 4"
       ></ion-input>
     </ion-item>
-
+    <!--Link a página de recuperación de contraseña-->
     <ion-item>
       <a [routerLink]="['/recordar']">¿Olvidate tu contraseña?</a>
     </ion-item>
-      
+    <!--Boton 'Ingresar', centrado con grid, con función login() Que de momento solo acepta usuario: admin contraseña: 1234-->  
     <ion-grid>
       <ion-row class="ion-text-center">
         <ion-col col="4">
