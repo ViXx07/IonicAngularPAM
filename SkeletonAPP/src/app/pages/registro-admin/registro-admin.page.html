@@ -8,67 +8,68 @@
     <ion-item>
       <img class="logoMain" alt="..." src="assets/logo.png" />
     </ion-item>
+    <form [formGroup]="registroAdmin">
+      <ion-item>
+        <ion-input 
+          formControlName="usuario"
+          label="Ingrese su usuario: "
+          labelPlacement="stacked"
+          minlength="3" 
+          maxlength="8"   
+          errorText="Usuario inválido."
+          helperText="Largo entre 3 y 8"
+          ngModel>
+        </ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input [(ngModel)]="usuario"
-        label="Ingrese su usuario: "
+      <ion-item>
+        <ion-select formControlName="empresa" interface="popover" placeholder="Seleccione la empresa:">
+          <ion-select-option value="1">Apple</ion-select-option>
+          <ion-select-option value="2">Microsoft</ion-select-option>
+          <ion-select-option value="3">McDonalds</ion-select-option>
+          <ion-select-option value="4">Burger King</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="contrasena"
+          label="Ingrese la contraseña:" 
+          labelPlacement="stacked"
+          type="password" 
+          maxlength="4"
+          errorText="Contraseña inválida."
+          helperText="Largo 4"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="contrasena2"
+          label="Ingrese la contraseña nuevamente:" 
+          labelPlacement="stacked"
+          type="password" 
+          maxlength="4"
+          errorText="Contraseña inválida."
+          helperText="Largo 4"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="correo"
+        label="Ingrese su correo de recuperación:"
         labelPlacement="stacked"
-        minlength="3" 
-        maxlength="8"   
-        errorText="Usuario inválido."
-        helperText="Largo entre 3 y 8"
-        ngModel>
-      </ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-select [(ngModel)]="empresa" interface="popover" placeholder="Seleccione la empresa:">
-        <ion-select-option value="1">Apple</ion-select-option>
-        <ion-select-option value="2">Microsoft</ion-select-option>
-        <ion-select-option value="3">McDonalds</ion-select-option>
-        <ion-select-option value="4">Burger King</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-input [(ngModel)]="contrasena"
-        label="Ingrese la contraseña:" 
-        labelPlacement="stacked"
-        type="password" 
-        maxlength="4"
-        errorText="Contraseña inválida."
-        helperText="Largo 4"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input [(ngModel)]="contrasena2"
-        label="Ingrese la contraseña nuevamente:" 
-        labelPlacement="stacked"
-        type="password" 
-        maxlength="4"
-        errorText="Contraseña inválida."
-        helperText="Largo 4"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input [(ngModel)]="correo"
-      label="Ingrese su correo de recuperación:"
-      labelPlacement="stacked"
-      type="email"
-      errorText="Correo inválido"
-      helperText="Formato de correo (@ y .)">
-      </ion-input>
-    </ion-item>
-    
-    <ion-grid>
-      <ion-row class="ion-text-center">
-        <ion-col col="4">
-          <ion-button (click)="registro()" size="default">Registrar</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
+        type="email"
+        errorText="Correo inválido"
+        helperText="Formato de correo (@ y .)">
+        </ion-input>
+      </ion-item>
+      
+      <ion-grid>
+        <ion-row class="ion-text-center">
+          <ion-col col="4">
+            <ion-button (click)="registro()" [disabled]="!registroAdmin.valid">Registrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
   </ion-card>
 </ion-content>

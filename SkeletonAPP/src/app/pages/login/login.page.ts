@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router'; //Servicios para enviar datos al navegar a otra página.
 
 @Component({
@@ -8,20 +9,14 @@ import { NavigationExtras, Router } from '@angular/router'; //Servicios para env
 })
 export class LoginPage implements OnInit {
 
-  usuario: string = "";
-  contrasena: string = "";
+  loginForm = new FormGroup({
+    usuario: new FormControl("", Validators.required),
+    contrasena: new FormControl("", Validators.required)
+  });
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   login() {
-    if (this.usuario === 'admin' && this.contrasena === '1234'){ //Cambiar al tener registro de usuario/contraseña.
-      const datosEnviados: NavigationExtras = {
-        queryParams: {
-          nombreUsuario: this.usuario,//Definimos el dato a enviar.
-        }
-      }
-      this.router.navigate(['/home'], datosEnviados);//Enviamos los datos seleccionados mientras redireccionamos.
-    }
   }
 
   ngOnInit() {

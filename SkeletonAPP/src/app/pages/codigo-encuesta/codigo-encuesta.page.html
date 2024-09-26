@@ -16,9 +16,9 @@
             formControlName="codigo"
             label="Ingrese el código:" labelPlacement="stacked" 
             helperText="(6 digitos)"
-            minlength="6" 
-            maxlength="6"
-            type="tel"   
+            min="100000" 
+            max="999999"
+            type="number"   
             errorText="Código incorrecto (6 digitos)"
             [required]="true">
             </ion-input>

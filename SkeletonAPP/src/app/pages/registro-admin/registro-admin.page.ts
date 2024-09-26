@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validator, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-admin',
@@ -6,14 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registro-admin.page.scss'],
 })
 export class RegistroAdminPage implements OnInit {
-empresa: any;
-contrasena2: any;
-correo: any;
+
 registro() {
 throw new Error('Method not implemented.');
 }
-usuario: any;
-contrasena: any;
+  registroAdmin = new FormGroup({
+    usuario: new FormControl('', Validators.required),
+    empresa: new FormControl('', Validators.required),
+    contrasena: new FormControl('', Validators.required),
+    contrasena2: new FormControl('', Validators.required),
+    correo: new FormControl('', [Validators.required, Validators.email])
+  })
 
   constructor() { }
 
