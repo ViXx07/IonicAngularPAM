@@ -46,7 +46,7 @@
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button [disabled]="!loginForm.valid">Ingresar</ion-button>
+            <ion-button (click)="login()" [disabled]="!loginForm.valid">Ingresar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

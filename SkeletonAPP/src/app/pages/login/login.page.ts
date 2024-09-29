@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router'; //Servicios para enviar datos al navegar a otra página.
+import { Router } from '@angular/router'; //Servicios para enviar datos al navegar a otra página.
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -14,9 +16,11 @@ export class LoginPage implements OnInit {
     contrasena: new FormControl("", Validators.required)
   });
 
-  constructor() { }
+  constructor(private authService: AuthService, public router: Router) { }
 
   login() {
+    this.authService.log();
+    this.router.navigate(['admin']);
   }
 
   ngOnInit() {
