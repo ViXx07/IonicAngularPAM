@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { auth } from './services/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./pages/admin-sys/admin-sys.module').then( m => m.AdminSysPageModule),
-    title: 'QuéOpinas?'
+    title: 'QuéOpinas?',
+    canActivate: [auth]
   },
   {
     path: 'codigo',
