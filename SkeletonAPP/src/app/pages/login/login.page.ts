@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; //Servicios para enviar datos al navegar a otra página.
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { FirebaseConfigService } from 'src/app/services/firebase-config.service';
 
 
 @Component({
@@ -16,12 +18,16 @@ export class LoginPage implements OnInit {
     contrasena: new FormControl("", Validators.required)
   });
 
-  constructor(private authService: AuthService, public router: Router) { }
-
+  constructor() { }
+  
+  firebase = inject(FirebaseConfigService)
+  
   login() {
-    this.authService.log();
-    this.router.navigate(['admin']);
+    this.firebase.signIn(this.loginForm.value as User).then(res => {
+      
+    })
   }
+
 
   ngOnInit() {
   }
