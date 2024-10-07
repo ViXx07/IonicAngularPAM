@@ -20,8 +20,7 @@
             type="email"
             placeholder="email@domain.com"   
             errorText="Correo incorrecto"
-            [required]="true"
-            ngModel>
+            [required]="true">
             </ion-input>
         </ion-row>
         <!--Botón 'Enviar' que se activa al ingresar un correo correcto-->
@@ -30,6 +29,7 @@
             <ion-button 
             [routerLink]="['/login']"
             [disabled]="!emailForm.valid"
+            (click)="recuperar()"
             >Enviar</ion-button>
           </ion-col>
         </ion-row>

@@ -18,7 +18,6 @@ export class RegistroAdminPage {
     empresa: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     password2: new FormControl('', Validators.required),
-    correo: new FormControl('', [Validators.required, Validators.email])
   })
 
   firebase = inject(FirebaseConfigService);
@@ -54,8 +53,7 @@ export class RegistroAdminPage {
       delete this.registroAdmin.value.password2;
 
       this.firebase.setDocument(path, this.registroAdmin.value).then(async res => {
-        console.log("holi");
-        this.utils.saveInlocalStorage('user', this.registroAdmin.value);
+
         this.registroAdmin.reset;
         this.utils.routerlink('home');
 

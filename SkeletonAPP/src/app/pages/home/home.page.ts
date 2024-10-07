@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; //Ruta para recibir una variable.
+import { FirebaseConfigService } from 'src/app/services/firebase-config.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,9 @@ import { ActivatedRoute } from '@angular/router'; //Ruta para recibir una variab
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  nombreUsuarioRecibido!: string; //Variable a recibir.
 
+  nombreUsuarioRecibido!: string; //Variable a recibir.
+  firebase = inject(FirebaseConfigService);
 
   constructor(private route: ActivatedRoute) {}
 
@@ -18,6 +20,10 @@ export class HomePage {
       this.nombreUsuarioRecibido = params['nombreUsuario']; //Query donde se envia la variable.
     })
   }
+
+  logout() {
+    this.firebase.signOut();
+    }
 
   
 }

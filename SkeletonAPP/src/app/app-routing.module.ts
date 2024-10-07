@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { auth } from './services/auth.guard';
+import { AuthGuard } from './services/auth.guard';
+import { noAuthGuard } from './services/no-auth.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-    title: 'QuéOpinas?'
+    title: 'QuéOpinas?',
+    canActivate: [noAuthGuard]
   },
   {
     path: 'splash',
@@ -27,7 +29,7 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./pages/admin-sys/admin-sys.module').then( m => m.AdminSysPageModule),
     title: 'QuéOpinas?',
-    //canActivate: [auth]
+    canActivate: [AuthGuard]
   },
   {
     path: 'codigo',
