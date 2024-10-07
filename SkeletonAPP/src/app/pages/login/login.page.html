@@ -13,29 +13,27 @@
     <form [formGroup]="loginForm">
       <ion-item>
         <ion-input
-          formControlName="usuario"
+          formControlName="email"
           label="Ingrese su usuario: "
           labelPlacement="stacked"
           minlength="3" 
-          maxlength="8"   
+          maxlength="25"   
           errorText="Usuario inválido."
           helperText="Largo entre 3 y 8"
-          [required]="true"
-          ngModel>
+          [required]="true">
         </ion-input>
       </ion-item>
       <!--Input de contraseña, con restricción de largo, mensaje de ayuda y de error-->
       <ion-item>
         <ion-input 
-          formControlName="contrasena"
+          formControlName="password"
           label="Ingrese su contraseña:" 
           labelPlacement="stacked"
           type="password" 
-          minlength="4"
-          maxlength="4"
+          minlength="6"
+          maxlength="10"
           errorText="Contraseña inválida."
-          helperText="Largo 4"
-          ngmodel>
+          helperText="Largo 4">
         </ion-input>
       </ion-item>
       <!--Link a página de recuperación de contraseña-->

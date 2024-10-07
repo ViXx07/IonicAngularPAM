@@ -27,7 +27,7 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./pages/admin-sys/admin-sys.module').then( m => m.AdminSysPageModule),
     title: 'QuéOpinas?',
-    canActivate: [auth]
+    //canActivate: [auth]
   },
   {
     path: 'codigo',
