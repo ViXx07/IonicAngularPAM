@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; //Ruta para recibir una variable.
-import { FirebaseConfigService } from 'src/app/services/firebase-config.service';
+import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 
 @Component({
   selector: 'app-home',

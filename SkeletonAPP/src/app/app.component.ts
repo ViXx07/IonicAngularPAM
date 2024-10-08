@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,14 +6,27 @@ import { Router } from '@angular/router';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
-  titulo: any;
+export class AppComponent implements OnInit{
+  paginas = [
+    {titulo: 'Login', url: '/login', icono: 'menu-outline'},
+    {titulo: 'Home', url: '/home', icono: 'person-outline'},
+    {titulo: 'Admin', url: '/admin', icono: 'layers-outline'},
+  ]
   
-  constructor(public router: Router) {
+router = inject(Router);
+rutaActual = '';
+
+ngOnInit() {
+  this.router.events.subscribe((event: any) =>{
+    if(event?.url) this.rutaActual = event.url; 
+  })
+}
+
+  /*constructor(public router: Router) {
     this.initializeApp();
   }
 
   initializeApp(){
     this.router.navigateByUrl('splash')
-  };
+  };*/
 }

@@ -1,62 +1,63 @@
 <ion-content>
+  <app-header titulo="Admin"></app-header>
   <ion-card>
     <ion-item>
       <ion-title>Administración del sistema</ion-title>
     </ion-item>
-    
+
     <ion-item>
-      <ion-grid style="border: groove;">
-        <ion-row style="border-bottom: groove;">
+      <ion-grid style="border: groove">
+        <ion-row style="border-bottom: groove">
           <ion-col col-3>
-            <ion-label >N° Opinión</ion-label>
+            <ion-label>N° Opinión</ion-label>
           </ion-col>
           <ion-col col-3>
-            <ion-label >Emoji</ion-label>
+            <ion-label>Emoji</ion-label>
           </ion-col>
           <ion-col col-3>
-            <ion-label >Opinión</ion-label>
-          </ion-col>
-          <ion-col col-3>
-            <ion-label>Foto</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row style="border-bottom: groove;">
-          <ion-col col-3>
-            <ion-label >1</ion-label>
-          </ion-col>
-          <ion-col col-3>
-            <ion-label >Feliz</ion-label>
-          </ion-col>
-          <ion-col col-3>
-            <ion-label >Muy Weno</ion-label>
+            <ion-label>Opinión</ion-label>
           </ion-col>
           <ion-col col-3>
             <ion-label>Foto</ion-label>
           </ion-col>
         </ion-row>
-        <ion-row style="border-bottom: groove;">
+        <ion-row style="border-bottom: groove">
           <ion-col col-3>
-            <ion-label >2</ion-label>
+            <ion-label>1</ion-label>
           </ion-col>
           <ion-col col-3>
-            <ion-label >Feliz</ion-label>
+            <ion-label>Feliz</ion-label>
           </ion-col>
           <ion-col col-3>
-            <ion-label >Es lo más mejor</ion-label>
+            <ion-label>Muy Weno</ion-label>
           </ion-col>
           <ion-col col-3>
             <ion-label>Foto</ion-label>
           </ion-col>
         </ion-row>
-        <ion-row >
+        <ion-row style="border-bottom: groove">
           <ion-col col-3>
-            <ion-label >3</ion-label>
+            <ion-label>2</ion-label>
           </ion-col>
           <ion-col col-3>
-            <ion-label >Triste</ion-label>
+            <ion-label>Feliz</ion-label>
           </ion-col>
           <ion-col col-3>
-            <ion-label >uWu</ion-label>
+            <ion-label>Es lo más mejor</ion-label>
+          </ion-col>
+          <ion-col col-3>
+            <ion-label>Foto</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3>
+            <ion-label>3</ion-label>
+          </ion-col>
+          <ion-col col-3>
+            <ion-label>Triste</ion-label>
+          </ion-col>
+          <ion-col col-3>
+            <ion-label>uWu</ion-label>
           </ion-col>
           <ion-col col-3>
             <ion-label>...</ion-label>
@@ -69,7 +70,9 @@
       <ion-grid>
         <ion-row class="ion-justify-content-center">
           <ion-col col="5" size="default">
-            <ion-button [routerLink]="['/registroAdmin']">Registrar admin</ion-button>
+            <ion-button [routerLink]="['/registroAdmin']"
+              >Registrar admin</ion-button
+            >
           </ion-col>
           <ion-col col="5" size="default">
             <ion-button>Modificar admin</ion-button>
@@ -84,7 +87,6 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-item> 
+    </ion-item>
   </ion-card>
-  
 </ion-content>

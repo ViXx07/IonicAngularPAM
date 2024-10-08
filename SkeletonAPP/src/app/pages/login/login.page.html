@@ -1,9 +1,9 @@
 <ion-content>
+  <app-header titulo = 'Login'></app-header>
   <ion-card>
-
     <!--Titulo-->
     <ion-item>
-      <ion-title>Login</ion-title> 
+      <ion-title>Login</ion-title>
     </ion-item>
     <!--Logo-->
     <ion-item>
@@ -16,39 +16,42 @@
           formControlName="email"
           label="Ingrese su usuario: "
           labelPlacement="stacked"
-          minlength="3" 
-          maxlength="25"   
+          minlength="3"
+          maxlength="25"
           errorText="Usuario inválido."
           helperText="Largo entre 3 y 8"
-          [required]="true">
+          [required]="true"
+        >
         </ion-input>
       </ion-item>
       <!--Input de contraseña, con restricción de largo, mensaje de ayuda y de error-->
       <ion-item>
-        <ion-input 
+        <ion-input
           formControlName="password"
-          label="Ingrese su contraseña:" 
+          label="Ingrese su contraseña:"
           labelPlacement="stacked"
-          type="password" 
+          type="password"
           minlength="6"
           maxlength="10"
           errorText="Contraseña inválida."
-          helperText="Largo 4">
+          helperText="Largo 4"
+        >
         </ion-input>
       </ion-item>
       <!--Link a página de recuperación de contraseña-->
       <ion-item>
         <a [routerLink]="['/recordar']">¿Olvidate tu contraseña?</a>
       </ion-item>
-      <!--Boton 'Ingresar', centrado con grid, con función login() Que de momento solo acepta usuario: admin contraseña: 1234-->  
+      <!--Boton 'Ingresar', centrado con grid, con función login() Que de momento solo acepta usuario: admin contraseña: 1234-->
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button (click)="submit()" [disabled]="!loginForm.valid">Ingresar</ion-button>
+            <ion-button (click)="submit()" [disabled]="!loginForm.valid"
+              >Ingresar</ion-button
+            >
           </ion-col>
         </ion-row>
       </ion-grid>
     </form>
-
   </ion-card>
 </ion-content>

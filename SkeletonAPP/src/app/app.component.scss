@@ -1,9 +1,20 @@
-*{
-    font-size: 2.5vh;
+* {
+  font-size: 2.5vh;
 }
 
-.logo{
-    height: 4vh;
-    border-radius: 50%;
+.logo {
+  height: 4vh;
+  border-radius: 50%;
 }
 
+ion-item {
+    font-size: 2vh;
+
+  &.active {
+    color: var(--ion-color-warning);
+
+    ion-icon {
+      color: var(--ion-color-ligth);
+    }
+  }
+}
