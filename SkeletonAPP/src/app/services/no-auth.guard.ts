@@ -12,16 +12,16 @@ export const noAuthGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {
-
   const utils = inject(UtilsService);
   const firebase = inject(FirebaseConfigService);
 
   return new Promise((resolve) => {
     firebase.getAuth().onAuthStateChanged((auth) => {
-      if (!auth) { resolve(true);
-      } else {
-        utils.routerlink('home');
+      if (!auth) {
         resolve(true);
+      } else {
+        utils.routerlink('admin');
+        resolve(false);
       }
     });
   });

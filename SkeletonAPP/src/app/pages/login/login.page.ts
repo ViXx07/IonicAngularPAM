@@ -18,8 +18,10 @@ export class LoginPage {
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
 
-  login() {
+  async submit() {
     if (this.loginForm.valid) {
+      const loading = await this.utils.loading();
+      await loading.present();
       this.firebase
         .signIn(this.loginForm.value as User)
         .then((res) => {
@@ -34,6 +36,9 @@ export class LoginPage {
             position: 'middle',
             icon: 'alert-circle-outline',
           });
+        })
+        .finally(() => {
+          loading.dismiss();
         });
     }
   }
