@@ -57,7 +57,7 @@ export class LoginPage {
 
           this.utils.presentToast({
             message: `Te damos la bienvenida ${user.email}`,
-            duration: 1500,
+            duration: 2000,
             color: 'primary',
             position: 'middle',
             icon: 'person-circle-outline',

@@ -4,15 +4,10 @@
     <!--Titulo-->
     <ion-item>
       <ion-title>Home</ion-title>
-      <ion-button (click)="logout()">Cerrar sesión</ion-button>
     </ion-item>
     <!--Logo-->
     <ion-item>
       <img class="logoMain" alt="..." src="assets/logo.png" />
-    </ion-item>
-    <!--Mensaje de bienvenida con condición de que se reciba un usuario-->
-    <ion-item class="ion-text-center" *ngIf="nombreUsuarioRecibido!=null">
-      <ion-title>Bienvenido {{ nombreUsuarioRecibido }}!</ion-title>
     </ion-item>
     <!--Botones QR y código, centrados con grid-->
     <ion-item>

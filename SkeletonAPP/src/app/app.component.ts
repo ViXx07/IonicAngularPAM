@@ -1,32 +1,38 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FirebaseConfigService } from './services/fireBaseConfig/firebase-config.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   paginas = [
-    {titulo: 'Login', url: '/login', icono: 'menu-outline'},
-    {titulo: 'Home', url: '/home', icono: 'person-outline'},
-    {titulo: 'Admin', url: '/admin', icono: 'layers-outline'},
-  ]
-  
-router = inject(Router);
-rutaActual = '';
+    { titulo: 'Login', url: '/login', icono: 'menu-outline' },
+    { titulo: 'Home', url: '/home', icono: 'person-outline' },
+    { titulo: 'Admin', url: '/admin', icono: 'layers-outline' },
+  ];
 
-ngOnInit() {
-  this.router.events.subscribe((event: any) =>{
-    if(event?.url) this.rutaActual = event.url; 
-  })
-}
+  router = inject(Router);
+  firebase = inject(FirebaseConfigService);
+  rutaActual = '';
 
-  /*constructor(public router: Router) {
+  constructor() {
     this.initializeApp();
   }
 
-  initializeApp(){
-    this.router.navigateByUrl('splash')
-  };*/
+  ngOnInit() {
+    this.router.events.subscribe((event: any) => {
+      if (event?.url) this.rutaActual = event.url;
+    });
+  }
+
+  logout() {
+    this.firebase.signOut();
+  }
+
+  initializeApp() {
+    this.router.navigateByUrl('splash');
+  }
 }
