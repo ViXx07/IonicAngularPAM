@@ -48,14 +48,6 @@ const routes: Routes = [
     title: 'QuéOpinas?',
   },
   {
-    path: 'recordar',
-    loadChildren: () =>
-      import('./pages/recordar-contrasena/recordar-contrasena.module').then(
-        (m) => m.RecordarContrasenaPageModule
-      ),
-    title: 'QuéOpinas?',
-  },
-  {
     path: 'registroAdmin',
     loadChildren: () =>
       import('./pages/registro-admin/registro-admin.module').then(

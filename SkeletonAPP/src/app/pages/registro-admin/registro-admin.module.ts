@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RegistroAdminPageRoutingModule } from './registro-admin-routing.module';
 
 import { RegistroAdminPage } from './registro-admin.page';
+import { SharedModule } from "../../components/shared/shared.module";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { RegistroAdminPage } from './registro-admin.page';
     IonicModule,
     RegistroAdminPageRoutingModule,
     ReactiveFormsModule,
-  ],
+    SharedModule
+],
   declarations: [RegistroAdminPage],
 })
 export class RegistroAdminPageModule {}

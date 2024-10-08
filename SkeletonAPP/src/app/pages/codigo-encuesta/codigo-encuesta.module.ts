@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CodigoEncuestaPageRoutingModule } from './codigo-encuesta-routing.module';
 
 import { CodigoEncuestaPage } from './codigo-encuesta.page';
+import { SharedModule } from "../../components/shared/shared.module";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { CodigoEncuestaPage } from './codigo-encuesta.page';
     IonicModule,
     CodigoEncuestaPageRoutingModule,
     ReactiveFormsModule,
-  ],
+    SharedModule
+],
   declarations: [CodigoEncuestaPage],
 })
 export class CodigoEncuestaPageModule {}

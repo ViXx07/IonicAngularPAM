@@ -1,7 +1,15 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <!--Titulo-->
-    <ion-item>
+    <ion-item class="ion-text-center">
+      <ion-button
+        color="medium"
+        size="large"
+        fill="clear"
+        (click)="cerrarModal()"
+      >
+        <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+      </ion-button>
       <ion-title>Recordar contraseña</ion-title>
     </ion-item>
     <!--Logo-->

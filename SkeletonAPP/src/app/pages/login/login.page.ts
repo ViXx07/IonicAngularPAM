@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { RecordarContrasenaComponent } from 'src/app/components/recordar-contrasena/recordar-contrasena.component';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -56,6 +57,7 @@ export class LoginPage {
           this.utils.routerlink('home');
 
           this.utils.presentToast({
+            header: 'Login exitoso!',
             message: `Te damos la bienvenida ${user.email}`,
             duration: 2000,
             color: 'primary',
@@ -74,5 +76,11 @@ export class LoginPage {
           });
         });
     }
+  }
+
+  recordarContrasena() {
+    this.utils.presentarModal({
+      component: RecordarContrasenaComponent,
+    })
   }
 }
