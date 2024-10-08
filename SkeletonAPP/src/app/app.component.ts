@@ -1,6 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseConfigService } from './services/fireBaseConfig/firebase-config.service';
+import { UtilsService } from './services/utils/utils.service';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,7 @@ export class AppComponent implements OnInit {
 
   router = inject(Router);
   firebase = inject(FirebaseConfigService);
+  utils = inject(UtilsService);
   rutaActual = '';
 
   constructor() {
@@ -30,6 +33,10 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.firebase.signOut();
+  }
+
+  usuario(): User {
+    return this.utils.getFromLocalStorage('user');
   }
 
   initializeApp() {
