@@ -1,32 +1,39 @@
 <ion-content>
-    <ion-card >
+  <ion-card>
+    <ion-item>
+      <ion-title>Encuesta</ion-title>
+    </ion-item>
 
-      <ion-item>
-        <ion-title>Encuesta</ion-title>
-      </ion-item>
+    <div id="emoji" class="emoji">
+      <input type="radio" id="enojado" name="emoji" value="Enojado" /><label
+        for="enojado"
+        >😒</label
+      >
+      <input type="radio" id="neutral" name="emoji" value="Neutral" /><label
+        for="neutral"
+        >😐</label
+      >
+      <input type="radio" id="feliz" name="emoji" value="Feliz" /><label
+        for="feliz"
+      >
+        😁</label
+      >
+    </div>
+    <br />
 
-      <div id="emoji" class="emoji">
-        <input type="radio" id="enojado" name="emoji" value="Enojado"><label for="enojado">😒</label>
-        <input type="radio" id="neutral" name="emoji" value="Neutral"><label for="neutral">😐</label>
-        <input type="radio" id="feliz"   name="emoji" value="Feliz"><label   for="feliz">  😁</label>
-      </div>
-      <br>
+    <ion-item>
+      <ion-text>Resultado:</ion-text>
+      <ion-text id="estado">Feliz</ion-text>
+    </ion-item>
 
-      <ion-item>
-        <ion-text>Resultado:</ion-text>
-        <ion-text id="estado">Feliz</ion-text>
-      </ion-item>    
+    <ion-item>
+      <ion-button class="enviar" (click)="resultado()">Enviar</ion-button>
+    </ion-item>
 
-      <ion-item>
-        <ion-button class="enviar" (click)="resultado()">Enviar</ion-button>
-      </ion-item>
-
-      <ion-item>
-        <ion-text>Enojados: <a id="enojados">0</a></ion-text>
-        <ion-text>Neutrales: <a id="neutrales">0</a></ion-text>
-        <ion-text>Felices: <a id="felices">0</a></ion-text>
-      </ion-item>
-
-    </ion-card>
-      
+    <ion-item>
+      <ion-text>Enojados: <a id="enojados">0</a></ion-text>
+      <ion-text>Neutrales: <a id="neutrales">0</a></ion-text>
+      <ion-text>Felices: <a id="felices">0</a></ion-text>
+    </ion-item>
+  </ion-card>
 </ion-content>

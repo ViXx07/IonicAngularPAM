@@ -6,8 +6,8 @@ import { OpinaPage } from './opina.page';
 const routes: Routes = [
   {
     path: '',
-    component: OpinaPage
-  }
+    component: OpinaPage,
+  },
 ];
 
 @NgModule({

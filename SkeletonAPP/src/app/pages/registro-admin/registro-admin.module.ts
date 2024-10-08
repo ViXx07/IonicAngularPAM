@@ -14,8 +14,8 @@ import { RegistroAdminPage } from './registro-admin.page';
     FormsModule,
     IonicModule,
     RegistroAdminPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  declarations: [RegistroAdminPage]
+  declarations: [RegistroAdminPage],
 })
 export class RegistroAdminPageModule {}

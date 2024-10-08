@@ -6,8 +6,8 @@ import { AdminSysPage } from './admin-sys.page';
 const routes: Routes = [
   {
     path: '',
-    component: AdminSysPage
-  }
+    component: AdminSysPage,
+  },
 ];
 
 @NgModule({

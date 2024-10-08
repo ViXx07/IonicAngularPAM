@@ -6,8 +6,8 @@ import { CodigoEncuestaPage } from './codigo-encuesta.page';
 const routes: Routes = [
   {
     path: '',
-    component: CodigoEncuestaPage
-  }
+    component: CodigoEncuestaPage,
+  },
 ];
 
 @NgModule({

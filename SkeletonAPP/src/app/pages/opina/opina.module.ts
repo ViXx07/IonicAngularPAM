@@ -9,12 +9,7 @@ import { OpinaPageRoutingModule } from './opina-routing.module';
 import { OpinaPage } from './opina.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    OpinaPageRoutingModule
-  ],
-  declarations: [OpinaPage]
+  imports: [CommonModule, FormsModule, IonicModule, OpinaPageRoutingModule],
+  declarations: [OpinaPage],
 })
 export class OpinaPageModule {}

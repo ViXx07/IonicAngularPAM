@@ -1,5 +1,4 @@
-<ion-content >
-
+<ion-content>
   <ion-card>
     <ion-item>
       <ion-title>Encuesta por Código</ion-title>
@@ -12,30 +11,26 @@
     <form [formGroup]="codigoForm">
       <ion-grid>
         <ion-row class="ion-text-center">
-            <ion-input
+          <ion-input
             formControlName="codigo"
-            label="Ingrese el código:" labelPlacement="stacked" 
+            label="Ingrese el código:"
+            labelPlacement="stacked"
             helperText="(6 digitos)"
-            min="100000" 
+            min="100000"
             max="999999"
-            type="number"   
+            type="number"
             errorText="Código incorrecto (6 digitos)"
-            [required]="true">
-            </ion-input>
+            [required]="true"
+          >
+          </ion-input>
         </ion-row>
 
         <ion-row>
-          <ion-button 
-            [routerLink]="['/opina']"
-            [disabled]="!codigoForm.valid"
-            >Enviar</ion-button>
+          <ion-button [routerLink]="['/opina']" [disabled]="!codigoForm.valid"
+            >Enviar</ion-button
+          >
         </ion-row>
-        
       </ion-grid>
     </form>
-
-
   </ion-card>
-
-
 </ion-content>

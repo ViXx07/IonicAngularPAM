@@ -14,8 +14,8 @@ import { CodigoEncuestaPage } from './codigo-encuesta.page';
     FormsModule,
     IonicModule,
     CodigoEncuestaPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  declarations: [CodigoEncuestaPage]
+  declarations: [CodigoEncuestaPage],
 })
 export class CodigoEncuestaPageModule {}

@@ -6,8 +6,8 @@ import { RecordarContrasenaPage } from './recordar-contrasena.page';
 const routes: Routes = [
   {
     path: '',
-    component: RecordarContrasenaPage
-  }
+    component: RecordarContrasenaPage,
+  },
 ];
 
 @NgModule({

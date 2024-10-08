@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
-import { SharedModule } from "../../components/shared/shared.module";
+import { SharedModule } from '../../components/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,8 +16,8 @@ import { SharedModule } from "../../components/shared/shared.module";
     IonicModule,
     LoginPageRoutingModule,
     ReactiveFormsModule,
-    SharedModule
-],
-  declarations: [LoginPage]
+    SharedModule,
+  ],
+  declarations: [LoginPage],
 })
 export class LoginPageModule {}

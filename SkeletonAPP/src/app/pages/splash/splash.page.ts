@@ -8,12 +8,11 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['./splash.page.scss'],
 })
 export class SplashPage implements OnInit {
-
   constructor(public router: Router, private storage: Storage) {
     setTimeout(() => {
-      this.router.navigateByUrl('login')
-    }, 2000 );
-   }
+      this.router.navigateByUrl('login');
+    }, 2000);
+  }
 
   async ngOnInit() {
     await this.storage.create();

@@ -1,6 +1,5 @@
 <ion-content [fullscreen]="true">
   <ion-card>
-
     <!--Titulo-->
     <ion-item>
       <ion-title>Recordar contraseña</ion-title>
@@ -13,28 +12,30 @@
     <form [formGroup]="emailForm">
       <ion-grid>
         <ion-row class="ion-text-center">
-            <!--Input de correo de recuperación-->
-            <ion-input
+          <!--Input de correo de recuperación-->
+          <ion-input
             formControlName="email"
-            label="Ingrese su correo de recuperación:" labelPlacement="stacked" 
+            label="Ingrese su correo de recuperación:"
+            labelPlacement="stacked"
             type="email"
-            placeholder="email@domain.com"   
+            placeholder="email@domain.com"
             errorText="Correo incorrecto"
-            [required]="true">
-            </ion-input>
+            [required]="true"
+          >
+          </ion-input>
         </ion-row>
         <!--Botón 'Enviar' que se activa al ingresar un correo correcto-->
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button 
-            [routerLink]="['/login']"
-            [disabled]="!emailForm.valid"
-            (click)="submit()"
-            >Enviar</ion-button>
+            <ion-button
+              [routerLink]="['/login']"
+              [disabled]="!emailForm.valid"
+              (click)="submit()"
+              >Enviar</ion-button
+            >
           </ion-col>
         </ion-row>
-        
       </ion-grid>
     </form>
-</ion-card>
+  </ion-card>
 </ion-content>

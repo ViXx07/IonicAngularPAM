@@ -6,8 +6,8 @@ import { RegistroAdminPage } from './registro-admin.page';
 const routes: Routes = [
   {
     path: '',
-    component: RegistroAdminPage
-  }
+    component: RegistroAdminPage,
+  },
 ];
 
 @NgModule({

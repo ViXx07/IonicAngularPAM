@@ -1,6 +1,5 @@
 <ion-content>
   <ion-card>
-
     <ion-item>
       <ion-title>Registro de administrador</ion-title>
     </ion-item>
@@ -11,53 +10,62 @@
 
     <form [formGroup]="registroAdmin">
       <ion-item>
-<!--Correo-->
-        <ion-input 
+        <!--Correo-->
+        <ion-input
           formControlName="email"
           label="Ingrese su usuario: "
           labelPlacement="stacked"
-          minlength="3" 
-          maxlength="25"   
+          minlength="3"
+          maxlength="25"
           errorText="Usuario inválido."
-          helperText="Largo entre 3 y 8">
+          helperText="Largo entre 3 y 8"
+        >
         </ion-input>
       </ion-item>
-<!--Empresa-->
+      <!--Empresa-->
       <ion-item>
-        <ion-select formControlName="empresa" interface="popover" placeholder="Seleccione la empresa:">
+        <ion-select
+          formControlName="empresa"
+          interface="popover"
+          placeholder="Seleccione la empresa:"
+        >
           <ion-select-option value="1">Apple</ion-select-option>
           <ion-select-option value="2">Microsoft</ion-select-option>
           <ion-select-option value="3">McDonalds</ion-select-option>
           <ion-select-option value="4">Burger King</ion-select-option>
         </ion-select>
       </ion-item>
-<!--Contraseña-->
+      <!--Contraseña-->
       <ion-item>
-        <ion-input formControlName="password"
-          label="Ingrese la contraseña:" 
+        <ion-input
+          formControlName="password"
+          label="Ingrese la contraseña:"
           labelPlacement="stacked"
-          type="password" 
+          type="password"
           maxlength="10"
           errorText="Contraseña inválida."
           helperText="Largo 4"
         ></ion-input>
       </ion-item>
-<!--Contraseña confirmación-->
+      <!--Contraseña confirmación-->
       <ion-item>
-        <ion-input formControlName="password2"
-          label="Ingrese la contraseña nuevamente:" 
+        <ion-input
+          formControlName="password2"
+          label="Ingrese la contraseña nuevamente:"
           labelPlacement="stacked"
-          type="password" 
+          type="password"
           maxlength="10"
           errorText="Contraseña inválida."
           helperText="Largo 4"
         ></ion-input>
       </ion-item>
-      
+
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button (click)="submit()" [disabled]="!registroAdmin.valid">Registrar</ion-button>
+            <ion-button (click)="submit()" [disabled]="!registroAdmin.valid"
+              >Registrar</ion-button
+            >
           </ion-col>
         </ion-row>
       </ion-grid>

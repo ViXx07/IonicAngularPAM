@@ -10,16 +10,24 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment.prod';
-import { SharedModule } from "./components/shared/shared.module";
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(),
-    AppRoutingModule, IonicStorageModule.forRoot(),
-    ReactiveFormsModule, FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig), SharedModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync()],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
+    ReactiveFormsModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    SharedModule,
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideAnimationsAsync(),
+  ],
   bootstrap: [AppComponent],
-
 })
 export class AppModule {}

@@ -16,8 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     IonicModule,
     RecordarContrasenaPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  declarations: [RecordarContrasenaPage]
+  declarations: [RecordarContrasenaPage],
 })
 export class RecordarContrasenaPageModule {}

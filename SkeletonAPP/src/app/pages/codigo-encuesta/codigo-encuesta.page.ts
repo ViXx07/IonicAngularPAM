@@ -7,13 +7,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./codigo-encuesta.page.scss'],
 })
 export class CodigoEncuestaPage implements OnInit {
-
   codigoForm = new FormGroup({
-    codigo: new FormControl('', Validators.required)
-  })
+    codigo: new FormControl('', Validators.required),
+  });
   constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

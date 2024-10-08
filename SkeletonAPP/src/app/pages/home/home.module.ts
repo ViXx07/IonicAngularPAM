@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { SharedModule } from "../../components/shared/shared.module";
-
+import { SharedModule } from '../../components/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -14,8 +13,8 @@ import { SharedModule } from "../../components/shared/shared.module";
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    SharedModule
-],
-  declarations: [HomePage]
+    SharedModule,
+  ],
+  declarations: [HomePage],
 })
 export class HomePageModule {}
