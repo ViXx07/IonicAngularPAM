@@ -7,7 +7,7 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
 } from '@firebase/auth';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 import { doc, getDoc, setDoc, getFirestore } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 

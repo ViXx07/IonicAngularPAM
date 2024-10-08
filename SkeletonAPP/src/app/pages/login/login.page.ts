@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
-import { FirebaseConfigService } from 'src/app/services/firebase-config.service';
-import { UtilsService } from 'src/app/services/utils.service';
+import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-login',

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'; //Servicios para validar Formularios.
-import { FirebaseConfigService } from 'src/app/services/firebase-config.service';
-import { UtilsService } from 'src/app/services/utils.service';
+import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-recordar-contrasena',

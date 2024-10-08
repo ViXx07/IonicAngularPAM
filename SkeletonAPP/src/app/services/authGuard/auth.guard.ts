@@ -5,8 +5,8 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { UtilsService } from './utils.service';
-import { FirebaseConfigService } from './firebase-config.service';
+import { UtilsService } from '../utils/utils.service';
+import { FirebaseConfigService } from '../fireBaseConfig/firebase-config.service';
 
 export const AuthGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
