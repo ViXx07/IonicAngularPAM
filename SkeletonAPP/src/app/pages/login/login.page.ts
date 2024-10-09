@@ -12,6 +12,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 })
 export class LoginPage {
   loginForm = new FormGroup({
+    uid: new FormControl('',),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
@@ -47,11 +48,12 @@ export class LoginPage {
   async getUserInfo(uid: string) {
     if (this.loginForm.valid) {
       let path = `users/${uid}`;
-      delete this.loginForm.value.password;
+      this.loginForm.controls.uid.setValue(uid);
 
       this.firebase
         .getDocument(path)
         .then((user: User) => {
+          delete this.loginForm.value.password;
           this.utils.saveInlocalStorage('user', this.loginForm.value);
           this.loginForm.reset;
           this.utils.routerlink('home');

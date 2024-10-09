@@ -7,6 +7,7 @@ import {
   ToastOptions,
 } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Injectable({
   providedIn: 'root',
@@ -49,5 +50,18 @@ export class UtilsService {
 
   cerrarModal(data?: any) {
     return this.modalCtrl.dismiss(data);
+  }
+
+  async tomarFoto(promptLabelHeader: string) {
+    return await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Prompt, //Permite elegir de donde viene la foto, en este caso desde la cámara o de la galeria.
+      promptLabelHeader,
+      promptLabelPhoto: 'Selecciona una imagen:',
+      promptLabelPicture: 'Toma una foto:'
+       
+    });
   }
 }

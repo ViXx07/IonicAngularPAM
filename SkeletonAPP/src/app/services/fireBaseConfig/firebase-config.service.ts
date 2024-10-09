@@ -7,8 +7,17 @@ import {
   sendPasswordResetEmail,
 } from '@firebase/auth';
 import { User } from '../../models/user.model';
-import { doc, getDoc, setDoc, getFirestore } from '@angular/fire/firestore';
+import {
+  doc,
+  getDoc,
+  setDoc,
+  addDoc,
+  collection,
+  getFirestore,
+} from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {AngularFireStorage} from '@angular/fire/compat/storage';
+import {getStorage, uploadString, ref, getDownloadURL} from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -55,5 +64,18 @@ export class FirebaseConfigService {
   //Obtener datos del usuario
   async getDocument(path: string) {
     return (await getDoc(doc(getFirestore(), path))).data();
+  }
+
+  //Agregar un objeto a la base de datos
+  addDocument(path: string, data: any) {
+    return addDoc(collection(getFirestore(), path), data);
+  }
+
+  //Almacenamiento
+
+  async subirImagen(path: string, dataUrl: string) {
+    return uploadString(ref(getStorage(), path), dataUrl, 'data_url').then(() => {
+      return getDownloadURL(ref(getStorage(), path))
+    })
   }
 }
