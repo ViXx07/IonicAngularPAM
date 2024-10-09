@@ -15,6 +15,7 @@ export class OpinaPage implements OnInit {
   }
 
   usuario = {} as User;
+  subirEvidencia = false;
 
   ngOnInit() {
     this.usuario = this.utils.getFromLocalStorage('user');
@@ -37,8 +38,13 @@ export class OpinaPage implements OnInit {
       let path = `users/${this.usuario.uid}/encuestas`;
       let dataUrl = this.encuesta.value.evidencia;
       let imagePath = `${this.usuario.uid}/${Date.now()}`;
-      let imageUrl = await this.firebase.subirImagen(imagePath, dataUrl);
-      this.encuesta.controls.evidencia.setValue(imageUrl);
+
+      console.log('holi');
+
+      if(this.subirEvidencia) {
+        let imageUrl = await this.firebase.subirImagen(imagePath, dataUrl);
+        this.encuesta.controls.evidencia.setValue(imageUrl);
+      }
 
       const loading = await this.utils.loading();
       await loading.present();
@@ -75,5 +81,6 @@ export class OpinaPage implements OnInit {
   async evidencia() {
     const DataUrl = (await this.utils.tomarFoto('Evidencia')).dataUrl;
     this.encuesta.controls.evidencia.setValue(DataUrl);
+    this.subirEvidencia = true;
   }
 }
