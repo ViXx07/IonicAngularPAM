@@ -13,14 +13,16 @@ export class HomePage {
   platform = inject(Platform);
   utils = inject(UtilsService);
   scanResult = '';
+  isMobile = false;
 
   constructor() {}
 
   ngOnInit() {
-    if(this.platform.is('capacitor')){
+    if (this.platform.is('capacitor')) {
       BarcodeScanner.isSupported().then();
       BarcodeScanner.checkPermissions().then();
       BarcodeScanner.removeAllListeners();
+      this.isMobile = true;
     }
   }
 
@@ -32,13 +34,21 @@ export class HomePage {
       componentProps: {
         formats: [],
         LensFacing: LensFacing.Back,
-
-      }
-    }); await modal.present();
+      },
+    });
+    await modal.present();
 
     const { data } = await modal.onWillDismiss();
     if (data) {
       this.scanResult = data?.barcode?.displayValue;
+      this.utils.routerlink(this.scanResult);
+      this.utils.presentToast({
+        message: 'QR escaneado exitosamente.',
+        duration: 2500,
+        color: 'success',
+        position: 'middle',
+        icon: 'qr-code-outline',
+      });
     }
   }
 }

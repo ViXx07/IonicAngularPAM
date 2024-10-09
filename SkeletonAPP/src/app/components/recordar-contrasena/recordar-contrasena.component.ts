@@ -49,9 +49,5 @@ export class RecordarContrasenaComponent  implements OnInit {
     }
   }
 
-  cerrarModal() {
-    this.utils.cerrarModal();
-  }
-
   ngOnInit() {}
 }

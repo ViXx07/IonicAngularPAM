@@ -1,9 +1,6 @@
 <ion-content>
-  <app-header titulo= 'Encuesta por Código'></app-header>
+  <app-header titulo="Encuesta por Código"></app-header>
   <ion-card>
-    <ion-item>
-      <ion-title>Encuesta por Código</ion-title>
-    </ion-item>
 
     <ion-item>
       <img class="logoMain" alt="..." src="assets/logo.png" />
@@ -27,7 +24,12 @@
         </ion-row>
 
         <ion-row>
-          <ion-button [routerLink]="['/opina']" [disabled]="!codigoForm.valid"
+          <ion-button
+            color="primary"
+            shape="round"
+            fill="outline"
+            [routerLink]="['/opina']"
+            [disabled]="!codigoForm.valid"
             >Enviar</ion-button
           >
         </ion-row>

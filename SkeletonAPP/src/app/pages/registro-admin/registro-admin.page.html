@@ -60,7 +60,12 @@
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button (click)="submit()" [disabled]="!registroAdmin.valid"
+            <ion-button
+              color="primary"
+              shape="round"
+              fill="outline"
+              (click)="submit()"
+              [disabled]="!registroAdmin.valid"
               >Registrar</ion-button
             >
           </ion-col>

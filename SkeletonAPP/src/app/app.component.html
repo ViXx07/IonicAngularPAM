@@ -4,7 +4,7 @@
     <ion-content class="ion-padding">
       <ion-list>
         <ion-item>
-          <ion-icon name="person-circle-outline"></ion-icon>
+          <ion-icon *ngIf="usuario()" name="person-circle-outline"></ion-icon>
           <ion-title>{{ usuario()?.email }}</ion-title>
         </ion-item>
       </ion-list>

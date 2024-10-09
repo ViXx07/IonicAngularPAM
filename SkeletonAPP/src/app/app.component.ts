@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FirebaseConfigService } from './services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from './services/utils/utils.service';
 import { User } from './models/user.model';
+import { LoginPage } from './pages/login/login.page';
 
 @Component({
   selector: 'app-root',

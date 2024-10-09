@@ -35,7 +35,6 @@ export class FirebaseConfigService {
   signOut() {
     getAuth().signOut();
     localStorage.removeItem('user');
-    console.log(this.getAuth());
   }
 
   //Crear cuenta

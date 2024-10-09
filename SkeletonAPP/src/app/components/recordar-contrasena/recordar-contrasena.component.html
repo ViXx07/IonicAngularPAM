@@ -2,14 +2,6 @@
   <ion-card>
     <!--Titulo-->
     <ion-item class="ion-text-center">
-      <ion-button
-        color="medium"
-        size="large"
-        fill="clear"
-        (click)="cerrarModal()"
-      >
-        <ion-icon name="arrow-undo-circle-outline"></ion-icon>
-      </ion-button>
       <ion-title>Recordar contraseña</ion-title>
     </ion-item>
     <!--Logo-->
@@ -36,6 +28,9 @@
         <ion-row class="ion-text-center">
           <ion-col col="4">
             <ion-button
+              color="primary"
+              shape="round"
+              fill="outline"
               [routerLink]="['/login']"
               [disabled]="!emailForm.valid"
               (click)="submit()"

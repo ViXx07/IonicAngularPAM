@@ -6,22 +6,41 @@
       <img class="logoMain" alt="..." src="assets/logo.png" />
     </ion-item>
     <ion-item class="ion-text-center">
-      <ion-label>
-        Seleccione su método de ingreso a la encuesta:
-      </ion-label>
+      <ion-label> Seleccione su método de ingreso a la encuesta: </ion-label>
     </ion-item>
     <!--Botones QR y código, centrados con grid-->
     <ion-item>
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="6">
-            <ion-button (click)="scannerQR()"
-              >Escanear QR&nbsp;
-              <ion-icon name="qr-code-outline"></ion-icon>
-            </ion-button>
+            <div *ngIf="isMobile; else disable">
+              <ion-button
+                color="primary"
+                shape="round"
+                fill="outline"
+                (click)="scannerQR()"
+                >Escanear QR&nbsp;
+                <ion-icon name="qr-code-outline"></ion-icon>
+              </ion-button>
+            </div>
+
+            <ng-template #disable>
+              <ion-button
+                color="primary"
+                shape="round"
+                fill="outline"
+                disabled="true"
+                >Escanear QR&nbsp;
+                <ion-icon name="qr-code-outline"></ion-icon>
+              </ion-button>
+            </ng-template>
           </ion-col>
           <ion-col col="6">
-            <ion-button [routerLink]="['/codigo']"
+            <ion-button
+              color="primary"
+              shape="round"
+              fill="outline"
+              [routerLink]="['/codigo']"
               >Ingresar código&nbsp;
               <ion-icon name="code-working-outline"></ion-icon>
             </ion-button>

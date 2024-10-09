@@ -12,7 +12,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 })
 export class LoginPage {
   loginForm = new FormGroup({
-    uid: new FormControl('',),
+    uid: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
@@ -57,6 +57,7 @@ export class LoginPage {
           this.utils.saveInlocalStorage('user', this.loginForm.value);
           this.loginForm.reset;
           this.utils.routerlink('home');
+          this.loginForm.reset();
 
           this.utils.presentToast({
             header: 'Login exitoso!',
@@ -83,6 +84,6 @@ export class LoginPage {
   recordarContrasena() {
     this.utils.presentarModal({
       component: RecordarContrasenaComponent,
-    })
+    });
   }
 }

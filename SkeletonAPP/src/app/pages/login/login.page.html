@@ -1,10 +1,6 @@
 <ion-content>
   <app-header titulo="Login"></app-header>
   <ion-card>
-    <!--Titulo-->
-    <ion-item>
-      <ion-title>Login</ion-title>
-    </ion-item>
     <!--Logo-->
     <ion-item>
       <img class="logoMain" alt="..." src="assets/logo.png" />
@@ -46,7 +42,7 @@
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button (click)="submit()" [disabled]="!loginForm.valid"
+            <ion-button color="primary" shape="round" fill="outline" (click)="submit()" [disabled]="!loginForm.valid"
               >Ingresar</ion-button
             >
           </ion-col>

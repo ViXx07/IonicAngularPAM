@@ -51,11 +51,20 @@
         <ion-avatar *ngIf="encuesta.value.evidencia">
           <img [src]="encuesta.value.evidencia" />
         </ion-avatar>
-        <ion-button (click)="evidencia()">Sube tu evidencia!</ion-button>
+        <ion-button
+          color="primary"
+          shape="round"
+          fill="outline"
+          (click)="evidencia()"
+          >Sube tu evidencia!</ion-button
+        >
       </ion-item>
 
       <ion-item>
         <ion-button
+          color="primary"
+          shape="round"
+          fill="outline"
           class="enviar"
           (click)="submit()"
           [disabled]="!encuesta.valid"
