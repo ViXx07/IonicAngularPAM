@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -60,8 +61,9 @@ export class UtilsService {
       source: CameraSource.Prompt, //Permite elegir de donde viene la foto, en este caso desde la cámara o de la galeria.
       promptLabelHeader,
       promptLabelPhoto: 'Selecciona una imagen:',
-      promptLabelPicture: 'Toma una foto:'
-       
+      promptLabelPicture: 'Toma una foto:',
     });
   }
+
+
 }
