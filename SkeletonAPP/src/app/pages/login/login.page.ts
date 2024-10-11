@@ -1,5 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AppComponent } from 'src/app/app.component';
 import { RecordarContrasenaComponent } from 'src/app/components/recordar-contrasena/recordar-contrasena.component';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
@@ -11,11 +12,16 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
+
+  @Input() rolUsuario!: number;
+
   loginForm = new FormGroup({
     uid: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
+    userRole: new FormControl(),
   });
+
 
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
@@ -54,10 +60,11 @@ export class LoginPage {
         .getDocument(path)
         .then((user: User) => {
           delete this.loginForm.value.password;
+          this.loginForm.controls.userRole.setValue(user.userRole);
           this.utils.saveInlocalStorage('user', this.loginForm.value);
-          this.loginForm.reset;
           this.utils.routerlink('home');
           this.loginForm.reset();
+          this.rolUsuario = user.userRole;
 
           this.utils.presentToast({
             header: 'Login exitoso!',
@@ -86,4 +93,5 @@ export class LoginPage {
       component: RecordarContrasenaComponent,
     });
   }
+
 }

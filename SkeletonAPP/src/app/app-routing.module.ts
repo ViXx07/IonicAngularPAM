@@ -5,33 +5,33 @@ import { noAuthGuard } from './services/noAuthGuard/no-auth.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'home', //Cliente
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
     title: 'QuéOpinas?',
     canActivate: [AuthGuard],
   },
   {
-    path: 'login',
+    path: 'login', //Todos
     loadChildren: () =>
       import('./pages/login/login.module').then((m) => m.LoginPageModule),
     title: 'QuéOpinas?',
     canActivate: [noAuthGuard],
   },
   {
-    path: 'splash',
+    path: 'splash', //Todos
     loadChildren: () =>
       import('./pages/splash/splash.module').then((m) => m.SplashPageModule),
     title: 'QuéOpinas?',
   },
   {
-    path: 'opina',
+    path: 'opina', //Cliente
     loadChildren: () =>
       import('./pages/opina/opina.module').then((m) => m.OpinaPageModule),
     title: 'QuéOpinas?',
   },
   {
-    path: 'admin',
+    path: 'admin', //Admin sistema
     loadChildren: () =>
       import('./pages/admin-sys/admin-sys.module').then(
         (m) => m.AdminSysPageModule
@@ -40,7 +40,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'codigo',
+    path: 'codigo', //Cliente
     loadChildren: () =>
       import('./pages/codigo-encuesta/codigo-encuesta.module').then(
         (m) => m.CodigoEncuestaPageModule
@@ -48,7 +48,7 @@ const routes: Routes = [
     title: 'QuéOpinas?',
   },
   {
-    path: 'registroAdmin',
+    path: 'registroAdmin', //Admin sistema
     loadChildren: () =>
       import('./pages/registro-admin/registro-admin.module').then(
         (m) => m.RegistroAdminPageModule

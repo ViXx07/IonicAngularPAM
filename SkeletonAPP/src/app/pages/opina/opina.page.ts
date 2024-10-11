@@ -35,11 +35,9 @@ export class OpinaPage implements OnInit {
 
   async submit() {
     if (this.encuesta.valid) {
-      let path = `users/${this.usuario.uid}/encuestas`;
+      let path = `users/${this.usuario.uid}/respuestas`;
       let dataUrl = this.encuesta.value.evidencia;
       let imagePath = `${this.usuario.uid}/${Date.now()}`;
-
-      console.log('holi');
 
       if(this.subirEvidencia) {
         let imageUrl = await this.firebase.subirImagen(imagePath, dataUrl);

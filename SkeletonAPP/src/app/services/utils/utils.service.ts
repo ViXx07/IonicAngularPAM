@@ -66,5 +66,40 @@ export class UtilsService {
     });
   }
 
+  getUserRole(): number {
+    if (this.getFromLocalStorage('user')) {
+      return this.getFromLocalStorage('user').userRole;
+
+    }
+    else return 0;
+  }
+
+  menuPorRol() {
+    let rolUsuario= this.getUserRole();
+    let paginas = [];
+    switch (rolUsuario) {
+      case 1: {
+        return paginas = [
+          { titulo: 'Login', url: '/login', icono: 'menu-outline' },
+          { titulo: 'Home', url: '/home', icono: 'person-outline' },
+        ];
+      }
+      case 2: {
+        return paginas = [
+          { titulo: 'Login', url: '/login', icono: 'menu-outline' },
+          { titulo: 'AdminEmpresa', url: '/adminEmpresa', icono: 'tv-outline'},
+        ];
+      }
+      case 3: {
+        return paginas = [
+          { titulo: 'Login', url: '/login', icono: 'menu-outline' },
+          { titulo: 'Admin', url: '/admin', icono: 'person-add-outline'},
+        ];
+      }
+      default: {
+        return paginas = [];
+      }
+    }
+  }
 
 }

@@ -16,8 +16,12 @@ import {
   getFirestore,
 } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import {AngularFireStorage} from '@angular/fire/compat/storage';
-import {getStorage, uploadString, ref, getDownloadURL} from 'firebase/storage';
+import {
+  getStorage,
+  uploadString,
+  ref,
+  getDownloadURL,
+} from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -73,8 +77,11 @@ export class FirebaseConfigService {
   //Almacenamiento
 
   async subirImagen(path: string, dataUrl: string) {
-    return uploadString(ref(getStorage(), path), dataUrl, 'data_url').then(() => {
-      return getDownloadURL(ref(getStorage(), path))
-    })
+    return uploadString(ref(getStorage(), path), dataUrl, 'data_url').then(
+      () => {
+        return getDownloadURL(ref(getStorage(), path));
+      }
+    );
   }
+
 }

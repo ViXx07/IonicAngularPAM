@@ -15,7 +15,7 @@ export class RegistroAdminPage {
     email: new FormControl('', [Validators.required, Validators.email]),
     empresa: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-    password2: new FormControl('', Validators.required),
+    userRole: new FormControl()
   });
 
   firebase = inject(FirebaseConfigService);
@@ -30,6 +30,7 @@ export class RegistroAdminPage {
         .then((res) => {
           let uid = res.user.uid;
           this.registroAdmin.controls.uid.setValue(uid);
+          this.registroAdmin.controls.userRole.setValue(2);
 
           this.setUserInfo(uid);
         })
@@ -53,7 +54,6 @@ export class RegistroAdminPage {
     if (this.registroAdmin.valid) {
       let path = `users/${uid}`;
       delete this.registroAdmin.value.password;
-      delete this.registroAdmin.value.password2;
 
       this.firebase
         .setDocument(path, this.registroAdmin.value)
