@@ -1,12 +1,18 @@
 <ion-app
-  ><ion-menu *ngIf="usuario()" side="start" menuId="m1" contentId="main">
+  ><ion-menu
+    *ngIf="usuario()"
+    side="start"
+    menuId="m1"
+    contentId="main"
+    swipe-gesture="false"
+  >
     <app-header titulo="QueOpinas?"></app-header>
     <ion-content class="ion-padding">
       <ion-list>
-        <ion-item>
-          <ion-icon name="person-circle-outline"></ion-icon>
-          <ion-title>{{ usuario()?.email }}</ion-title>
-        </ion-item>
+          <ion-item>
+            <ion-icon name="person-circle-outline"></ion-icon>
+            {{ usuario()?.email }}
+          </ion-item>
       </ion-list>
 
       <ion-list lines="none">
@@ -29,6 +35,17 @@
     </ion-content>
 
     <ion-footer class="ion-no-border safe-p-bottom">
+      <!--Contacto-->
+      <ion-list lines="none">
+        <ion-item text-wrap lines="active">
+          <ion-icon name="chatbox-outline"></ion-icon>
+          Contacto
+        </ion-item>
+        <ion-item>Whatsapp:<hr>+123456789</ion-item>
+        <ion-item>Correo:<hr>correo&commat;corre.ito</ion-item>
+        <ion-item>Página Web:<hr>www.QueOpinas.cl</ion-item>
+      </ion-list>
+      <br>
       <ion-item *ngIf="usuario()" lines="none">
         <ion-button
           shape="round"
