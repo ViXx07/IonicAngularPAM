@@ -3,9 +3,12 @@
     <ion-buttons *ngIf="usuario()" slot="start">
       <ion-menu-button size="large" menu="m1"></ion-menu-button>
     </ion-buttons>
-    <ion-item slot="start" lines="none">
-      <ion-title>{{ titulo }}</ion-title>
-      <img alt="..." src="assets/logo.png" class="logo" />
+    <ion-item class="ion-text-center" lines="none">
+      <ion-title> 
+        <img alt="..." src="assets/logo.png" class="logo" />
+        {{ titulo }}
+      </ion-title>
+      
     </ion-item>
   </ion-toolbar>
 </ion-header>
