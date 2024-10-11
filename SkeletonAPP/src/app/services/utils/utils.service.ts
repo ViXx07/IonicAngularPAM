@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { FormGroup } from '@angular/forms';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -69,37 +68,51 @@ export class UtilsService {
   getUserRole(): number {
     if (this.getFromLocalStorage('user')) {
       return this.getFromLocalStorage('user').userRole;
+    } else return 0;
+  }
 
+  redireccionPorRol(rolUsuario: number) {
+    switch (rolUsuario) {
+      case 1: {
+        this.routerlink('home');
+        break;
+      }
+      case 2: {
+        this.routerlink('adminEmpresa');
+        break;
+      }
+      case 3: {
+        this.routerlink('admin');
+        break;
+      }
     }
-    else return 0;
   }
 
   menuPorRol() {
-    let rolUsuario= this.getUserRole();
+    let rolUsuario = this.getUserRole();
     let paginas = [];
     switch (rolUsuario) {
       case 1: {
-        return paginas = [
+        return (paginas = [
           { titulo: 'Login', url: '/login', icono: 'menu-outline' },
           { titulo: 'Home', url: '/home', icono: 'person-outline' },
-        ];
+        ]);
       }
       case 2: {
-        return paginas = [
+        return (paginas = [
           { titulo: 'Login', url: '/login', icono: 'menu-outline' },
-          { titulo: 'AdminEmpresa', url: '/adminEmpresa', icono: 'tv-outline'},
-        ];
+          { titulo: 'AdminEmpresa', url: '/adminEmpresa', icono: 'tv-outline' },
+        ]);
       }
       case 3: {
-        return paginas = [
+        return (paginas = [
           { titulo: 'Login', url: '/login', icono: 'menu-outline' },
-          { titulo: 'Admin', url: '/admin', icono: 'person-add-outline'},
-        ];
+          { titulo: 'Admin', url: '/admin', icono: 'person-add-outline' },
+        ]);
       }
       default: {
-        return paginas = [];
+        return (paginas = []);
       }
     }
   }
-
 }

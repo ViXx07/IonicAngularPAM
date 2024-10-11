@@ -62,9 +62,9 @@ export class LoginPage {
           delete this.loginForm.value.password;
           this.loginForm.controls.userRole.setValue(user.userRole);
           this.utils.saveInlocalStorage('user', this.loginForm.value);
-          this.utils.routerlink('home');
           this.loginForm.reset();
           this.rolUsuario = user.userRole;
+          this.utils.redireccionPorRol(this.rolUsuario);
 
           this.utils.presentToast({
             header: 'Login exitoso!',
