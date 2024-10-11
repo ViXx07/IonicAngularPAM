@@ -6,34 +6,29 @@
       <ion-item class="ion-text-center">
         <ion-label>¿Cómo se siente con respecto a la empresa?: </ion-label>
       </ion-item>
-      <ion-item id="emoji">
-        <ion-row class="ion-justify-content-center ion-text-center">
-          <ion-col size="4">
-            <input
-              formControlName="tipoDeOpinion"
-              type="radio"
-              id="feliz"
-              value="1"
-            /><label for="feliz">😁</label></ion-col
-          >
-          <ion-col size="4">
-            <input
-              formControlName="tipoDeOpinion"
-              type="radio"
-              id="triste"
-              value="2"
-            /><label for="triste">😢</label></ion-col
-          >
-          <ion-col size="4">
-            <input
-              formControlName="tipoDeOpinion"
-              type="radio"
-              id="enojado"
-              value="3"
-            /><label for="enojado">😡</label></ion-col
-          >
-        </ion-row>
-      </ion-item>
+      <div id="emoji">
+        <input
+          formControlName="tipoDeOpinion"
+          type="radio"
+          id="feliz"
+          value="1"
+        /><label for="feliz">😁</label>
+
+        <input
+          formControlName="tipoDeOpinion"
+          type="radio"
+          id="triste"
+          value="2"
+        /><label for="triste">😢</label>
+
+        <input
+          formControlName="tipoDeOpinion"
+          type="radio"
+          id="enojado"
+          value="3"
+        /><label for="enojado">😡</label>
+
+      </div>
       <!--Comentario-->
       <ion-item>
         <ion-textarea
@@ -47,6 +42,7 @@
         >
         </ion-textarea>
       </ion-item>
+
       <ion-item>
         <ion-avatar *ngIf="encuesta.value.evidencia">
           <img [src]="encuesta.value.evidencia" />
