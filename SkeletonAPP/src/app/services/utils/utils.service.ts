@@ -65,6 +65,17 @@ export class UtilsService {
     });
   }
 
+  async subirImagen(promptLabelHeader: string) {
+    return await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Photos, //Permite elegir de donde viene la foto, en este caso desde la cámara o de la galeria.
+      promptLabelHeader,
+      promptLabelPhoto: 'Selecciona una imagen',
+    });
+  }
+
   getUserRole(): number {
     if (this.getFromLocalStorage('user')) {
       return this.getFromLocalStorage('user').userRole;

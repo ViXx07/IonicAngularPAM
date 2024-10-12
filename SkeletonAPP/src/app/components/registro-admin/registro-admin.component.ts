@@ -6,16 +6,16 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-registro-admin',
-  templateUrl: './registro-admin.page.html',
-  styleUrls: ['./registro-admin.page.scss'],
+  templateUrl: './registro-admin.component.html',
+  styleUrls: ['./registro-admin.component.scss'],
 })
-export class RegistroAdminPage {
+export class RegistroAdminComponent {
   registroAdmin = new FormGroup({
     uid: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     empresa: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-    userRole: new FormControl()
+    userRole: new FormControl(),
   });
 
   firebase = inject(FirebaseConfigService);
@@ -72,5 +72,9 @@ export class RegistroAdminPage {
           });
         });
     }
+  }
+
+  cerrarModal(){
+    this.utils.cerrarModal();
   }
 }

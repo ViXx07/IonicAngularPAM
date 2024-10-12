@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path: 'admin', //Admin sistema
     loadChildren: () =>
-      import('./pages/admin-sys/admin-sys.module').then(
+      import('./pages/adminSys/admin-sys.module').then(
         (m) => m.AdminSysPageModule
       ),
     title: 'QuéOpinas?',
@@ -44,14 +44,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/codigo-encuesta/codigo-encuesta.module').then(
         (m) => m.CodigoEncuestaPageModule
-      ),
-    title: 'QuéOpinas?',
-  },
-  {
-    path: 'registroAdmin', //Admin sistema
-    loadChildren: () =>
-      import('./pages/registro-admin/registro-admin.module').then(
-        (m) => m.RegistroAdminPageModule
       ),
     title: 'QuéOpinas?',
   },

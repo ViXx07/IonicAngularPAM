@@ -1,13 +1,38 @@
 <ion-content>
-  <app-header titulo="Registro de admin"></app-header>
   <ion-card>
+    <!--Titulo-->
+    <ion-item class="ion-text-center">
+      <ion-title>Modificar Admin</ion-title>
+      <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+        <ion-icon
+          color="danger"
+          slot="icon-only"
+          size="large"
+          name="close-circle-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+    <!--Logo-->
     <ion-item>
       <img class="logoMain" alt="..." src="assets/logo.png" />
     </ion-item>
-
-    <form [formGroup]="registroAdmin">
+    <form [formGroup]="modificarAdmin">
+      <!--Id empresa-->
       <ion-item>
-        <!--Correo-->
+        <ion-input
+          formControlName="idEmpresa"
+          label="Ingrese el id de la empresa:"
+          labelPlacement="stacked"
+          type="number"
+          min="100000"
+          max="999999"
+          errorText="id inválido."
+          helperText="Ingrese id de 6 digitos."
+        ></ion-input>
+      </ion-item>
+
+      <!--Correo-->
+      <ion-item>
         <ion-input
           formControlName="email"
           label="Ingrese su usuario: "
@@ -53,7 +78,7 @@
               shape="round"
               fill="outline"
               (click)="submit()"
-              [disabled]="!registroAdmin.valid"
+              [disabled]="!modificarAdmin.valid"
               >Registrar</ion-button
             >
           </ion-col>

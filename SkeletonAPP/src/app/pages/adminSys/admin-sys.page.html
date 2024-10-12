@@ -66,20 +66,42 @@
       <ion-grid>
         <ion-row class="ion-justify-content-center">
           <ion-col col="5" size="default">
-            <ion-button color="primary" shape="round" fill="outline" [routerLink]="['/registroAdmin']"
+            <ion-button
+              color="primary"
+              shape="round"
+              fill="outline"
+              (click)="mostrarRegistroAdmin()"
               >Registrar admin</ion-button
             >
           </ion-col>
           <ion-col col="5" size="default">
-            <ion-button color="primary" shape="round" fill="outline" >Modificar admin</ion-button>
+            <ion-button
+              color="primary"
+              shape="round"
+              fill="outline"
+              (click)="mostrarModificarAdmin()"
+              >Modificar admin</ion-button
+            >
           </ion-col>
         </ion-row>
         <ion-row class="ion-justify-content-center">
           <ion-col col="5" size="default">
-            <ion-button color="primary" shape="round" fill="outline" >Registrar empresa</ion-button>
+            <ion-button
+              color="primary"
+              shape="round"
+              fill="outline"
+              (click)="mostrarRegistroEmpresa()"
+              >Registrar empresa</ion-button
+            >
           </ion-col>
           <ion-col col="5" size="default">
-            <ion-button color="primary" shape="round" fill="outline" >Modificar empresa</ion-button>
+            <ion-button
+              color="primary"
+              shape="round"
+              fill="outline"
+              (click)="mostrarModificarEmpresa()"
+              >Modificar empresa</ion-button
+            >
           </ion-col>
         </ion-row>
       </ion-grid>

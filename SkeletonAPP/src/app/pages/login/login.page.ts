@@ -59,7 +59,7 @@ export class LoginPage {
       this.firebase
         .getDocument(path)
         .then((user: User) => {
-          delete this.loginForm.value.password;
+          this.loginForm.controls.password.setValue('');
           this.loginForm.controls.userRole.setValue(user.userRole);
           this.utils.saveInlocalStorage('user', this.loginForm.value);
           this.loginForm.reset();

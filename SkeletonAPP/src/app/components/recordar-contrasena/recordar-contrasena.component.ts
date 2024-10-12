@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   templateUrl: './recordar-contrasena.component.html',
   styleUrls: ['./recordar-contrasena.component.scss'],
 })
-export class RecordarContrasenaComponent  implements OnInit {
+export class RecordarContrasenaComponent {
   emailForm = new FormGroup({
     //Definimos que utilizaremos un Formulario.
     email: new FormControl('', [Validators.required, Validators.email]), //Indicaremos que se necesitara validadores.
@@ -49,5 +49,7 @@ export class RecordarContrasenaComponent  implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  cerrarModal(){
+    this.utils.cerrarModal();
+  }
 }
