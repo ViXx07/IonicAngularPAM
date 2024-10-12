@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class SplashPage implements OnInit {
   constructor(public router: Router, private storage: Storage) {
+    localStorage.clear();
     setTimeout(() => {
       this.router.navigateByUrl('login');
     }, 2000);

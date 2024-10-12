@@ -65,7 +65,6 @@ export class LoginPage {
           this.loginForm.reset();
           this.rolUsuario = user.userRole;
           this.utils.redireccionPorRol(this.rolUsuario);
-
           this.utils.presentToast({
             header: 'Login exitoso!',
             message: `Te damos la bienvenida ${user.email}`,
@@ -80,7 +79,7 @@ export class LoginPage {
           this.utils.presentToast({
             message: error.message,
             duration: 2500,
-            color: 'primary',
+            color: 'danger',
             position: 'middle',
             icon: 'alert-circle-outline',
           });

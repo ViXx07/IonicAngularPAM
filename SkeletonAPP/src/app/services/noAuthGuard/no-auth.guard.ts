@@ -14,13 +14,14 @@ export const noAuthGuard: CanActivateFn = (
 ) => {
   const utils = inject(UtilsService);
   const firebase = inject(FirebaseConfigService);
+  let userRole = utils.getUserRole();
 
   return new Promise((resolve) => {
     firebase.getAuth().onAuthStateChanged((auth) => {
-      if (!auth) {
+      if (!userRole) {
         resolve(true);
       } else {
-        utils.routerlink('admin');
+        utils.redireccionPorRol(userRole);
         resolve(false);
       }
     });

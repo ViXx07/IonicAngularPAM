@@ -85,10 +85,6 @@ export class UtilsService {
         this.routerlink('admin');
         break;
       }
-      default: {
-        this.routerlink('login');
-        break;
-      }
     }
   }
 
