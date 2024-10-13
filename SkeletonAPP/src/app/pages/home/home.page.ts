@@ -3,6 +3,8 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { Platform } from '@ionic/angular';
+import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
+
 
 @Component({
   selector: 'app-home',
@@ -12,10 +14,10 @@ import { Platform } from '@ionic/angular';
 export class HomePage {
   platform = inject(Platform);
   utils = inject(UtilsService);
+  firebase = inject(FirebaseConfigService)
   scanResult = '';
   isMobile = false;
 
-  constructor() {}
 
   ngOnInit() {
     if (this.platform.is('capacitor')) {
@@ -51,4 +53,6 @@ export class HomePage {
       });
     }
   }
+
+
 }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { Empresa } from 'src/app/models/empresa.model';
 
 @Component({
   selector: 'app-registro-admin',
@@ -18,6 +19,7 @@ export class RegistroAdminComponent {
     userRole: new FormControl(),
   });
 
+  empresas: Empresa[] = [];
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
 
@@ -76,5 +78,21 @@ export class RegistroAdminComponent {
 
   cerrarModal(){
     this.utils.cerrarModal();
+  }
+
+  getEmpresa() {
+    let path = 'empresas';
+
+   let sub = this.firebase.getCollectionData(path).subscribe({
+      next: (res:any) => {
+        console.log(res);
+        this.empresas = res;
+        sub.unsubscribe();
+      }
+    });
+  }
+  
+  ionViewWillEnter() {
+    this.getEmpresa();
   }
 }

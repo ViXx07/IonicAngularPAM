@@ -9,6 +9,8 @@ import {
 import { User } from '../../models/user.model';
 import {
   doc,
+  collectionData,
+  query,
   getDoc,
   setDoc,
   addDoc,
@@ -59,12 +61,18 @@ export class FirebaseConfigService {
 
   // ===== Base de Datos ===== //
 
-  //Crear/Cambiar datos del usuario
+  //Obtener documentos de una colección
+  getCollectionData(path: string, collectionQuery?: any){
+    const ref = collection(getFirestore(), path);
+    return collectionData(query(ref, collectionQuery), {idField: 'id'});
+
+  }
+  //Crear datos 
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
   }
 
-  //Obtener datos del usuario
+  //Obtener datos 
   async getDocument(path: string) {
     return (await getDoc(doc(getFirestore(), path))).data();
   }

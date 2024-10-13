@@ -4,9 +4,13 @@
     <ion-item class="ion-text-center">
       <ion-title>Registro Admin</ion-title>
       <ion-button shape="round" fill="clear" (click)="cerrarModal()">
-        <ion-icon color="danger" slot="icon-only" size="large" name="close-circle-outline"></ion-icon>
+        <ion-icon
+          color="danger"
+          slot="icon-only"
+          size="large"
+          name="close-circle-outline"
+        ></ion-icon>
       </ion-button>
-      
     </ion-item>
     <!--Logo-->
     <ion-item>
@@ -33,10 +37,9 @@
           interface="popover"
           placeholder="Seleccione la empresa:"
         >
-          <ion-select-option value="1">Apple</ion-select-option>
-          <ion-select-option value="2">Microsoft</ion-select-option>
-          <ion-select-option value="3">McDonalds</ion-select-option>
-          <ion-select-option value="4">Burger King</ion-select-option>
+          <ion-select-option *ngFor="let e of empresas" value="{{ e.id }}">
+            {{e.nombreEmpresa}}
+          </ion-select-option>
         </ion-select>
       </ion-item>
       <!--Contraseña-->
