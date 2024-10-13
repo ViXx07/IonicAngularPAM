@@ -12,7 +12,6 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-
   @Input() rolUsuario!: number;
 
   loginForm = new FormGroup({
@@ -21,7 +20,6 @@ export class LoginPage {
     password: new FormControl('', Validators.required),
     userRole: new FormControl(),
   });
-
 
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
@@ -59,11 +57,14 @@ export class LoginPage {
       this.firebase
         .getDocument(path)
         .then((user: User) => {
-          this.loginForm.controls.password.setValue('');
           this.loginForm.controls.userRole.setValue(user.userRole);
+          this.rolUsuario = user.userRole;
+
+          this.loginForm.controls.password.setValue('');
+
           this.utils.saveInlocalStorage('user', this.loginForm.value);
           this.loginForm.reset();
-          this.rolUsuario = user.userRole;
+
           this.utils.redireccionPorRol(this.rolUsuario);
           this.utils.presentToast({
             header: 'Login exitoso!',
@@ -93,4 +94,7 @@ export class LoginPage {
     });
   }
 
+  async loginGoogle() {
+    this.firebase.googleAuth();
+  }
 }
