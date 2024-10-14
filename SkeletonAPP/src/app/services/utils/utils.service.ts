@@ -106,16 +106,19 @@ export class UtilsService {
       case 1: {
         return (paginas = [
           { titulo: 'Home', url: '/home', icono: 'person-outline' },
+          { titulo: 'Contacto', url: '/contacto', icono: 'chatbubbles-outline'},
         ]);
       }
       case 2: {
         return (paginas = [
           { titulo: 'AdminEmpresa', url: '/adminEmpresa', icono: 'tv-outline' },
+          { titulo: 'Contacto', url: '/contacto', icono: 'chatbubbles-outline'},
         ]);
       }
       case 3: {
         return (paginas = [
           { titulo: 'Admin', url: '/admin', icono: 'person-add-outline' },
+          { titulo: 'Contacto', url: '/contacto', icono: 'chatbubbles-outline'},
         ]);
       }
       default: {

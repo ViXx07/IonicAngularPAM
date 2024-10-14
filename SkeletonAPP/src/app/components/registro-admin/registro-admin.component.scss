@@ -1,10 +1,12 @@
-.logoMain {
+.logo {
   height: 30vh;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
-ion-item{
-  max-width: 30vw;
+form ion-item {
+  max-width: 90vw;
 }

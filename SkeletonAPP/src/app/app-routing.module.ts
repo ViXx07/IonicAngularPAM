@@ -46,7 +46,11 @@ const routes: Routes = [
         (m) => m.CodigoEncuestaPageModule
       ),
     title: 'QuéOpinas?',
+  },  {
+    path: 'contacto',
+    loadChildren: () => import('./pages/contacto/contacto.module').then( m => m.ContactoPageModule)
   },
+
 ];
 
 @NgModule({

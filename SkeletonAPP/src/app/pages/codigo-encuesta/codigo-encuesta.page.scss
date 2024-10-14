@@ -4,7 +4,7 @@
 
 ion-card {
   width: 80vw;
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -12,15 +12,12 @@ ion-card {
 }
 
 .logo {
-  height: 4vh;
-  border-radius: 50%;
-}
-
-.logoMain {
   height: 30vh;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 ion-button {

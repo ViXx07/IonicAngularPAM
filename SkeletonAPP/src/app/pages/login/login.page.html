@@ -3,7 +3,7 @@
   <ion-card>
     <!--Logo-->
     <ion-item>
-      <img class="logoMain" alt="..." src="assets/logo.png" />
+      <img class="logo" alt="..." src="assets/logo.png" />
     </ion-item>
     <!--Input de usuario, con restricción de largo, mensaje de ayuda y de error-->
     <form [formGroup]="loginForm">
@@ -38,6 +38,10 @@
       <ion-item>
         <a (click)="recordarContrasena()">¿Olvidate tu contraseña?</a>
       </ion-item>
+      <!--Botón login/registro con google-->
+      <ion-item>
+        <app-google-button (click)="loginGoogle()"></app-google-button>
+      </ion-item>
       <!--Boton 'Ingresar', centrado con grid, con función login() Que de momento solo acepta usuario: admin contraseña: 1234-->
       <ion-grid>
         <ion-row class="ion-text-center">
@@ -54,8 +58,6 @@
         </ion-row>
       </ion-grid>
     </form>
-    <ion-button (click)="loginGoogle()"
-      ><ion-icon slot="start" name="logo-google"></ion-icon>Google</ion-button
-    >
+
   </ion-card>
 </ion-content>
