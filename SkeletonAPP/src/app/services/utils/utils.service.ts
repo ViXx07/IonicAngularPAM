@@ -89,7 +89,7 @@ export class UtilsService {
         break;
       }
       case 2: {
-        this.routerlink('adminEmpresa');
+        this.routerlink('admin-empresa');
         break;
       }
       case 3: {
@@ -111,7 +111,7 @@ export class UtilsService {
       }
       case 2: {
         return (paginas = [
-          { titulo: 'AdminEmpresa', url: '/adminEmpresa', icono: 'tv-outline' },
+          { titulo: 'AdminEmpresa', url: '/admin-empresa', icono: 'tv-outline' },
           { titulo: 'Contacto', url: '/contacto', icono: 'chatbubbles-outline'},
         ]);
       }
