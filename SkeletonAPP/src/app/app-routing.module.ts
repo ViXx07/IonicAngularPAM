@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'contacto',
     loadChildren: () => import('./pages/contacto/contacto.module').then( m => m.ContactoPageModule)
   },
+  {
+    path: 'admin-empresa',
+    loadChildren: () => import('./pages/admin-empresa/admin-empresa.module').then( m => m.AdminEmpresaPageModule)
+  },
 
 ];
 
