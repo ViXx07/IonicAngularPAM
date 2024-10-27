@@ -16,11 +16,8 @@ export class AppComponent implements OnInit {
   rutaActual = '';
   paginas = [];
 
-  constructor() {
-    this.initializeApp();
-  }
-
   ngOnInit() {
+    //this.router.navigateByUrl('splash');
     this.router.events.subscribe((event: any) => {
       if (event?.url) this.rutaActual = event.url;
       this.mostrarMenu();
@@ -33,10 +30,6 @@ export class AppComponent implements OnInit {
 
   usuario(): User {
     return this.utils.getFromLocalStorage('user');
-  }
-
-  initializeApp() {
-    this.router.navigateByUrl('splash');
   }
 
   mostrarMenu() {

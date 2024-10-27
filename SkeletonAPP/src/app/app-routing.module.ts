@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [noAuthGuard],
   },
   {
-    path: 'splash', //Todos
+    path: '', //Todos
     loadChildren: () =>
       import('./pages/splash/splash.module').then((m) => m.SplashPageModule),
     title: 'QuéOpinas?',
@@ -46,13 +46,18 @@ const routes: Routes = [
         (m) => m.CodigoEncuestaPageModule
       ),
     title: 'QuéOpinas?',
-  },  {
+  },
+  {
     path: 'contacto',
     loadChildren: () => import('./pages/contacto/contacto.module').then( m => m.ContactoPageModule)
   },
   {
     path: 'admin-empresa',
     loadChildren: () => import('./pages/admin-empresa/admin-empresa.module').then( m => m.AdminEmpresaPageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
 
 ];
