@@ -1,75 +1,74 @@
 <ion-content>
-  <ion-card>
-    <!--Titulo-->
-    <ion-item class="ion-text-center">
-      <ion-title>Modificar Admin</ion-title>
-      <ion-button shape="round" fill="clear" (click)="cerrarModal()">
-        <ion-icon
-          color="danger"
-          slot="icon-only"
-          size="large"
-          name="close-circle-outline"
-        ></ion-icon>
-      </ion-button>
-    </ion-item>
-    <!--Logo-->
+  <!--Titulo-->
+  <ion-item class="ion-text-center">
+    <ion-title>Modificar Admin</ion-title>
+    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+      <ion-icon
+        color="danger"
+        slot="icon-only"
+        size="large"
+        name="close-circle-outline"
+      ></ion-icon>
+    </ion-button>
+  </ion-item>
+  <!--Logo-->
+  <ion-item>
+    <img class="logo" alt="..." src="assets/logo.png" />
+  </ion-item>
+  <form [formGroup]="modificarAdmin">
+    <!--Id empresa-->
     <ion-item>
-      <img class="logo" alt="..." src="assets/logo.png" />
+      <ion-input
+        formControlName="idEmpresa"
+        label="Ingrese el id de la empresa:"
+        labelPlacement="stacked"
+        type="number"
+        min="100000"
+        max="999999"
+        errorText="id inválido."
+        helperText="Ingrese id de 6 digitos."
+      ></ion-input>
     </ion-item>
-    <form [formGroup]="modificarAdmin">
-      <!--Id empresa-->
-      <ion-item>
-        <ion-input
-          formControlName="idEmpresa"
-          label="Ingrese el id de la empresa:"
-          labelPlacement="stacked"
-          type="number"
-          min="100000"
-          max="999999"
-          errorText="id inválido."
-          helperText="Ingrese id de 6 digitos."
-        ></ion-input>
-      </ion-item>
 
-      <!--Correo-->
-      <ion-item>
-        <ion-input
-          formControlName="email"
-          label="Ingrese su usuario: "
-          labelPlacement="stacked"
-          minlength="3"
-          maxlength="25"
-          errorText="Usuario inválido."
-          helperText="Largo entre 3 y 8"
-        >
-        </ion-input>
-      </ion-item>
-      <!--Empresa-->
-      <ion-item>
-        <ion-select
-          formControlName="empresa"
-          interface="popover"
-          placeholder="Seleccione la empresa:"
-        >
-          <ion-select-option value="1">Apple</ion-select-option>
-          <ion-select-option value="2">Microsoft</ion-select-option>
-          <ion-select-option value="3">McDonalds</ion-select-option>
-          <ion-select-option value="4">Burger King</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <!--Contraseña-->
-      <ion-item>
-        <ion-input
-          formControlName="password"
-          label="Ingrese la contraseña:"
-          labelPlacement="stacked"
-          type="password"
-          maxlength="10"
-          errorText="Contraseña inválida."
-          helperText="Largo 4"
-        ></ion-input>
-      </ion-item>
-
+    <!--Correo-->
+    <ion-item>
+      <ion-input
+        formControlName="email"
+        label="Ingrese su usuario: "
+        labelPlacement="stacked"
+        minlength="3"
+        maxlength="25"
+        errorText="Usuario inválido."
+        helperText="Largo entre 3 y 8"
+      >
+      </ion-input>
+    </ion-item>
+    <!--Empresa-->
+    <ion-item>
+      <ion-select
+        formControlName="empresa"
+        interface="popover"
+        placeholder="Seleccione la empresa:"
+      >
+        <ion-select-option value="1">Apple</ion-select-option>
+        <ion-select-option value="2">Microsoft</ion-select-option>
+        <ion-select-option value="3">McDonalds</ion-select-option>
+        <ion-select-option value="4">Burger King</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!--Contraseña-->
+    <ion-item>
+      <ion-input
+        formControlName="password"
+        label="Ingrese la contraseña:"
+        labelPlacement="stacked"
+        type="password"
+        maxlength="10"
+        errorText="Contraseña inválida."
+        helperText="Largo 4"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
@@ -84,6 +83,6 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </form>
-  </ion-card>
+    </ion-item>
+  </form>
 </ion-content>

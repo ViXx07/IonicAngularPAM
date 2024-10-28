@@ -1,61 +1,57 @@
 <ion-content>
-  <ion-card>
-    <!--Titulo-->
-    <ion-item class="ion-text-center">
-      <ion-title>Modificar Empresa</ion-title>
-      <ion-button shape="round" fill="clear" (click)="cerrarModal()">
-        <ion-icon
-          color="danger"
-          slot="icon-only"
-          size="large"
-          name="close-circle-outline"
-        ></ion-icon>
-      </ion-button>
-    </ion-item>
-    <!--Logo-->
+  <!--Titulo-->
+  <ion-item class="ion-text-center">
+    <ion-title>Modificar Empresa</ion-title>
+    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+      <ion-icon
+        color="danger"
+        slot="icon-only"
+        size="large"
+        name="close-circle-outline"
+      ></ion-icon>
+    </ion-button>
+  </ion-item>
+  <!--Logo-->
+  <ion-item>
+    <img class="logo" alt="..." src="assets/logo.png" />
+  </ion-item>
+  <form [formGroup]="modificarEmpresa">
+    <!--Empresa-->
     <ion-item>
-      <img class="logo" alt="..." src="assets/logo.png" />
+      <ion-input
+        formControlName="idEmpresa"
+        label="Ingrese el id de la empresa:"
+        labelPlacement="stacked"
+        type="number"
+        min="100000"
+        max="999999"
+        errorText="id inválido."
+        helperText="Ingrese id de 6 digitos."
+      ></ion-input>
     </ion-item>
-    <form [formGroup]="modificarEmpresa">
-      <!--Empresa-->
-      <ion-item>
-        <ion-input
-          formControlName="idEmpresa"
-          label="Ingrese el id de la empresa:"
-          labelPlacement="stacked"
-          type="number"
-          min="100000"
-          max="999999"
-          errorText="id inválido."
-          helperText="Ingrese id de 6 digitos."
-        ></ion-input>
-      </ion-item>
 
-      <ion-item>
-        <ion-input
-          formControlName="nombreEmpresa"
-          label="Ingrese el nombre de la empresa:"
-          labelPlacement="stacked"
-          type="text"
-          minlength="1"
-          errorText="Nombre inválido."
-          helperText="---"
-        ></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-input
+        formControlName="nombreEmpresa"
+        label="Ingrese el nombre de la empresa:"
+        labelPlacement="stacked"
+        type="text"
+        minlength="1"
+        errorText="Nombre inválido."
+        helperText="---"
+      ></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-avatar *ngIf="modificarEmpresa.value.logo">
-          <img [src]="modificarEmpresa.value.logo" />
-        </ion-avatar>
-        <ion-button
-          color="primary"
-          shape="round"
-          fill="outline"
-          (click)="logo()"
-          >Sube tu logo</ion-button
-        >
-      </ion-item>
+    <ion-item>
+      <ion-avatar *ngIf="modificarEmpresa.value.logo">
+        <img [src]="modificarEmpresa.value.logo" />
+      </ion-avatar>
+      <ion-button color="primary" shape="round" fill="outline" (click)="logo()"
+        >Sube tu logo</ion-button
+      >
+    </ion-item>
 
+    <ion-item>
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
@@ -70,6 +66,6 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </form>
-  </ion-card>
+    </ion-item>
+  </form>
 </ion-content>

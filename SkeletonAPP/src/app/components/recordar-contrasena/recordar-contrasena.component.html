@@ -1,10 +1,14 @@
 <ion-content [fullscreen]="true">
-  <ion-card>
     <!--Titulo-->
     <ion-item class="ion-text-center">
       <ion-title>Recordar contraseña</ion-title>
       <ion-button shape="round" fill="clear" (click)="cerrarModal()">
-        <ion-icon color="danger" slot="icon-only" size="large" name="close-circle-outline"></ion-icon>
+        <ion-icon
+          color="danger"
+          slot="icon-only"
+          size="large"
+          name="close-circle-outline"
+        ></ion-icon>
       </ion-button>
     </ion-item>
     <!--Logo-->
@@ -12,36 +16,37 @@
       <img class="logo" alt="..." src="assets/logo.png" />
     </ion-item>
     <!--Form-->
-    <form [formGroup]="emailForm">
-      <ion-grid>
-        <ion-row class="ion-text-center">
-          <!--Input de correo de recuperación-->
-          <ion-input
-            formControlName="email"
-            label="Ingrese su correo de recuperación:"
-            labelPlacement="stacked"
-            type="email"
-            placeholder="email@domain.com"
-            errorText="Correo incorrecto"
-            [required]="true"
-          >
-          </ion-input>
-        </ion-row>
-        <!--Botón 'Enviar' que se activa al ingresar un correo correcto-->
-        <ion-row class="ion-text-center">
-          <ion-col col="4">
-            <ion-button
-              color="primary"
-              shape="round"
-              fill="outline"
-              [routerLink]="['/login']"
-              [disabled]="!emailForm.valid"
-              (click)="submit()"
-              >Enviar</ion-button
+
+      <form [formGroup]="emailForm">
+        <ion-grid>
+          <ion-row class="ion-text-center">
+            <!--Input de correo de recuperación-->
+            <ion-input
+              formControlName="email"
+              label="Ingrese su correo de recuperación:"
+              labelPlacement="stacked"
+              type="email"
+              placeholder="email@domain.com"
+              errorText="Correo incorrecto"
+              [required]="true"
             >
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </form>
-  </ion-card>
+            </ion-input>
+          </ion-row>
+          <!--Botón 'Enviar' que se activa al ingresar un correo correcto-->
+          <ion-row class="ion-text-center">
+            <ion-col col="4">
+              <ion-button
+                color="primary"
+                shape="round"
+                fill="outline"
+                [routerLink]="['/login']"
+                [disabled]="!emailForm.valid"
+                (click)="submit()"
+                >Enviar</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+
 </ion-content>

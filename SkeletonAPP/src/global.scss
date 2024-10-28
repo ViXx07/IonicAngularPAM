@@ -35,3 +35,23 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+//Estilos globales:
+.logo {
+  height: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+ion-card {
+  width: 95vw;
+  margin-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  min-height: 60vh;
+}
+
