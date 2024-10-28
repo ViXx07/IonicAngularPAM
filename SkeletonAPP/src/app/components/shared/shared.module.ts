@@ -6,10 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLinkWithHref } from '@angular/router';
 import { RecordarContrasenaComponent } from '../recordar-contrasena/recordar-contrasena.component';
 import { GoogleButtonComponent } from '../google-button/google-button.component';
+import { BotonComponent } from '../boton/boton.component';
 
 @NgModule({
-  declarations: [HeaderComponent, RecordarContrasenaComponent, GoogleButtonComponent],
-  exports: [HeaderComponent, RecordarContrasenaComponent, GoogleButtonComponent],
+  declarations: [HeaderComponent, RecordarContrasenaComponent, GoogleButtonComponent, BotonComponent],
+  exports: [HeaderComponent, RecordarContrasenaComponent, GoogleButtonComponent, BotonComponent],
   imports: [
     CommonModule,
     IonicModule,

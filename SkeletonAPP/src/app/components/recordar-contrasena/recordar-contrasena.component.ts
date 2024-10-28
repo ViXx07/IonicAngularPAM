@@ -32,6 +32,7 @@ export class RecordarContrasenaComponent {
             position: 'middle',
             icon: 'mail-outline',
           });
+          this.cerrarModal();
         })
         .catch((error) => {
           console.log(error);

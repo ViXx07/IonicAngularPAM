@@ -66,42 +66,18 @@
       <ion-grid>
         <ion-row class="ion-justify-content-center">
           <ion-col col="5" size="default">
-            <ion-button
-              color="primary"
-              shape="round"
-              fill="outline"
-              (click)="mostrarRegistroAdmin()"
-              >Registrar admin</ion-button
-            >
+            <app-boton texto="Registrar Admin" icono="person-add-outline" (click)="mostrarRegistroAdmin()"></app-boton>
           </ion-col>
           <ion-col col="5" size="default">
-            <ion-button
-              color="primary"
-              shape="round"
-              fill="outline"
-              (click)="mostrarModificarAdmin()"
-              >Modificar admin</ion-button
-            >
+            <app-boton texto="Modificar Admin" icono="person-add-outline" (click)="mostrarModificarAdmin()"></app-boton>
           </ion-col>
         </ion-row>
         <ion-row class="ion-justify-content-center">
           <ion-col col="5" size="default">
-            <ion-button
-              color="primary"
-              shape="round"
-              fill="outline"
-              (click)="mostrarRegistroEmpresa()"
-              >Registrar empresa</ion-button
-            >
+            <app-boton texto="Registrar empresa" icono="business-outline" (click)="mostrarRegistroEmpresa()"></app-boton>
           </ion-col>
           <ion-col col="5" size="default">
-            <ion-button
-              color="primary"
-              shape="round"
-              fill="outline"
-              (click)="mostrarModificarEmpresa()"
-              >Modificar empresa</ion-button
-            >
+            <app-boton texto="Modificar empresa" icono="business-outline" (click)="mostrarModificarEmpresa()"></app-boton>
           </ion-col>
         </ion-row>
       </ion-grid>

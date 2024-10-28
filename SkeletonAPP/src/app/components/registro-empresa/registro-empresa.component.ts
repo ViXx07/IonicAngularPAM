@@ -50,6 +50,7 @@ export class RegistroEmpresaComponent {
             position: 'middle',
             icon: 'checkmark-circle-outline',
           });
+          this.cerrarModal();
         })
         .catch((error) => {
           console.log(error);

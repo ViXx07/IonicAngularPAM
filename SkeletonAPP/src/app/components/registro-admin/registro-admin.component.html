@@ -20,12 +20,12 @@
       <!--Correo-->
       <ion-input
         formControlName="email"
-        label="Ingrese su usuario: "
+        label="Ingrese su correo: "
         labelPlacement="stacked"
         minlength="3"
         maxlength="25"
-        errorText="Usuario inválido."
-        helperText="Largo entre 3 y 8"
+        errorText="Correo inválido."
+        helperText="Formato Email(@ y .)"
       >
       </ion-input>
     </ion-item>
@@ -65,7 +65,7 @@
         <ion-row class="ion-text-center">
           <ion-col col="4">
             <ion-button
-              color="primary"
+              color="dark"
               shape="round"
               fill="outline"
               (click)="submit()"

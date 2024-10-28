@@ -8,6 +8,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { SharedModule } from '../../components/shared/shared.module';
+import { RegistroClienteComponent } from 'src/app/components/registro-cliente/registro-cliente.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { SharedModule } from '../../components/shared/shared.module';
     ReactiveFormsModule,
     SharedModule,
   ],
-  declarations: [LoginPage],
+  declarations: [LoginPage, RegistroClienteComponent],
 })
 export class LoginPageModule {}

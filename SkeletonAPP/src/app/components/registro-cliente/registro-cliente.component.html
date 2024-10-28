@@ -1,7 +1,7 @@
 <ion-content>
   <!--Titulo-->
   <ion-item class="ion-text-center">
-    <ion-title>Modificar Admin</ion-title>
+    <ion-title>Registro Cliente</ion-title>
     <ion-button shape="round" fill="clear" (click)="cerrarModal()">
       <ion-icon
         color="danger"
@@ -15,46 +15,19 @@
   <ion-item>
     <img class="logo" alt="..." src="assets/logo.png" />
   </ion-item>
-  <form [formGroup]="modificarAdmin">
-    <!--Id empresa-->
+  <form [formGroup]="registroCliente">
     <ion-item>
-      <ion-input
-        formControlName="idEmpresa"
-        label="Ingrese el id de la empresa:"
-        labelPlacement="stacked"
-        type="number"
-        min="100000"
-        max="999999"
-        errorText="id inválido."
-        helperText="Ingrese id de 6 digitos."
-      ></ion-input>
-    </ion-item>
-
-    <!--Correo-->
-    <ion-item>
+      <!--Correo-->
       <ion-input
         formControlName="email"
-        label="Ingrese su usuario: "
+        label="Ingrese su correo: "
         labelPlacement="stacked"
         minlength="3"
         maxlength="25"
-        errorText="Usuario inválido."
-        helperText="Largo entre 3 y 8"
+        errorText="Correo inválido."
+        helperText="Formato Email(@ y .)"
       >
       </ion-input>
-    </ion-item>
-    <!--Empresa-->
-    <ion-item>
-      <ion-select
-        formControlName="empresa"
-        interface="popover"
-        placeholder="Seleccione la empresa:"
-      >
-        <ion-select-option value="1">Apple</ion-select-option>
-        <ion-select-option value="2">Microsoft</ion-select-option>
-        <ion-select-option value="3">McDonalds</ion-select-option>
-        <ion-select-option value="4">Burger King</ion-select-option>
-      </ion-select>
     </ion-item>
     <!--Contraseña-->
     <ion-item>
@@ -68,6 +41,7 @@
         helperText="Largo 4"
       ></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-grid>
         <ion-row class="ion-text-center">
@@ -77,7 +51,7 @@
               shape="round"
               fill="outline"
               (click)="submit()"
-              [disabled]="!modificarAdmin.valid"
+              [disabled]="!registroCliente.valid"
               >Registrar</ion-button
             >
           </ion-col>

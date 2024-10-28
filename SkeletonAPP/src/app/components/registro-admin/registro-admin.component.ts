@@ -39,6 +39,15 @@ export class RegistroAdminComponent {
             this.registroAdmin.controls.userRole.setValue(2);
           }
           this.setUserInfo(uid);
+          this.utils.presentToast({
+            header: 'Registro exitoso!',
+            message: `Bienvenid@ ${res.user.email}`,
+            duration: 2000,
+            color: 'primary',
+            position: 'middle',
+            icon: 'person-circle-outline',
+          });
+          this.cerrarModal();
         })
         .catch((error) => {
           console.log(error);

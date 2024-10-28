@@ -46,7 +46,7 @@
       <ion-avatar *ngIf="modificarEmpresa.value.logo">
         <img [src]="modificarEmpresa.value.logo" />
       </ion-avatar>
-      <ion-button color="primary" shape="round" fill="outline" (click)="logo()"
+      <ion-button color="dark" shape="round" fill="outline" (click)="logo()"
         >Sube tu logo</ion-button
       >
     </ion-item>
@@ -56,7 +56,7 @@
         <ion-row class="ion-text-center">
           <ion-col col="4">
             <ion-button
-              color="primary"
+              color="dark"
               shape="round"
               fill="outline"
               [disabled]="!modificarEmpresa.valid"
