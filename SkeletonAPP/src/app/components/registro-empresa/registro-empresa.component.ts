@@ -27,7 +27,9 @@ export class RegistroEmpresaComponent {
     if (this.registroEmpresa.valid) {
       let path = `empresas`;
       let dataUrl = this.registroEmpresa.value.logo;
-      let imagePath = `empresas/${this.registroEmpresa.value.nombreEmpresa}/${Date.now()}`;
+      let imagePath = `empresas/${
+        this.registroEmpresa.value.nombreEmpresa
+      }/${Date.now()}`;
 
       if (this.subirImagen) {
         let imageUrl = await this.firebase.subirImagen(imagePath, dataUrl);

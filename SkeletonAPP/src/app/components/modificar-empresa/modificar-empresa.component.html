@@ -18,16 +18,16 @@
   <form [formGroup]="modificarEmpresa">
     <!--Empresa-->
     <ion-item>
-      <ion-input
+      <ion-select
         formControlName="idEmpresa"
-        label="Ingrese el id de la empresa:"
-        labelPlacement="stacked"
-        type="number"
-        min="100000"
-        max="999999"
-        errorText="id inválido."
-        helperText="Ingrese id de 6 digitos."
-      ></ion-input>
+        interface="popover"
+        placeholder="Seleccione la empresa:"
+        (ionChange)="selectEmpresa($event)"
+      >
+        <ion-select-option *ngFor="let e of empresas" value="{{ e }}"  >
+          {{ e.nombreEmpresa }}
+        </ion-select-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
@@ -59,8 +59,8 @@
               color="primary"
               shape="round"
               fill="outline"
-              (click)="submit()"
               [disabled]="!modificarEmpresa.valid"
+              (click)="submit()"
               >Modificar</ion-button
             >
           </ion-col>

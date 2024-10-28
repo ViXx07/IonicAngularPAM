@@ -16,6 +16,7 @@ import {
   getDoc,
   setDoc,
   addDoc,
+  updateDoc,
   collection,
   getFirestore,
 } from '@angular/fire/firestore';
@@ -38,7 +39,7 @@ export class FirebaseConfigService {
   user: User = {
     uid: '',
     email: '',
-    password: 'xd',
+    password: '',
     userRole: 1,
   };
 
@@ -113,6 +114,11 @@ export class FirebaseConfigService {
     return setDoc(doc(getFirestore(), path), data);
   }
 
+  //Actualizar datos
+  updateDocument(path: string, data: any) {
+    return updateDoc(doc(getFirestore(), path), data);
+  }
+
   //Obtener datos
   async getDocument(path: string) {
     return (await getDoc(doc(getFirestore(), path))).data();
@@ -132,4 +138,11 @@ export class FirebaseConfigService {
       }
     );
   }
+
+  async getFilePath(url: string) {
+    return ref(getStorage(), url).fullPath;
+  }
+
+  //Obtener objeto de una colección
+  
 }

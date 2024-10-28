@@ -22,6 +22,7 @@ export class RegistroAdminComponent {
   empresas: Empresa[] = [];
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
+  rol = false;
 
   async submit() {
     if (this.registroAdmin.valid) {
@@ -32,8 +33,11 @@ export class RegistroAdminComponent {
         .then((res) => {
           let uid = res.user.uid;
           this.registroAdmin.controls.uid.setValue(uid);
-          this.registroAdmin.controls.userRole.setValue(2);
-
+          if (this.rol) {
+            this.registroAdmin.controls.userRole.setValue(3);
+          } else {
+            this.registroAdmin.controls.userRole.setValue(2);
+          }
           this.setUserInfo(uid);
         })
         .catch((error) => {
@@ -48,6 +52,7 @@ export class RegistroAdminComponent {
         })
         .finally(() => {
           loading.dismiss();
+          this.cerrarModal();
         });
     }
   }
@@ -61,7 +66,7 @@ export class RegistroAdminComponent {
         .setDocument(path, this.registroAdmin.value)
         .then(async (res) => {
           this.registroAdmin.reset;
-          this.utils.routerlink('home');
+          this.utils.redireccionPorRol(3);
         })
         .catch((error) => {
           console.log(error);
@@ -76,23 +81,30 @@ export class RegistroAdminComponent {
     }
   }
 
-  cerrarModal(){
+  cerrarModal() {
     this.utils.cerrarModal();
   }
 
   getEmpresa() {
     let path = 'empresas';
 
-   let sub = this.firebase.getCollectionData(path).subscribe({
-      next: (res:any) => {
-        console.log(res);
+    let sub = this.firebase.getCollectionData(path).subscribe({
+      next: (res: any) => {
         this.empresas = res;
         sub.unsubscribe();
-      }
+      },
     });
   }
-  
+
   ionViewWillEnter() {
     this.getEmpresa();
+  }
+
+  cambiarRol() {
+    if (this.rol) {
+      this.rol = false;
+    } else {
+      this.rol = true;
+    }
   }
 }
