@@ -22,9 +22,10 @@
         formControlName="idEmpresa"
         interface="popover"
         placeholder="Seleccione la empresa:"
-        (ionChange)="selectEmpresa($event)"
+        [(ngModel)]="idEmpresaSeleccionada"
+        (ionChange)="selectEmpresa(idEmpresaSeleccionada)"
       >
-        <ion-select-option *ngFor="let e of empresas" value="{{ e }}"  >
+        <ion-select-option *ngFor="let e of empresas" value="{{ e.id }}"  >
           {{ e.nombreEmpresa }}
         </ion-select-option>
       </ion-select>

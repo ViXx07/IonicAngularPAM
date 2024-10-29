@@ -143,6 +143,14 @@ export class FirebaseConfigService {
     return ref(getStorage(), url).fullPath;
   }
 
-  //Obtener objeto de una colección
-  
+  //Obtener objeto de una colección por id
+  getDocumentById(collectionId: string, documentId: string): Promise<any> {
+    return this.firestore
+      .collection(collectionId)
+      .doc(documentId)
+      .ref.get()
+      .then((doc) => {
+        return doc.exists ? doc.data() : null; // Retorna el documento o null si no existe
+      });
+  }
 }

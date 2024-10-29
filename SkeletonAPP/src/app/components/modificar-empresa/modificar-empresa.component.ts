@@ -1,5 +1,9 @@
+import { query } from '@angular/animations';
 import { Component, inject, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { collection, Firestore } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { map, Observable } from 'rxjs';
 import { Empresa } from 'src/app/models/empresa.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -20,15 +24,29 @@ export class ModificarEmpresaComponent {
   utils = inject(UtilsService);
   empresas: Empresa[] = [];
   idEmpresaSeleccionada: string;
-  empresaSeleccionada: Empresa;
+  data: { key: string; value: any }[] = []; // Arreglo para almacenar los datos
   subirImagen = false;
 
   constructor() {}
 
-  selectEmpresa(event: any) {
-    this.empresaSeleccionada = event.detail.value;
-    console.log(this.empresaSeleccionada.nombreEmpresa);
+  selectEmpresa(id: string) {
+
+    const collectionId = 'empresas'; // Reemplaza con el nombre de tu colección
+
+
+    this.firebase.getDocumentById(collectionId, id)
+      .then(doc => {
+        if (doc) {
+          // Convierte el objeto en un arreglo de entradas clave-valor
+          this.data = Object.entries(doc).map(([key, value]) => ({ key, value }));
+          console.log(this.data);
+        }
+      })
+      .catch(error => {
+        console.error('Error obteniendo el documento:', error);
+      });
   }
+  
 
   async submit() {
     if (this.modificarEmpresa.valid) {
@@ -92,7 +110,6 @@ export class ModificarEmpresaComponent {
 
     let sub = this.firebase.getCollectionData(path).subscribe({
       next: (res: any) => {
-        console.log(res);
         this.empresas = res;
         sub.unsubscribe();
       },
