@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -8,6 +8,7 @@ import { AdminEmpresaPageRoutingModule } from './admin-empresa-routing.module';
 
 import { AdminEmpresaPage } from './admin-empresa.page';
 import { SharedModule } from 'src/app/components/shared/shared.module';
+import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuesta/modificar-encuesta.component';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
     FormsModule,
     IonicModule,
     AdminEmpresaPageRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
-  declarations: [AdminEmpresaPage]
+  declarations: [AdminEmpresaPage, ModificarEncuestaComponent]
 })
 export class AdminEmpresaPageModule {}

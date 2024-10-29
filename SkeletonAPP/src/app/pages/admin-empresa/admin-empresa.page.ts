@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuesta/modificar-encuesta.component';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-admin-empresa',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminEmpresaPage {
 
+  utils = inject(UtilsService);
+
   modificarEncuesta() {
-    // this.utils.presentarModal({
-    //   component: ModificarAdminComponent
-    // })
+    this.utils.presentarModal({
+      component: ModificarEncuestaComponent
+    })
   }
 }
