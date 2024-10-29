@@ -24,7 +24,7 @@
         placeholder="Seleccione la Encuesta:"
       >
         <ion-select-option *ngFor="let e of encuestas" value="{{ e.idEncuesta }}"  >
-          {{ e }}
+          {{ e.pregunta }}
         </ion-select-option>
       </ion-select>
     </ion-item>
