@@ -144,13 +144,14 @@ export class FirebaseConfigService {
   }
 
   //Obtener objeto de una colección por id
-  getDocumentById(collectionId: string, documentId: string): Promise<any> {
-    return this.firestore
+  async getDocumentById(
+    collectionId: string,
+    documentId: string
+  ): Promise<any> {
+    const doc = await this.firestore
       .collection(collectionId)
       .doc(documentId)
-      .ref.get()
-      .then((doc) => {
-        return doc.exists ? doc.data() : null; // Retorna el documento o null si no existe
-      });
+      .ref.get();
+    return doc.exists ? doc.data() : null;
   }
 }

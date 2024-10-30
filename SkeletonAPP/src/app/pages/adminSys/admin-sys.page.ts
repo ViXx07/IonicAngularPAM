@@ -4,6 +4,10 @@ import { ModificarEmpresaComponent } from 'src/app/components/modificar-empresa/
 import { RegistroAdminComponent } from 'src/app/components/registro-admin/registro-admin.component';
 import { RegistroEmpresaComponent } from 'src/app/components/registro-empresa/registro-empresa.component';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { Empresa } from 'src/app/models/empresa.model';
+import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-admin-sys',
@@ -12,8 +16,14 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 })
 export class AdminSysPage {
 
-  
+  empresas: Empresa[] = [];
+  admins: User[] = [];
+
   utils = inject(UtilsService);
+  firebase = inject(FirebaseConfigService);
+  form = new FormGroup({
+    empresaSeleccionada: new FormControl('', Validators.required),
+  });
  
   mostrarRegistroAdmin() {
     this.utils.presentarModal({
@@ -23,20 +33,53 @@ export class AdminSysPage {
 
   mostrarRegistroEmpresa() {
     this.utils.presentarModal({
-      component: RegistroEmpresaComponent
+      component: RegistroEmpresaComponent,
     })
   }
 
-  mostrarModificarEmpresa() {
-    this.utils.presentarModal({
-      component: ModificarEmpresaComponent
+  async mostrarModificarEmpresa(empresa: Empresa) {
+    let success = await this.utils.presentarModal({
+      component: ModificarEmpresaComponent,
+      componentProps: {empresa}
+    })
+
+    if (success) this.getEmpresas();
+    
+  }
+
+  async mostrarModificarAdmin(admin: User) {
+    let succes = await this.utils.presentarModal({
+      component: ModificarAdminComponent,
+      componentProps: {admin}
     })
   }
 
-  mostrarModificarAdmin() {
-    this.utils.presentarModal({
-      component: ModificarAdminComponent
-    })
+  getEmpresas() {
+    let path = 'empresas';
+
+    let sub = this.firebase.getCollectionData(path).subscribe({
+      next: (res: any) => {
+        this.empresas = res;
+        sub.unsubscribe();
+      },
+    });
   }
+
+  getAdmins() {
+    /*
+    let path = 'users';
+    let sub = this.firebase.getCollectionData(path, ref => ref.where("userRole", 'in', [2, 3])).subscribe({
+      next: (res: any) => {
+        this.admins = res;
+        sub.unsubscribe();
+      },
+    });*/
+  }
+
+  ionViewWillEnter() {
+    this.getEmpresas();
+    this.getAdmins();
+  }
+
 }
 
