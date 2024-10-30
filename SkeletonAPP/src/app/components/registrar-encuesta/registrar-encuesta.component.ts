@@ -5,11 +5,11 @@ import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
-  selector: 'app-modificar-encuesta',
-  templateUrl: './modificar-encuesta.component.html',
-  styleUrls: ['./modificar-encuesta.component.scss'],
+  selector: 'app-registrar-encuesta',
+  templateUrl: './registrar-encuesta.component.html',
+  styleUrls: ['./registrar-encuesta.component.scss'],
 })
-export class ModificarEncuestaComponent {
+export class registrarEncuestaComponent {
   modificarEncuesta = new FormGroup({
     idEncuesta: new FormControl('', Validators.required),
     pregunta: new FormControl(''),

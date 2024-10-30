@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuesta/modificar-encuesta.component';
+import { registrarEncuestaComponent } from 'src/app/components/registrar-encuesta/registrar-encuesta.component';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
@@ -14,6 +15,12 @@ export class AdminEmpresaPage {
   modificarEncuesta() {
     this.utils.presentarModal({
       component: ModificarEncuestaComponent
+    })
+  }
+
+  registrarEncuesta() {
+    this.utils.presentarModal({
+      component: registrarEncuestaComponent
     })
   }
 }
