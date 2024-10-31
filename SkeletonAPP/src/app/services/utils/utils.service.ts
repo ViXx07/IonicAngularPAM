@@ -82,6 +82,12 @@ export class UtilsService {
     } else return 0;
   }
 
+  getUid(): number {
+    if (this.getFromLocalStorage('user')) {
+      return this.getFromLocalStorage('user').uid;
+    } else return 0;
+  }
+
   redireccionPorRol(rolUsuario: number) {
     switch (rolUsuario) {
       case 1: {

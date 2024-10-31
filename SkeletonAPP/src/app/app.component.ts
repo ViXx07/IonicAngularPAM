@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
   paginas = [];
 
   ngOnInit() {
-    //this.router.navigateByUrl('splash');
     this.router.events.subscribe((event: any) => {
       if (event?.url) this.rutaActual = event.url;
       this.mostrarMenu();

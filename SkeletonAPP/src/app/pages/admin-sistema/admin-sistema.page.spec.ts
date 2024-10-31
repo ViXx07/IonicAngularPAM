@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AdminSysPage } from './admin-sys.page';
+import { AdminSistemaPage } from './admin-sistema.page';
 
 describe('AdminSysPage', () => {
-  let component: AdminSysPage;
-  let fixture: ComponentFixture<AdminSysPage>;
+  let component: AdminSistemaPage;
+  let fixture: ComponentFixture<AdminSistemaPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminSysPage);
+    fixture = TestBed.createComponent(AdminSistemaPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

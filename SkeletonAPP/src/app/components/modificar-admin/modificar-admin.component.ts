@@ -32,7 +32,7 @@ export class ModificarAdminComponent {
           this.modificarAdmin.controls.userRole.setValue(2);
 
           this.setUserInfo(uid);
-          this.cerrarModal();
+          this.utils.cerrarModal({success: true});
         })
         .catch((error) => {
           console.log(error);

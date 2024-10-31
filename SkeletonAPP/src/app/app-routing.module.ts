@@ -29,11 +29,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/opina/opina.module').then((m) => m.OpinaPageModule),
     title: 'QuéOpinas?',
+    canActivate: [AuthGuard],
   },
   {
     path: 'admin', //Admin sistema
     loadChildren: () =>
-      import('./pages/adminSys/admin-sys.module').then(
+      import('./pages/admin-sistema/admin-sistema.module').then(
         (m) => m.AdminSysPageModule
       ),
     title: 'QuéOpinas?',
@@ -46,18 +47,24 @@ const routes: Routes = [
         (m) => m.CodigoEncuestaPageModule
       ),
     title: 'QuéOpinas?',
+    canActivate: [AuthGuard],
   },
   {
     path: 'contacto',
-    loadChildren: () => import('./pages/contacto/contacto.module').then( m => m.ContactoPageModule)
+    loadChildren: () => import('./pages/contacto/contacto.module').then( m => m.ContactoPageModule),
+    title: 'QueOpinas?',
+    canActivate: [AuthGuard],
   },
   {
     path: 'admin-empresa',
-    loadChildren: () => import('./pages/admin-empresa/admin-empresa.module').then( m => m.AdminEmpresaPageModule)
+    loadChildren: () => import('./pages/admin-empresa/admin-empresa.module').then( m => m.AdminEmpresaPageModule),
+    title: 'QueOpinas?',
+    canActivate: [AuthGuard],
   },
   {
     path: '**',
-    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
+    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule),
+    title: 'QueOpinas?',
   },
 
 ];

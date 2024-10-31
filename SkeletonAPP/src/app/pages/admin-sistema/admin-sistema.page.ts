@@ -12,16 +12,16 @@ import { Subscription } from 'rxjs';
 import { where } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-admin-sys',
-  templateUrl: './admin-sys.page.html',
-  styleUrls: ['./admin-sys.page.scss'],
+  selector: 'app-admin-sistema',
+  templateUrl: './admin-sistema.page.html',
+  styleUrls: ['./admin-sistema.page.scss'],
 })
-export class AdminSysPage implements OnInit {
+export class AdminSistemaPage implements OnInit {
   empresas: Empresa[] = [];
   admins: User[] = [];
   private subscriptions: Subscription[] = [];
 
-  loadingData: boolean = true; // Inicialmente en true
+  loadingData: boolean = true;
   utils = inject(UtilsService);
   firebase = inject(FirebaseConfigService);
   form = new FormGroup({
@@ -67,10 +67,12 @@ export class AdminSysPage implements OnInit {
   }
 
   async mostrarModificarAdmin(admin: User) {
-    let succes = await this.utils.presentarModal({
+    let success = await this.utils.presentarModal({
       component: ModificarAdminComponent,
       componentProps: { admin },
     });
+
+    if (success) this.getEmpresas();
   }
 
   getEmpresas() {

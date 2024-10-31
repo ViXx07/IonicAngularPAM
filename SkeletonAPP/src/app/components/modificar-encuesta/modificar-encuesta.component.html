@@ -16,18 +16,6 @@
     <img class="logo" alt="..." src="assets/logo.png" />
   </ion-item>
   <form [formGroup]="modificarEncuesta">
-    <!--Encuesta-->
-    <ion-item>
-      <ion-select
-        formControlName="idEncuesta"
-        interface="popover"
-        placeholder="Seleccione la Encuesta:"
-      >
-        <ion-select-option *ngFor="let e of encuestas" value="{{ e.idEncuesta }}"  >
-          {{ e.pregunta }}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
 
     <ion-item>
       <ion-input
@@ -39,15 +27,6 @@
         errorText="Nombre inválido."
         helperText="---"
       ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar *ngIf="modificarEncuesta.value.evidencia">
-        <img [src]="modificarEncuesta.value.evidencia" />
-      </ion-avatar>
-      <ion-button color="dark" shape="round" fill="outline" (click)="logo()"
-        >Sube tu evidencia</ion-button
-      >
     </ion-item>
 
     <ion-item>

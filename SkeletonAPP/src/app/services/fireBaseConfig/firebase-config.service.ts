@@ -142,16 +142,5 @@ export class FirebaseConfigService {
   async getFilePath(url: string) {
     return ref(getStorage(), url).fullPath;
   }
-
-  //Obtener objeto de una colección por id
-  async getDocumentById(
-    collectionId: string,
-    documentId: string
-  ): Promise<any> {
-    const doc = await this.firestore
-      .collection(collectionId)
-      .doc(documentId)
-      .ref.get();
-    return doc.exists ? doc.data() : null;
-  }
+  
 }

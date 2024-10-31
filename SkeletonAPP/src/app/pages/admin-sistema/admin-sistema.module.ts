@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminSysPageRoutingModule } from './admin-sys-routing.module';
+import { AdminSysPageRoutingModule } from './admin-sistema-routing.module';
 
-import { AdminSysPage } from './admin-sys.page';
+import { AdminSistemaPage } from './admin-sistema.page';
 import { SharedModule } from '../../components/shared/shared.module';
 import { RegistroAdminComponent } from 'src/app/components/registro-admin/registro-admin.component';
 import { RegistroEmpresaComponent } from 'src/app/components/registro-empresa/registro-empresa.component';
@@ -23,7 +23,7 @@ import { ModificarAdminComponent } from 'src/app/components/modificar-admin/modi
     ReactiveFormsModule,
   ],
   declarations: [
-    AdminSysPage,
+    AdminSistemaPage,
     RegistroAdminComponent,
     RegistroEmpresaComponent,
     ModificarEmpresaComponent,

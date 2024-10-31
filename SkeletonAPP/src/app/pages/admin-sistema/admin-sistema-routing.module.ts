@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdminSysPage } from './admin-sys.page';
+import { AdminSistemaPage } from './admin-sistema.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminSysPage,
+    component: AdminSistemaPage,
   },
 ];
 
