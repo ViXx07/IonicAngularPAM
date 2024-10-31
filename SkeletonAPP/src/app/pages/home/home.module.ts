@@ -6,7 +6,8 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from '../../components/shared/shared.module';
-import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
+import { QrScannerComponent } from 'src/app/components/qr-scanner/qr-scanner.component';
+
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { BarcodeScanningModalComponent } from './barcode-scanning-modal.componen
     HomePageRoutingModule,
     SharedModule,
   ],
-  declarations: [HomePage, BarcodeScanningModalComponent],
+  declarations: [HomePage, QrScannerComponent],
 })
 export class HomePageModule {}

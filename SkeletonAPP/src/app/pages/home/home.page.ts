@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils/utils.service';
-import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
+import { QrScannerComponent } from 'src/app/components/qr-scanner/qr-scanner.component';
 import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { Platform } from '@ionic/angular';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
@@ -30,7 +30,7 @@ export class HomePage {
 
   async scannerQR() {
     const modal = await this.utils.modalCtrl.create({
-      component: BarcodeScanningModalComponent,
+      component: QrScannerComponent,
       cssClass: 'barcode-scanning-modal',
       showBackdrop: false,
       componentProps: {
