@@ -3,44 +3,15 @@ ion-button {
   font-size: 2.5vh;
 }
 
-form {
-  width: 80vw;
-  margin-top: 5vh;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  min-height: 60vh;
-}
-
 #emoji {
   font-size: 8vh;
   text-align: center;
-}
-
-#emoji input[type="radio"] {
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-#emoji input[type="radio"]:checked + label {
-  filter: grayscale(0%);
-}
-
-#emoji input[type="radio"]:hover + label {
-  filter: grayscale(0%);
 }
 
 label {
   filter: grayscale(100%);
   transition: all 0.5s ease;
   transition: border 0.2s ease;
-}
-
-#resultado {
-  background: orange;
-  padding: 3px;
-  color: white;
-  border-radius: 30px;
 }
 
 ion-item {

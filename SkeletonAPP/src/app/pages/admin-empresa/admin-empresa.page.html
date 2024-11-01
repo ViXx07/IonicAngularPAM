@@ -2,17 +2,18 @@
   <app-header titulo="Admin"></app-header>
   
 
-    <ion-item>Vista de encuesta:</ion-item>
+    
     <ion-card>
-      <ion-list class="ion-text-center">
+      <ion-item>Vista de encuesta:</ion-item>
+      <ion-list class="ion-text-center" lines="none">
         <!--Tipo de opinión-->
         <ion-item class="ion-text-center" *ngIf="encuesta">
           <ion-label>{{encuesta.pregunta}} </ion-label>
         </ion-item>
         <div id="emoji">
-          <label id="feliz">😁</label>
-          <label id="triste">😢</label>
-          <label id="enojado">😡</label>
+          <ion-label>😁</ion-label>
+          <label>😢</label>
+          <label>😡</label>
   
         </div>
         <!--Comentario-->
