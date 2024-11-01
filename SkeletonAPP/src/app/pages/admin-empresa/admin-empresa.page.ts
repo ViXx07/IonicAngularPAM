@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { documentId, where } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
 import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuesta/modificar-encuesta.component';
-import { registrarEncuestaComponent } from 'src/app/components/registrar-encuesta/registrar-encuesta.component';
 import { Empresa } from 'src/app/models/empresa.model';
+import { Encuesta } from 'src/app/models/encuesta.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -16,6 +16,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 export class AdminEmpresaPage implements OnInit {
   usuario: User;
   empresa: Empresa;
+  encuesta: Encuesta;
   private subscriptions: Subscription[] = [];
 
   utils = inject(UtilsService);
@@ -27,27 +28,25 @@ export class AdminEmpresaPage implements OnInit {
   
     try {
       await this.getUser(); // Espera a que se recupere el usuario
-      if (this.usuario) { // Solo llama a getEmpresa si usuario está definido
-        this.getEmpresa();
+      if (this.usuario) {
+        await this.getEmpresa(); // Espera a que se recupere la empresa
+        if (this.empresa) {
+          await this.getEncuesta(); // Espera a que se recupere la encuesta
+        }
       } else {
-        console.error('No se encontró el usuario.'); // Manejo de error
+        console.error('No se encontró el usuario.');
       }
-      await loading.dismiss();
     } catch (error) {
       console.error('Error loading data', error);
+    } finally {
       await loading.dismiss();
     }
   }
 
-  modificarEncuesta() {
+  modificarEncuesta(encuesta: Encuesta) {
     this.utils.presentarModal({
       component: ModificarEncuestaComponent,
-    });
-  }
-
-  registrarEncuesta() {
-    this.utils.presentarModal({
-      component: registrarEncuestaComponent,
+      componentProps: { encuesta },
     });
   }
 
@@ -74,22 +73,43 @@ export class AdminEmpresaPage implements OnInit {
       this.subscriptions.push(sub); // Guarda la suscripción
     });
   }
-  getEmpresa() {
-    const path = 'empresas';
-    const empresaId = this.usuario.empresa;
-    const query = where(documentId(), '==', empresaId);
+  async getEmpresa(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const path = 'empresas';
+      const empresaId = this.usuario.empresa;
+      const query = where(documentId(), '==', empresaId);
 
-    const sub = this.firebase.getCollectionData(path, query).subscribe({
-      next: (res: Empresa[]) => {
-        if (res.length > 0) {
-          this.empresa = res[0]; // Asigna la primera empresa encontrada
-        } else {
-          this.empresa = null; // Maneja el caso donde no se encuentra la empresa
-        }
-      },
-      error: (err) => {
-        console.error('Error fetching empresa:', err);
-      },
+      const sub = this.firebase.getCollectionData(path, query).subscribe({
+        next: (res: Empresa[]) => {
+          this.empresa = res.length > 0 ? res[0] : null;
+          resolve();
+        },
+        error: (err) => {
+          console.error('Error fetching empresa:', err);
+          reject(err);
+        },
+      });
+      this.subscriptions.push(sub);
     });
   }
+  async getEncuesta(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const path = 'encuestas';
+      const empresaId = this.empresa.id;
+      const query = where('idEmpresa', '==', empresaId);
+
+      const sub = this.firebase.getCollectionData(path, query).subscribe({
+        next: (res: Encuesta[]) => {
+          this.encuesta = res.length > 0 ? res[0] : null;
+          resolve();
+        },
+        error: (err) => {
+          console.error('Error fetching encuesta:', err);
+          reject(err);
+        },
+      });
+      this.subscriptions.push(sub);
+    });
+  }
+
 }
