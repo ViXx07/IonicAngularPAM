@@ -105,4 +105,50 @@ export class AdminSistemaPage implements OnInit {
     // Desuscribirse de todas las suscripciones
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
+
+  async confirmarEliminarEmpresa(empresa: Empresa) {
+    this.utils.presentAlert({
+      header: 'Eliminar Empresa',
+      message: '¿Quieres eliminar esta empresa?',
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            this.eliminarEmpresa(empresa);
+          }
+        }
+      ]
+    })
+  }
+
+  async eliminarEmpresa(empresa: Empresa) {
+    let path = `empresas/${empresa.id}`
+
+    const loading = await this.utils.loading();
+    await loading.present();
+
+    this.firebase.deleteDocument(path).then(async res =>{
+      this.utils.presentToast({
+        message: 'Empresa eliminada',
+        duration: 1500,
+        color: 'success',
+        position: 'middle',
+        icon: 'checkmark-circle-outline'
+      })
+    }).catch(error => {
+      console.log(error);
+      this.utils.presentToast({
+        message: 'Error al eliminar la empresa',
+        duration: 1500,
+        color: 'danger',
+        position: 'middle',
+        icon: 'alert-circle-outline'
+      })
+    }).finally(() => {
+      loading.dismiss();
+    })
+  }
 }

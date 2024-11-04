@@ -1,12 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
-import { ApiRestService } from 'src/app/services/api-rest.service';
+import { ApiRestService } from 'src/app/services/restApi/api-rest.service';
 
 @Component({
   selector: 'app-api-rest',
   templateUrl: './api-rest.component.html',
-  styleUrls: ['./api-rest.component.scss'],
 })
 export class ApiRestComponent  implements OnInit {
 

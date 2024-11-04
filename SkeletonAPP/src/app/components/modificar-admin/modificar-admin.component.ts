@@ -1,5 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Empresa } from 'src/app/models/empresa.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -9,11 +10,15 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   styleUrls: ['./modificar-admin.component.scss'],
 })
 export class ModificarAdminComponent {
+
+  empresas: Empresa[];
+
+  @Input() admin: User;
+
   modificarAdmin = new FormGroup({
     uid: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     empresa: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
     userRole: new FormControl(),
   });
 
@@ -22,16 +27,19 @@ export class ModificarAdminComponent {
 
   async submit() {
     if (this.modificarAdmin.valid) {
+      let path = `users/${this.admin.uid}`;
       const loading = await this.utils.loading();
       await loading.present();
       this.firebase
-        .signUp(this.modificarAdmin.value as User)
+        .updateDocument(path,this.modificarAdmin.value as User)
         .then((res) => {
-          let uid = res.user.uid;
-          this.modificarAdmin.controls.uid.setValue(uid);
-          this.modificarAdmin.controls.userRole.setValue(2);
-
-          this.setUserInfo(uid);
+          this.utils.presentToast({
+            message: 'Administrador modificado con exito',
+            duration: 2500,
+            color: 'success',
+            position: 'middle',
+            icon: 'checkmark-circle-outline',
+          });
           this.utils.cerrarModal({success: true});
         })
         .catch((error) => {
@@ -50,28 +58,23 @@ export class ModificarAdminComponent {
     }
   }
 
-  async setUserInfo(uid: string) {
-    if (this.modificarAdmin.valid) {
-      let path = `users/${uid}`;
-      delete this.modificarAdmin.value.password;
+  getEmpresa() {
+    let path = 'empresas';
 
-      this.firebase
-        .setDocument(path, this.modificarAdmin.value)
-        .then(async (res) => {
-          this.modificarAdmin.reset;
-          this.utils.routerlink('home');
-        })
-        .catch((error) => {
-          console.log(error);
-          this.utils.presentToast({
-            message: error.message,
-            duration: 2500,
-            color: 'primary',
-            position: 'middle',
-            icon: 'alert-circle-outline',
-          });
-        });
-    }
+    let sub = this.firebase.getCollectionData(path).subscribe({
+      next: (res: any) => {
+        this.empresas = res;
+        sub.unsubscribe();
+      },
+    });
+  }
+
+  ionViewWillEnter() {
+    this.getEmpresa();
+    this.modificarAdmin.controls.uid.setValue(this.admin.uid);
+    this.modificarAdmin.controls.email.setValue(this.admin.email);
+    this.modificarAdmin.controls.empresa.setValue(this.admin.empresa);
+    this.modificarAdmin.controls.userRole.setValue(this.admin.userRole);
   }
 
   cerrarModal(){

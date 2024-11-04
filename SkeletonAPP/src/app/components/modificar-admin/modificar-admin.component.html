@@ -30,30 +30,19 @@
       </ion-input>
     </ion-item>
     <!--Empresa-->
+    <!--Empresa-->
     <ion-item>
       <ion-select
         formControlName="empresa"
         interface="popover"
         placeholder="Seleccione la empresa:"
       >
-        <ion-select-option value="1">Apple</ion-select-option>
-        <ion-select-option value="2">Microsoft</ion-select-option>
-        <ion-select-option value="3">McDonalds</ion-select-option>
-        <ion-select-option value="4">Burger King</ion-select-option>
+        <ion-select-option *ngFor="let e of empresas" value="{{ e.id }}">
+          {{ e.nombreEmpresa }}
+        </ion-select-option>
       </ion-select>
     </ion-item>
-    <!--Contraseña-->
-    <ion-item>
-      <ion-input
-        formControlName="password"
-        label="Ingrese la contraseña:"
-        labelPlacement="stacked"
-        type="password"
-        maxlength="10"
-        errorText="Contraseña inválida."
-        helperText="Largo 4"
-      ></ion-input>
-    </ion-item>
+    
     <ion-item>
       <ion-grid>
         <ion-row class="ion-text-center">
@@ -64,7 +53,7 @@
               fill="outline"
               (click)="submit()"
               [disabled]="!modificarAdmin.valid"
-              >Registrar</ion-button
+              >Modificar</ion-button
             >
           </ion-col>
         </ion-row>

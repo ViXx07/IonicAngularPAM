@@ -1,5 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import {
+  AlertController,
+  AlertOptions,
   LoadingController,
   ModalController,
   ModalOptions,
@@ -18,6 +20,7 @@ export class UtilsService {
   toastCtrl = inject(ToastController);
   router = inject(Router);
   modalCtrl = inject(ModalController);
+  alertCtrl = inject(AlertController);
 
   loading() {
     return this.loadingCtrl.create({ spinner: 'crescent' });
@@ -26,6 +29,11 @@ export class UtilsService {
   async presentToast(opts?: ToastOptions) {
     const toast = await this.toastCtrl.create(opts);
     toast.present();
+  }
+
+  async presentAlert(opts?: AlertOptions) {
+    const alert = await this.alertCtrl.create(opts);
+    await alert.present();
   }
 
   routerlink(url: string) {
@@ -116,19 +124,35 @@ export class UtilsService {
       case 1: {
         return (paginas = [
           { titulo: 'Home', url: '/home', icono: 'person-outline' },
-          { titulo: 'Contacto', url: '/home/contacto', icono: 'chatbubbles-outline'},
+          {
+            titulo: 'Contacto',
+            url: '/home/contacto',
+            icono: 'chatbubbles-outline',
+          },
         ]);
       }
       case 2: {
         return (paginas = [
-          { titulo: 'AdminEmpresa', url: '/admin-empresa', icono: 'tv-outline' },
-          { titulo: 'Contacto', url: '/admin-empresa/contacto', icono: 'chatbubbles-outline'},
+          {
+            titulo: 'AdminEmpresa',
+            url: '/admin-empresa',
+            icono: 'tv-outline',
+          },
+          {
+            titulo: 'Contacto',
+            url: '/admin-empresa/contacto',
+            icono: 'chatbubbles-outline',
+          },
         ]);
       }
       case 3: {
         return (paginas = [
           { titulo: 'Admin', url: '/admin', icono: 'person-add-outline' },
-          { titulo: 'Contacto', url: '/admin/contacto', icono: 'chatbubbles-outline'},
+          {
+            titulo: 'Contacto',
+            url: '/admin/contacto',
+            icono: 'chatbubbles-outline',
+          },
         ]);
       }
       default: {
