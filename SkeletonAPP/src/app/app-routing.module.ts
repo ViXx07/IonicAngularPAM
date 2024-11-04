@@ -7,35 +7,27 @@ import { adminSisGuard } from './services/guards/adminSisGuard/admin-sis-guard.g
 import { adminEmpGuard } from './services/guards/adminEmpGuard/admin-emp-guard.guard';
 
 const routes: Routes = [
+  //-------------------------------Cliente-------------------------------//
   {
-    path: 'home', //Cliente
+    path: 'home', 
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
     title: 'QuéOpinas?',
     canActivate: [AuthGuard, clienteGuard],
   },
+  //----------------------------Admin Empresa----------------------------//
   {
-    path: 'login', //Todos
+    path: 'admin-empresa', 
     loadChildren: () =>
-      import('./pages/login/login.module').then((m) => m.LoginPageModule),
-    title: 'QuéOpinas?',
-    canActivate: [noAuthGuard],
+      import('./pages/admin-empresa/admin-empresa.module').then(
+        (m) => m.AdminEmpresaPageModule
+      ),
+    title: 'QueOpinas?',
+    canActivate: [AuthGuard, adminEmpGuard],
   },
+  //----------------------------Admin sistema----------------------------//
   {
-    path: '', //Todos
-    loadChildren: () =>
-      import('./pages/splash/splash.module').then((m) => m.SplashPageModule),
-    title: 'QuéOpinas?',
-  },
-  {
-    path: 'opina', //Cliente
-    loadChildren: () =>
-      import('./pages/opina/opina.module').then((m) => m.OpinaPageModule),
-    title: 'QuéOpinas?',
-    canActivate: [AuthGuard, clienteGuard],
-  },
-  {
-    path: 'admin', //Admin sistema
+    path: 'admin', 
     loadChildren: () =>
       import('./pages/admin-sistema/admin-sistema.module').then(
         (m) => m.AdminSysPageModule
@@ -43,33 +35,23 @@ const routes: Routes = [
     title: 'QuéOpinas?',
     canActivate: [AuthGuard, adminSisGuard],
   },
+  //--------------------------------Todos-------------------------------//
   {
-    path: 'codigo', //Cliente
+    path: '', 
     loadChildren: () =>
-      import('./pages/codigo-encuesta/codigo-encuesta.module').then(
-        (m) => m.CodigoEncuestaPageModule
-      ),
+      import('./pages/splash/splash.module').then((m) => m.SplashPageModule),
     title: 'QuéOpinas?',
-    canActivate: [AuthGuard, clienteGuard],
+    canActivate: [noAuthGuard],
   },
+  //----------------------------Not Found-------------------------------//
   {
-    path: 'contacto',
-    loadChildren: () => import('./pages/contacto/contacto.module').then( m => m.ContactoPageModule),
-    title: 'QueOpinas?',
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'admin-empresa',
-    loadChildren: () => import('./pages/admin-empresa/admin-empresa.module').then( m => m.AdminEmpresaPageModule),
-    title: 'QueOpinas?',
-    canActivate: [AuthGuard, adminEmpGuard],
-  },
-  {
-    path: '**',
-    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule),
+    path: '**', 
+    loadChildren: () =>
+      import('./pages/not-found/not-found.module').then(
+        (m) => m.NotFoundPageModule
+      ),
     title: 'QueOpinas?',
   },
-
 ];
 
 @NgModule({

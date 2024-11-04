@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 

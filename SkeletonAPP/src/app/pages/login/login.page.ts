@@ -1,6 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AppComponent } from 'src/app/app.component';
 import { RecordarContrasenaComponent } from 'src/app/components/recordar-contrasena/recordar-contrasena.component';
 import { RegistroClienteComponent } from 'src/app/components/registro-cliente/registro-cliente.component';
 import { User } from 'src/app/models/user.model';

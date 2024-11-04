@@ -13,9 +13,10 @@ import { environment } from 'src/environments/environment.prod';
 import { SharedModule } from './components/shared/shared.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ContactoPage } from './pages/contacto/contacto.page';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ContactoPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

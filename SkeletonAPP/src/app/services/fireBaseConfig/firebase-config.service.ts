@@ -131,7 +131,8 @@ export class FirebaseConfigService {
   deleteDocument(path: string) {
     return deleteDoc(doc(getFirestore(), path));
   }
-//------------------------CRUD------------------------//
+//---------------------------------------------------//
+  
   //Almacenamiento
 
   async subirImagen(path: string, dataUrl: string) {
