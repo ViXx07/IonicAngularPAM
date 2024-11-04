@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Encuesta } from 'src/app/models/encuesta.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -19,6 +20,8 @@ export class RegistroEmpresaComponent {
   utils = inject(UtilsService);
 
   usuario = {} as User;
+
+  encuestaBase: Encuesta;
 
   ngOnInit() {
     this.usuario = this.utils.getFromLocalStorage('user');
@@ -40,8 +43,14 @@ export class RegistroEmpresaComponent {
       await loading.present();
       this.firebase
         .addDocument(path, this.registroEmpresa.value)
-        .then(async (res) => {
-          this.registroEmpresa.reset;
+        .then(async (empresa) => {
+          let idEmp = empresa.id;
+          const encuesta = await this.firebase.addDocument('encuestas', {
+            pregunta: '',
+            idEmpresa: idEmp
+          })
+          console.log('Added document with ID: ', encuesta.id);
+          this.registroEmpresa.reset();
           this.utils.routerlink('admin');
           this.utils.presentToast({
             message: 'Empresa registrada correctamente',
@@ -50,6 +59,7 @@ export class RegistroEmpresaComponent {
             position: 'middle',
             icon: 'checkmark-circle-outline',
           });
+
           this.cerrarModal();
         })
         .catch((error) => {

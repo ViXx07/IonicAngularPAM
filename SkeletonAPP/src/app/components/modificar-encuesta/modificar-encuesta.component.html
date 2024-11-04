@@ -1,7 +1,4 @@
 <ion-content>
-  <ion-item *ngIf="encuesta">
-    {{encuesta.pregunta}}
-  </ion-item>
   <!--Titulo-->
   <ion-item class="ion-text-center">
     <ion-title>Modificar Encuesta</ion-title>
@@ -27,8 +24,7 @@
         labelPlacement="stacked"
         type="text"
         minlength="1"
-        errorText="Nombre inválido."
-        helperText="---"
+        errorText="pregunta inválida."
       ></ion-input>
     </ion-item>
 

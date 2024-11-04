@@ -9,27 +9,57 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   templateUrl: './modificar-encuesta.component.html',
   styleUrls: ['./modificar-encuesta.component.scss'],
 })
-export class ModificarEncuestaComponent {
+export class ModificarEncuestaComponent implements OnInit {
   @Input() encuesta: Encuesta;
 
   modificarEncuesta = new FormGroup({
-    idEncuesta: new FormControl('', Validators.required),
-    pregunta: new FormControl(''),
-    evidencia: new FormControl(''),
+    pregunta: new FormControl('', Validators.required),
   });
 
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
   encuestas: Encuesta[] = [];
 
-  cerrarModal(){
+  ngOnInit() {
+    this.modificarEncuesta.controls.pregunta.setValue(this.encuesta.pregunta);
+  }
+
+  cerrarModal() {
     this.utils.cerrarModal();
   }
 
-  async logo() {
-    const DataUrl = (await this.utils.subirImagen('Logo')).dataUrl;
-    this.modificarEncuesta.controls.evidencia.setValue(DataUrl);
-  }
+  async submit() {
+    let path = `encuestas/${this.encuesta.id}`;
 
-  submit(){}
+    const loading = await this.utils.loading();
+    await loading.present();
+
+    this.firebase
+      .updateDocument(path, this.modificarEncuesta.value)
+      .then(async (res) => {
+        this.modificarEncuesta.reset;
+        this.utils.routerlink('admin-empresa');
+        this.utils.presentToast({
+          message: 'Encuesta registrada correctamente',
+          duration: 2500,
+          color: 'success',
+          position: 'middle',
+          icon: 'checkmark-circle-outline',
+        });
+        this.utils.cerrarModal({ success: true });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.utils.presentToast({
+          message: error.message,
+          duration: 2500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'alert-circle-outline',
+        });
+      })
+      .finally(() => {
+        loading.dismiss();
+      });
+  }
 }

@@ -17,6 +17,7 @@ import {
   setDoc,
   addDoc,
   updateDoc,
+  deleteDoc,
   collection,
   getFirestore,
 } from '@angular/fire/firestore';
@@ -103,32 +104,34 @@ export class FirebaseConfigService {
   };
 
   // ===== Base de Datos ===== //
-
-  //Obtener documentos de una colección
-  getCollectionData(path: string, collectionQuery?: any) {
-    const ref = collection(getFirestore(), path);
-    return collectionData(query(ref, collectionQuery), { idField: 'id' });
-  }
   //Crear datos
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
-  }
-
-  //Actualizar datos
-  updateDocument(path: string, data: any) {
-    return updateDoc(doc(getFirestore(), path), data);
   }
 
   //Obtener datos
   async getDocument(path: string) {
     return (await getDoc(doc(getFirestore(), path))).data();
   }
-
-  //Agregar un objeto a la base de datos
+//------------------------CRUD------------------------//
+  //Agregar un documento 
   addDocument(path: string, data: any) {
     return addDoc(collection(getFirestore(), path), data);
   }
-
+  //Obtener todos los documentos de una colección
+  getCollectionData(path: string, collectionQuery?: any) {
+    const ref = collection(getFirestore(), path);
+    return collectionData(query(ref, collectionQuery), { idField: 'id' });
+  }
+  //Actualizar documento
+  updateDocument(path: string, data: any) {
+    return updateDoc(doc(getFirestore(), path), data);
+  }
+  //Borrar documento
+  deleteDocument(path: string) {
+    return deleteDoc(doc(getFirestore(), path));
+  }
+//------------------------CRUD------------------------//
   //Almacenamiento
 
   async subirImagen(path: string, dataUrl: string) {

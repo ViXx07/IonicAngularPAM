@@ -7,16 +7,38 @@ import { RouterLinkWithHref } from '@angular/router';
 import { RecordarContrasenaComponent } from '../recordar-contrasena/recordar-contrasena.component';
 import { GoogleButtonComponent } from '../google-button/google-button.component';
 import { BotonComponent } from '../boton/boton.component';
+import { ApiRestComponent } from '../api-rest/api-rest.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatList, MatListItem} from '@angular/material/list';
+import { MatCard, MatCardHeader, MatCardTitle} from '@angular/material/card';
 
 @NgModule({
-  declarations: [HeaderComponent, RecordarContrasenaComponent, GoogleButtonComponent, BotonComponent],
-  exports: [HeaderComponent, RecordarContrasenaComponent, GoogleButtonComponent, BotonComponent],
+  declarations: [
+    HeaderComponent,
+    RecordarContrasenaComponent,
+    GoogleButtonComponent,
+    BotonComponent,
+    ApiRestComponent,
+  ],
+  exports: [
+    HeaderComponent,
+    RecordarContrasenaComponent,
+    GoogleButtonComponent,
+    BotonComponent,
+    ApiRestComponent,
+  ],
   imports: [
     CommonModule,
     IonicModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterLinkWithHref,
+    RouterLinkWithHref,    
+    MatToolbarModule,
+    MatList,
+    MatListItem,
+    MatCard, 
+    MatCardHeader, 
+    MatCardTitle
   ],
 })
 export class SharedModule {}

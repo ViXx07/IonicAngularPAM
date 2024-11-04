@@ -12,6 +12,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment.prod';
 import { SharedModule } from './components/shared/shared.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -23,6 +25,7 @@ import { SharedModule } from './components/shared/shared.module';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     SharedModule,
+    HttpClientModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

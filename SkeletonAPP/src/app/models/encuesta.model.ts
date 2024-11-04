@@ -1,5 +1,5 @@
 export interface Encuesta {
-    pregunta: string;
-    idEmpresa: string;
-  }
-  
+  id: string;
+  pregunta: string;
+  idEmpresa: string;
+}

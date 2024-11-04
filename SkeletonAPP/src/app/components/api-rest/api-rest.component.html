@@ -1,0 +1,61 @@
+<ion-content>
+  <mat-toolbar color="primary">
+    <h2>Lista de usuarios</h2>
+  </mat-toolbar>
+
+  <form [formGroup]="form">
+    <!--Correo-->
+    <ion-input
+      formControlName="email"
+      label="Ingrese su correo: "
+      labelPlacement="stacked"
+      minlength="3"
+      maxlength="25"
+      errorText="Correo inválido."
+      helperText="Formato Email(@ y .)"
+    ></ion-input>
+    <!--Contraseña-->
+    <ion-input
+      formControlName="password"
+      label="Ingrese la contraseña:"
+      labelPlacement="stacked"
+      type="password"
+      maxlength="10"
+      errorText="Contraseña inválida."
+      helperText="Largo 4"
+    ></ion-input>
+    <!--Submit-->
+    <div *ngIf="editUser; else addingUser">
+      <ion-button
+        color="dark"
+        shape="round"
+        fill="outline"
+        (click)="saveUser()"
+        [disabled]="!form.valid"
+        >Modificar usuario</ion-button>
+    </div>
+
+    <ng-template #addingUser>
+      <ion-button
+        color="dark"
+        shape="round"
+        fill="outline"
+        (click)="addUser()"
+        [disabled]="!form.valid"
+        >Registrar usuario</ion-button>
+    </ng-template>
+  </form>
+  
+  <mat-list>
+    <mat-list-item *ngFor="let user of users">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ user.email}}</mat-card-title>
+          <p>{{user.uid}}</p>
+          <button (click)="updateUser(user)">Actualizar</button>
+          <button (click)="deleteUser(user.uid)">Eliminar</button>
+        </mat-card-header>
+      </mat-card>
+    </mat-list-item>
+  </mat-list>
+</ion-content>
