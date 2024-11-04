@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './services/authGuard/auth.guard';
-import { noAuthGuard } from './services/noAuthGuard/no-auth.guard';
+import { AuthGuard } from './services/guards/authGuard/auth.guard';
+import { noAuthGuard } from './services/guards/noAuthGuard/no-auth.guard';
+import { clienteGuard } from './services/guards/clienteGuard/cliente-guard.guard';
+import { adminSisGuard } from './services/guards/adminSisGuard/admin-sis-guard.guard';
+import { adminEmpGuard } from './services/guards/adminEmpGuard/admin-emp-guard.guard';
 
 const routes: Routes = [
   {
@@ -9,7 +12,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
     title: 'QuéOpinas?',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, clienteGuard],
   },
   {
     path: 'login', //Todos
@@ -29,7 +32,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/opina/opina.module').then((m) => m.OpinaPageModule),
     title: 'QuéOpinas?',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, clienteGuard],
   },
   {
     path: 'admin', //Admin sistema
@@ -38,7 +41,7 @@ const routes: Routes = [
         (m) => m.AdminSysPageModule
       ),
     title: 'QuéOpinas?',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, adminSisGuard],
   },
   {
     path: 'codigo', //Cliente
@@ -47,7 +50,7 @@ const routes: Routes = [
         (m) => m.CodigoEncuestaPageModule
       ),
     title: 'QuéOpinas?',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, clienteGuard],
   },
   {
     path: 'contacto',
@@ -59,7 +62,7 @@ const routes: Routes = [
     path: 'admin-empresa',
     loadChildren: () => import('./pages/admin-empresa/admin-empresa.module').then( m => m.AdminEmpresaPageModule),
     title: 'QueOpinas?',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, adminEmpGuard],
   },
   {
     path: '**',
