@@ -11,6 +11,7 @@ import { User } from 'src/app/models/user.model';
 import { Subscription } from 'rxjs';
 import { where } from '@angular/fire/firestore';
 import { ApiRestService } from 'src/app/services/restApi/api-rest.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin-sistema',
@@ -18,12 +19,13 @@ import { ApiRestService } from 'src/app/services/restApi/api-rest.service';
   styleUrls: ['./admin-sistema.page.scss'],
 })
 export class AdminSistemaPage implements OnInit {
-  empresas: any= [];
+  empresas: any = [];
   admins: User[] = [];
   private subscriptions: Subscription[] = [];
   private suscripcion: Subscription;
 
   loadingData: boolean = true;
+  platform = inject(Platform);
   utils = inject(UtilsService);
   firebase = inject(FirebaseConfigService);
   api = inject(ApiRestService);
@@ -84,10 +86,20 @@ export class AdminSistemaPage implements OnInit {
 
   //Consulta a la api:
   getEmpresas() {
-    this.suscripcion = this.api.getEmpresas().subscribe( (data) =>{
-      this.empresas = data;
-    });
-    
+    if (this.platform.is('capacitor')) {
+      let path = 'empresas';
+
+      let sub = this.firebase.getCollectionData(path).subscribe({
+        next: (res: any) => {
+          this.empresas = res;
+          sub.unsubscribe();
+        },
+      });
+    } else {
+      this.suscripcion = this.api.getEmpresas().subscribe((data) => {
+        this.empresas = data;
+      });
+    }
   }
 
   getAdmins() {
@@ -116,48 +128,52 @@ export class AdminSistemaPage implements OnInit {
       message: '¿Quieres eliminar esta empresa?',
       buttons: [
         {
-          text: 'Cancelar'
+          text: 'Cancelar',
         },
         {
           text: 'Eliminar',
           handler: () => {
             this.eliminarEmpresa(empresa);
             //Eliminación en la api.
-            this.api.deleteEmpresa(empresa.id).subscribe((resultado)=>{
+            this.api.deleteEmpresa(empresa.id).subscribe((resultado) => {
               console.log('Empresa eliminada');
               this.getEmpresas();
             });
-          }
-        }
-      ]
-    })
+          },
+        },
+      ],
+    });
   }
 
   async eliminarEmpresa(empresa: Empresa) {
-    let path = `empresas/${empresa.id}`
+    let path = `empresas/${empresa.id}`;
 
     const loading = await this.utils.loading();
     await loading.present();
 
-    this.firebase.deleteDocument(path).then(async res =>{
-      this.utils.presentToast({
-        message: 'Empresa eliminada',
-        duration: 1500,
-        color: 'success',
-        position: 'middle',
-        icon: 'checkmark-circle-outline'
+    this.firebase
+      .deleteDocument(path)
+      .then(async (res) => {
+        this.utils.presentToast({
+          message: 'Empresa eliminada',
+          duration: 1500,
+          color: 'success',
+          position: 'middle',
+          icon: 'checkmark-circle-outline',
+        });
       })
-    }).catch(error => {
-      console.log(error);
-      this.utils.presentToast({
-        message: 'Error al eliminar la empresa',
-        duration: 1500,
-        color: 'danger',
-        position: 'middle',
-        icon: 'alert-circle-outline'
+      .catch((error) => {
+        console.log(error);
+        this.utils.presentToast({
+          message: 'Error al eliminar la empresa',
+          duration: 1500,
+          color: 'danger',
+          position: 'middle',
+          icon: 'alert-circle-outline',
+        });
       })
-    }).finally(() => {
-      loading.dismiss();
-    })
+      .finally(() => {
+        loading.dismiss();
+      });
   }
 }
