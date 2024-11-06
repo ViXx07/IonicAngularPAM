@@ -1,5 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Empresa } from 'src/app/models/empresa.model';
 import { Encuesta } from 'src/app/models/encuesta.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -11,6 +12,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 })
 export class ModificarEncuestaComponent implements OnInit {
   @Input() encuesta: Encuesta;
+  @Input() empresa: Empresa;
 
   modificarEncuesta = new FormGroup({
     pregunta: new FormControl('', Validators.required),

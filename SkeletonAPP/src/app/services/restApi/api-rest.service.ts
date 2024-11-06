@@ -27,7 +27,7 @@ export class ApiRestService {
     return this.httpClient.put<Empresa>(`${this.apiUrl}/${empresa.id}`, empresa);
   }
 
-  // Eliminar una empresa por uid:
+  // Eliminar una empresa por su id:
   deleteEmpresa(id: string): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }

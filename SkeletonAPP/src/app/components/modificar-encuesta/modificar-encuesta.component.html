@@ -11,10 +11,16 @@
       ></ion-icon>
     </ion-button>
   </ion-item>
-  <!--Logo-->
-  <ion-item>
-    <img class="logo" alt="..." src="assets/logo.png" />
+  <!--logo-->
+  <ion-item *ngIf="empresa.logo;else sinLogo">
+    <img class="logo" alt="..." [src]="empresa.logo" />
   </ion-item>
+  <ng-template #sinLogo>
+    <ion-item>
+      <img class="logo" src="../../../assets/placeholder.png">
+    </ion-item>
+  <!--Encuesta-->
+  </ng-template>
   <form [formGroup]="modificarEncuesta">
 
     <ion-item>

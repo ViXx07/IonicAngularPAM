@@ -51,7 +51,6 @@
       </ion-list>
     </ion-card>
 
-
   <ion-item *ngIf="encuesta">
     <ion-grid>
       <ion-row class="ion-justify-content-center">
@@ -60,7 +59,7 @@
             color="primary"
             shape="round"
             fill="outline"
-            (click)="modificarEncuesta(encuesta)"
+            (click)="modificarEncuesta(encuesta, empresa)"
             >Modificar Encuesta</ion-button
           >
         </ion-col>

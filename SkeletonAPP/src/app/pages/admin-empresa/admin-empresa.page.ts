@@ -43,10 +43,10 @@ export class AdminEmpresaPage implements OnInit {
     }
   }
 
-  modificarEncuesta(encuesta: Encuesta) {
+  modificarEncuesta(encuesta: Encuesta, empresa: Empresa) {
     this.utils.presentarModal({
       component: ModificarEncuestaComponent,
-      componentProps: { encuesta },
+      componentProps: { encuesta, empresa},
     });
   }
 

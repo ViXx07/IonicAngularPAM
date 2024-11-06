@@ -21,6 +21,7 @@ export class AdminSistemaPage implements OnInit {
   empresas: any= [];
   admins: User[] = [];
   private subscriptions: Subscription[] = [];
+  private suscripcion: Subscription;
 
   loadingData: boolean = true;
   utils = inject(UtilsService);
@@ -83,9 +84,10 @@ export class AdminSistemaPage implements OnInit {
 
   //Consulta a la api:
   getEmpresas() {
-    this.api.getEmpresas().subscribe( (data) =>{
+    this.suscripcion = this.api.getEmpresas().subscribe( (data) =>{
       this.empresas = data;
     });
+    
   }
 
   getAdmins() {
@@ -120,6 +122,7 @@ export class AdminSistemaPage implements OnInit {
           text: 'Eliminar',
           handler: () => {
             this.eliminarEmpresa(empresa);
+            //Eliminación en la api.
             this.api.deleteEmpresa(empresa.id).subscribe((resultado)=>{
               console.log('Empresa eliminada');
               this.getEmpresas();
