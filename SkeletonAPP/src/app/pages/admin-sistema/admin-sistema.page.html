@@ -29,9 +29,14 @@
       <ion-title>Empresas</ion-title>
       <ion-item-sliding *ngFor="let e of empresas">
         <ion-item lines="none">
-          <ion-avatar slot="start">
+          <ion-avatar slot="start" *ngIf="e.logo;else sinImagen">
             <img [src]="e.logo" />
           </ion-avatar>
+          <ng-template #sinImagen>
+            <ion-avatar slot="start">
+              <img src="../../../assets/placeholder.png" />
+            </ion-avatar>
+          </ng-template>
           <ion-label>{{e.nombreEmpresa}}</ion-label>
         </ion-item>
 
@@ -47,20 +52,22 @@
         </ion-item-options>
       </ion-item-sliding>
 
-      <ion-title>Administradores</ion-title>
-      <ion-item-sliding *ngFor="let a of admins">
-        <ion-item lines="none">
-          <ion-icon name="person-outline"></ion-icon>
-          <ion-label>{{a.email}}</ion-label>
-        </ion-item>
+      <ion-list>
+        <ion-title>Administradores</ion-title>
+        <ion-item-sliding *ngFor="let a of admins">
+          <ion-item lines="none">
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-label>{{a.email}}</ion-label>
+          </ion-item>
 
-        <ion-item-options>
-          <ion-item-option color="dark" (click)="mostrarModificarAdmin(a)">
-            <ion-icon slot="start" name="create-outline"></ion-icon>
-            Modificar
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
+          <ion-item-options>
+            <ion-item-option color="dark" (click)="mostrarModificarAdmin(a)">
+              <ion-icon slot="start" name="create-outline"></ion-icon>
+              Modificar
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
     </ion-list>
   </div>
 </ion-content>

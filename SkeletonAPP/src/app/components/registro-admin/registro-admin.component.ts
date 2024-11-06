@@ -47,7 +47,7 @@ export class RegistroAdminComponent {
             position: 'middle',
             icon: 'person-circle-outline',
           });
-          this.cerrarModal();
+          this.utils.cerrarModal({success: true});
         })
         .catch((error) => {
           console.log(error);

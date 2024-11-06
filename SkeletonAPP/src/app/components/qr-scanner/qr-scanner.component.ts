@@ -10,13 +10,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import {
-  Barcode,
   BarcodeFormat,
   BarcodeScanner,
   LensFacing,
   StartScanOptions,
 } from '@capacitor-mlkit/barcode-scanning';
-import { ModalController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { Torch } from '@capawesome/capacitor-torch';
 

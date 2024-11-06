@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Encuesta } from 'src/app/models/encuesta.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
+import { ApiRestService } from 'src/app/services/restApi/api-rest.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class RegistroEmpresaComponent {
   subirImagen = false;
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
+  api = inject(ApiRestService);
 
   usuario = {} as User;
 
@@ -45,11 +47,20 @@ export class RegistroEmpresaComponent {
         .addDocument(path, this.registroEmpresa.value)
         .then(async (empresa) => {
           let idEmp = empresa.id;
+          // Registro en la api:
+          let empresaRegistrada = {
+            id: idEmp,
+            nombreEmpresa: this.registroEmpresa.controls.nombreEmpresa.value,
+            logo: this.registroEmpresa.controls.logo.value,
+          };
+          this.api.createEmpresa(empresaRegistrada).subscribe((resultado) => {
+            console.log(resultado);
+          });
+          // Registro de la encuesta base en firebase:
           const encuesta = await this.firebase.addDocument('encuestas', {
             pregunta: '',
-            idEmpresa: idEmp
-          })
-          console.log('Added document with ID: ', encuesta.id);
+            idEmpresa: idEmp,
+          });
           this.registroEmpresa.reset();
           this.utils.routerlink('admin');
           this.utils.presentToast({
@@ -60,7 +71,7 @@ export class RegistroEmpresaComponent {
             icon: 'checkmark-circle-outline',
           });
 
-          this.cerrarModal();
+          this.utils.cerrarModal({ success: true });
         })
         .catch((error) => {
           console.log(error);

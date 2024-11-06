@@ -19,8 +19,7 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
     IonicModule,
     ReactiveFormsModule,
     SplashPageRoutingModule,
-    SharedModule
   ],
-  declarations: [SplashPage, LoginPage, RegistroClienteComponent]
+  declarations: [SplashPage, LoginPage, RegistroClienteComponent,]
 })
 export class SplashPageModule {}

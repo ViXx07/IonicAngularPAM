@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user.model';
+import { Empresa } from 'src/app/models/empresa.model';
 
 
 @Injectable({
@@ -10,25 +10,25 @@ import { User } from 'src/app/models/user.model';
 export class ApiRestService {
 
   httpClient = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/users';
+  private apiUrl = 'http://localhost:3000/empresas';
   
-  // Obtener todos los usuarios
-  getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.apiUrl);
+  // Obtener todos las empresas
+  getEmpresas(): Observable<Empresa[]> {
+    return this.httpClient.get<Empresa[]>(this.apiUrl);
   }
 
-  // Crear un nuevo usuariO:
-  createUser(user: User): Observable<User> {
-    return this.httpClient.post<User>(this.apiUrl, user);
+  // Crear una nueva empresa:
+  createEmpresa(empresa: Empresa): Observable<Empresa> {
+    return this.httpClient.post<Empresa>(this.apiUrl, empresa);
   }
 
-  // Actualizar usuario:
-  updateUser(user: User): Observable<User> {
-    return this.httpClient.put<User>(`${this.apiUrl}/${user.uid}`, user);
+  // Actualizar empresa:
+  updateEmpresa(empresa: any): Observable<any> {
+    return this.httpClient.put<Empresa>(`${this.apiUrl}/${empresa.id}`, empresa);
   }
 
-  // Eliminar un usuario por uid:
-  deleteUser(uid: string): Observable<void> {
-    return this.httpClient.delete<void>(`${this.apiUrl}/${uid}`);
+  // Eliminar una empresa por uid:
+  deleteEmpresa(id: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

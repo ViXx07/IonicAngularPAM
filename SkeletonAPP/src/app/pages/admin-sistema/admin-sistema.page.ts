@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
 import { Subscription } from 'rxjs';
 import { where } from '@angular/fire/firestore';
+import { ApiRestService } from 'src/app/services/restApi/api-rest.service';
 
 @Component({
   selector: 'app-admin-sistema',
@@ -17,13 +18,14 @@ import { where } from '@angular/fire/firestore';
   styleUrls: ['./admin-sistema.page.scss'],
 })
 export class AdminSistemaPage implements OnInit {
-  empresas: Empresa[] = [];
+  empresas: any= [];
   admins: User[] = [];
   private subscriptions: Subscription[] = [];
 
   loadingData: boolean = true;
   utils = inject(UtilsService);
   firebase = inject(FirebaseConfigService);
+  api = inject(ApiRestService);
   form = new FormGroup({
     empresaSeleccionada: new FormControl('', Validators.required),
   });
@@ -45,16 +47,20 @@ export class AdminSistemaPage implements OnInit {
     }, 1000); // 1000 milisegundos = 1 segundos
   }
 
-  mostrarRegistroAdmin() {
-    this.utils.presentarModal({
+  async mostrarRegistroAdmin() {
+    let success = await this.utils.presentarModal({
       component: RegistroAdminComponent,
     });
+
+    if (success) this.getAdmins();
   }
 
-  mostrarRegistroEmpresa() {
-    this.utils.presentarModal({
+  async mostrarRegistroEmpresa() {
+    let success = await this.utils.presentarModal({
       component: RegistroEmpresaComponent,
     });
+
+    if (success) this.getEmpresas();
   }
 
   async mostrarModificarEmpresa(empresa: Empresa) {
@@ -75,14 +81,10 @@ export class AdminSistemaPage implements OnInit {
     if (success) this.getEmpresas();
   }
 
+  //Consulta a la api:
   getEmpresas() {
-    let path = 'empresas';
-
-    let sub = this.firebase.getCollectionData(path).subscribe({
-      next: (res: any) => {
-        this.empresas = res;
-        sub.unsubscribe();
-      },
+    this.api.getEmpresas().subscribe( (data) =>{
+      this.empresas = data;
     });
   }
 
@@ -118,6 +120,10 @@ export class AdminSistemaPage implements OnInit {
           text: 'Eliminar',
           handler: () => {
             this.eliminarEmpresa(empresa);
+            this.api.deleteEmpresa(empresa.id).subscribe((resultado)=>{
+              console.log('Empresa eliminada');
+              this.getEmpresas();
+            });
           }
         }
       ]
