@@ -11,13 +11,6 @@
             (click)="mostrarRegistroAdmin()"
           ></app-boton>
         </ion-col>
-        <ion-col col="5" size="default">
-          <app-boton
-            texto="Registrar empresa"
-            icono="business-outline"
-            (click)="mostrarRegistroEmpresa()"
-          ></app-boton>
-        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-item>
@@ -26,56 +19,28 @@
 
   <div *ngIf="!loadingData">
     <ion-list>
-      <ion-title>Empresas</ion-title>
-      <ion-item-sliding *ngFor="let e of empresas">
+      <ion-title>Administradores</ion-title>
+      <ion-item-sliding *ngFor="let a of admins">
         <ion-item lines="none">
-          <ion-avatar slot="start" *ngIf="e.logo;else sinImagen">
-            <img [src]="e.logo" />
-          </ion-avatar>
-          <ng-template #sinImagen>
-            <ion-avatar slot="start">
-              <img src="../../../assets/placeholder.png" />
-            </ion-avatar>
-          </ng-template>
-          <ion-label>{{e.nombreEmpresa}}</ion-label>
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>{{a.email}}</ion-label>
           <ion-label color="medium" slot="end">
             Desliza
-            <ion-icon color="medium" slot="end" name="chevron-back-outline"></ion-icon>
+            <ion-icon
+              color="medium"
+              slot="end"
+              name="chevron-back-outline"
+            ></ion-icon>
           </ion-label>
         </ion-item>
 
         <ion-item-options>
-          <ion-item-option color="success" (click)="mostrarModificarEmpresa(e)">
+          <ion-item-option color="success" (click)="mostrarModificarAdmin(a)">
             <ion-icon slot="start" name="create-outline"></ion-icon>
             Modificar
           </ion-item-option>
-          <ion-item-option color="danger" (click)="confirmarEliminarEmpresa(e)">
-            <ion-icon slot="start" name="trash-outline"></ion-icon>
-            Eliminar
-          </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
-
-      <ion-list>
-        <ion-title>Administradores</ion-title>
-        <ion-item-sliding *ngFor="let a of admins">
-          <ion-item lines="none">
-            <ion-icon name="person-outline"></ion-icon>
-            <ion-label>{{a.email}}</ion-label>
-            <ion-label color="medium" slot="end">
-              Desliza
-              <ion-icon color="medium" slot="end" name="chevron-back-outline"></ion-icon>
-            </ion-label>
-          </ion-item>
-
-          <ion-item-options>
-            <ion-item-option color="success" (click)="mostrarModificarAdmin(a)">
-              <ion-icon slot="start" name="create-outline"></ion-icon>
-              Modificar
-            </ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
     </ion-list>
   </div>
 </ion-content>

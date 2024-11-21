@@ -1,58 +1,49 @@
 <ion-content>
-  <!--Titulo-->
-  <ion-item class="ion-text-center">
-    <ion-title>Registro Empresa</ion-title>
-    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
-      <ion-icon
-        color="danger"
-        slot="icon-only"
-        size="large"
-        name="close-circle-outline"
-      ></ion-icon>
-    </ion-button>
-  </ion-item>
-  <!--Logo-->
-  <ion-item>
-    <img class="logo" alt="..." src="assets/logo.png" />
-  </ion-item>
-  <form [formGroup]="registroEmpresa">
-    <!--Empresa-->
+  <app-header titulo="Registra tu empresa"></app-header>
+  <ion-card>
+    <!--Logo-->
     <ion-item>
-      <ion-input
-        formControlName="nombreEmpresa"
-        label="Ingrese el nombre de la empresa:"
-        labelPlacement="stacked"
-        type="text"
-        minlength="1"
-        errorText="Nombre inválido."
-        helperText="---"
-      ></ion-input>
+      <img class="logo" alt="..." src="assets/logo.png" />
     </ion-item>
+    <form [formGroup]="registroEmpresa">
+      <!--Empresa-->
+      <ion-item>
+        <ion-input
+          formControlName="nombreEmpresa"
+          label="Ingrese el nombre de la empresa:"
+          labelPlacement="stacked"
+          type="text"
+          minlength="1"
+          errorText="Nombre inválido."
+          helperText="---"
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-avatar *ngIf="registroEmpresa.value.logo">
-        <img [src]="registroEmpresa.value.logo" />
-      </ion-avatar>
-      <ion-button color="dark" shape="round" fill="outline" (click)="logo()"
-        >Sube tu logo</ion-button
-      >
-    </ion-item>
+      <ion-item>
+        <ion-avatar *ngIf="registroEmpresa.value.logo">
+          <img [src]="registroEmpresa.value.logo" />
+        </ion-avatar>
+        <ion-button color="dark" shape="round" fill="outline" (click)="logo()"
+          >Sube tu logo</ion-button
+        >
+      </ion-item>
 
-    <ion-item>
-      <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-col col="4">
-            <ion-button
-              color="dark"
-              shape="round"
-              fill="outline"
-              (click)="submit()"
-              [disabled]="!registroEmpresa.valid"
-              >Registrar</ion-button
-            >
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-  </form>
+      <ion-item>
+        <ion-grid>
+          <ion-row class="ion-text-center">
+            <ion-col col="4">
+              <ion-button
+                color="dark"
+                shape="round"
+                fill="outline"
+                (click)="submit()"
+                [disabled]="!registroEmpresa.valid"
+                >Registrar</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </form>
+  </ion-card>
 </ion-content>

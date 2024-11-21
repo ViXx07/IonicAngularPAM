@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminSistemaPage } from './admin-sistema.page';
 import { ContactoPage } from '../contacto/contacto.page';
+import { EmpresasComponent } from '../empresas/empresas.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,11 @@ const routes: Routes = [
   {
     path: 'contacto',
     component: ContactoPage,
-  }
+  },
+  {
+    path:  'empresas',
+    component: EmpresasComponent
+  },
 ];
 
 @NgModule({

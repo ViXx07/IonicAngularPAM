@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Encuesta } from 'src/app/models/encuesta.model';
+import { Estado } from 'src/app/models/estados.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { ApiRestService } from 'src/app/services/restApi/api-rest.service';
@@ -15,6 +16,7 @@ export class RegistroEmpresaComponent {
   registroEmpresa = new FormGroup({
     nombreEmpresa: new FormControl('', Validators.required),
     logo: new FormControl(''),
+    estado: new FormControl(),
   });
   subirImagen = false;
   firebase = inject(FirebaseConfigService);
@@ -25,8 +27,14 @@ export class RegistroEmpresaComponent {
 
   encuestaBase: Encuesta;
 
+  estado: Estado = Estado.espera;
+
+
   ngOnInit() {
     this.usuario = this.utils.getFromLocalStorage('user');
+    if (this.utils.getUserRole() === 3) {
+      this.estado = Estado.aprobado
+    }
   }
   async submit() {
     if (this.registroEmpresa.valid) {
@@ -41,6 +49,8 @@ export class RegistroEmpresaComponent {
         this.registroEmpresa.controls.logo.setValue(imageUrl);
       }
 
+      this.registroEmpresa.controls.estado.setValue(this.estado);
+
       const loading = await this.utils.loading();
       await loading.present();
       this.firebase
@@ -52,6 +62,7 @@ export class RegistroEmpresaComponent {
             id: idEmp,
             nombreEmpresa: this.registroEmpresa.controls.nombreEmpresa.value,
             logo: this.registroEmpresa.controls.logo.value,
+            estado: this.estado,
           };
           this.api.createEmpresa(empresaRegistrada).subscribe((resultado) => {
             console.log(resultado);

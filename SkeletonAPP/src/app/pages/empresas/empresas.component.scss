@@ -1,0 +1,37 @@
+ion-avatar {
+  height: 6vh;
+  width: 6vh;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse; /* Para evitar el espacio entre bordes */
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc; /* Agrega un borde gris */
+  padding-left: 1vw;
+  padding-right: 1vw; /* Añade relleno a las celdas */
+  text-align: center; /* Alineación del texto a la izquierda */
+}
+
+.table td ion-avatar {
+    display: block; /* Asegura que el ion-avatar se trate como un bloque */
+    margin: 0 auto; /* Centra el avatar en su celda */
+  }
+
+/* Estilo para las filas */
+.table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Color de fondo para las filas pares */
+}
+
+.table tr:hover {
+  background-color: #f1f1f1; /* Color de fondo cuando el cursor pasa sobre una fila */
+}
+
+/* Estilo para las cabeceras */
+.table th {
+  background-color: #030303; /* Fondo gris claro */
+  font-weight: bold; /* Negrita en las cabeceras */
+}

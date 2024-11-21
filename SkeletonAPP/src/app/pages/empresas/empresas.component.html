@@ -1,0 +1,57 @@
+<ion-content>
+  <app-header titulo="Empresas"></app-header>
+
+  <ion-card>
+    <div *ngIf="loadingData">Cargando datos...</div>
+
+    <div *ngIf="!loadingData">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Logo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let e of empresas">
+          <tr class="row">
+            <td class="col">
+              <ion-avatar *ngIf="e.logo; else sinImagen">
+                <img [src]="e.logo" />
+              </ion-avatar>
+              <ng-template #sinImagen>
+                <ion-avatar slot="start">
+                  <img src="../../../assets/placeholder.png" />
+                </ion-avatar>
+              </ng-template>
+            </td>
+
+            <td class="col">
+              {{ e.nombreEmpresa }}
+            </td>
+
+            <td class="col">
+              {{ e.estado }}
+            </td>
+
+            <td class="col">
+              <ion-button color="warning" (click)="mostrarModificarEmpresa(e)"
+                >Modificar</ion-button
+              >
+              <ion-button color="danger" (click)="confirmarEliminarEmpresa(e)"
+                >Eliminar</ion-button
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-boton
+      texto="Registrar empresa"
+      icono="business-outline"
+      (click)="mostrarRegistroEmpresa()"
+    ></app-boton>
+  </ion-card>
+</ion-content>

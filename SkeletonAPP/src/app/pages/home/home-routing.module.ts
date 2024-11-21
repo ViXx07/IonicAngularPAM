@@ -4,6 +4,7 @@ import { HomePage } from './home.page';
 import { OpinaPage } from '../opina/opina.page';
 import { CodigoEncuestaPage } from '../codigo-encuesta/codigo-encuesta.page';
 import { ContactoPage } from '../contacto/contacto.page';
+import { RegistroEmpresaComponent } from 'src/app/components/registro-empresa/registro-empresa.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,11 @@ const routes: Routes = [
   {
     path: 'contacto',
     component: ContactoPage,
-  }
+  },
+  {
+    path: 'registroEmpresa',
+    component: RegistroEmpresaComponent
+  },
 ];
 
 @NgModule({

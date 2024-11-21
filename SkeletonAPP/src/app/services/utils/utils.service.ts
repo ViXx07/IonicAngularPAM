@@ -129,6 +129,11 @@ export class UtilsService {
             url: '/home/contacto',
             icono: 'chatbubbles-outline',
           },
+          {
+            titulo: 'Registra tu empresa',
+            url: '/home/registroEmpresa',
+            icono: 'business-outline'
+          }
         ]);
       }
       case 2: {
@@ -153,6 +158,11 @@ export class UtilsService {
             url: '/admin/contacto',
             icono: 'chatbubbles-outline',
           },
+          {
+            titulo: 'Empresas',
+            url: '/admin/empresas',
+            icono: 'business-outline'
+          }
         ]);
       }
       default: {
