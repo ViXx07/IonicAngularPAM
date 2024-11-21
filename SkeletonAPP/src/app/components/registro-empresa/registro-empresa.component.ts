@@ -73,7 +73,7 @@ export class RegistroEmpresaComponent {
             idEmpresa: idEmp,
           });
           this.registroEmpresa.reset();
-          this.utils.routerlink('admin');
+          this.utils.routerlink('admin/empresas');
           this.utils.presentToast({
             message: 'Empresa registrada correctamente',
             duration: 2500,

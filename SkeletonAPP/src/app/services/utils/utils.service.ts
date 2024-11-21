@@ -159,8 +159,13 @@ export class UtilsService {
             icono: 'chatbubbles-outline',
           },
           {
-            titulo: 'Empresas',
+            titulo: 'Lista de empresas',
             url: '/admin/empresas',
+            icono: 'business-outline'
+          },
+          {
+            titulo: 'Registro de empresas',
+            url: 'admin/registroEmpresas',
             icono: 'business-outline'
           }
         ]);

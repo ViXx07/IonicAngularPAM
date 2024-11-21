@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminSistemaPage } from './admin-sistema.page';
 import { ContactoPage } from '../contacto/contacto.page';
 import { EmpresasComponent } from '../empresas/empresas.component';
+import { RegistroEmpresaComponent } from 'src/app/components/registro-empresa/registro-empresa.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path:  'empresas',
     component: EmpresasComponent
+  },
+  {
+    path: 'registroEmpresas',
+    component: RegistroEmpresaComponent
   },
 ];
 

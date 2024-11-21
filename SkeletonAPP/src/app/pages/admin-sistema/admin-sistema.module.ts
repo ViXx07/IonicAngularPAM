@@ -28,7 +28,7 @@ import { EmpresasComponent } from '../empresas/empresas.component';
     RegistroAdminComponent,
     ModificarEmpresaComponent,
     ModificarAdminComponent,
-    EmpresasComponent
+    EmpresasComponent,
   ],
 })
 export class AdminSysPageModule {}
