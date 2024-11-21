@@ -6,11 +6,12 @@ ion-avatar {
 .table {
   width: 100%;
   border-collapse: collapse; /* Para evitar el espacio entre bordes */
+  color: black;
 }
 
 .table th,
 .table td {
-  border: 1px solid #ccc; /* Agrega un borde gris */
+  border: 1px solid #f7f4af; /* Agrega un borde gris */
   padding-left: 1vw;
   padding-right: 1vw; /* Añade relleno a las celdas */
   text-align: center; /* Alineación del texto a la izquierda */
@@ -21,10 +22,15 @@ ion-avatar {
     margin: 0 auto; /* Centra el avatar en su celda */
   }
 
+.table tr{
+    background-color: #fdd775;
+}
+
 /* Estilo para las filas */
 .table tr:nth-child(even) {
-  background-color: #f9f9f9; /* Color de fondo para las filas pares */
+  background-color: #fadc81; /* Color de fondo para las filas pares */
 }
+
 
 .table tr:hover {
   background-color: #f1f1f1; /* Color de fondo cuando el cursor pasa sobre una fila */
@@ -32,6 +38,6 @@ ion-avatar {
 
 /* Estilo para las cabeceras */
 .table th {
-  background-color: #030303; /* Fondo gris claro */
+  background-color: #ff9b32; /* Fondo gris claro */
   font-weight: bold; /* Negrita en las cabeceras */
 }

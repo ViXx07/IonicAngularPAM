@@ -15,8 +15,8 @@
           </tr>
         </thead>
 
-        <tbody *ngFor="let e of empresas">
-          <tr class="row">
+        <tbody >
+          <tr class="row" *ngFor="let e of empresas">
             <td class="col">
               <ion-avatar *ngIf="e.logo; else sinImagen">
                 <img [src]="e.logo" />
