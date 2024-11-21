@@ -11,3 +11,4 @@ TO DO:
 6.- Login Google mobile.
 7.- Interfaz admin de sistema solo web. => Página de redirección mobile, en caso de login con admin sistema.
 8.- Implementación de retry policy y circuit-breaker.
+9.- API gateway?
