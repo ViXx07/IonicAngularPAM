@@ -14,6 +14,7 @@ export class ModificarEmpresaComponent {
   modificarEmpresa = new FormGroup({
     nombreEmpresa: new FormControl('', Validators.required),
     logo: new FormControl(''),
+    estado: new FormControl(),
   });
 
   firebase = inject(FirebaseConfigService);
@@ -23,16 +24,16 @@ export class ModificarEmpresaComponent {
   @Input() empresa: Empresa;
 
   ionViewWillEnter() {
-    this.modificarEmpresa.controls.nombreEmpresa.setValue(
-      this.empresa.nombreEmpresa
-    );
+    this.modificarEmpresa.controls.nombreEmpresa.setValue(this.empresa.nombreEmpresa);
     this.modificarEmpresa.controls.logo.setValue(this.empresa.logo);
+    this.modificarEmpresa.controls.estado.setValue(this.empresa.estado);
   }
 
   async submit() {
     if (
       this.modificarEmpresa.value.logo !== this.empresa.logo ||
-      this.modificarEmpresa.value.nombreEmpresa !== this.empresa.nombreEmpresa
+      this.modificarEmpresa.value.nombreEmpresa !== this.empresa.nombreEmpresa ||
+      this.modificarEmpresa.value.estado !== this.empresa.estado
     ) {
       let path = `empresas/${this.empresa.id}`;
 
@@ -45,6 +46,9 @@ export class ModificarEmpresaComponent {
         let imageUrl = await this.firebase.subirImagen(imagePath, dataUrl);
         this.modificarEmpresa.controls.logo.setValue(imageUrl);
       }
+
+      //this.modificarEmpresa.controls.estado.setValue(Number(this.modificarEmpresa.controls.estado));
+
       this.firebase
         .updateDocument(path, this.modificarEmpresa.value)
         .then(async (res) => {
@@ -59,7 +63,7 @@ export class ModificarEmpresaComponent {
             
           });
           this.modificarEmpresa.reset;
-          this.utils.routerlink('admin');
+          this.utils.routerlink('admin/empresas');
           this.utils.presentToast({
             message: 'Empresa modificada correctamente',
             duration: 2500,
