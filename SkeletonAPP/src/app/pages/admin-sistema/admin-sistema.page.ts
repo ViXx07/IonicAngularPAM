@@ -20,7 +20,6 @@ export class AdminSistemaPage implements OnInit {
   admins: User[] = [];
   private subscriptions: Subscription[] = [];
 
-
   loadingData: boolean = true;
   platform = inject(Platform);
   utils = inject(UtilsService);

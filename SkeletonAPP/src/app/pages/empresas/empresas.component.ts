@@ -1,5 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { where } from '@angular/fire/firestore';
 import { Platform } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { ModificarEmpresaComponent } from 'src/app/components/modificar-empresa/modificar-empresa.component';
 import { RegistroEmpresaComponent } from 'src/app/components/registro-empresa/registro-empresa.component';
 import { Empresa } from 'src/app/models/empresa.model';
@@ -14,27 +16,20 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 })
 export class EmpresasComponent implements OnInit {
   empresas: any = [];
+  private subscriptions: Subscription[] = [];
+
   loadingData: boolean = true;
   platform = inject(Platform);
   utils = inject(UtilsService);
   firebase = inject(FirebaseConfigService);
   api = inject(ApiRestService);
 
-  async ngOnInit() {
-    const loading = await this.utils.loading();
-    await loading.present();
-
+  ngOnInit() {
     try {
       this.getEmpresas();
     } catch (error) {
       console.error('Error loading data', error);
     }
-
-    // Espera 2 segundos antes de cerrar el loading
-    setTimeout(() => {
-      loading.dismiss();
-      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
-    }, 1000); // 1000 milisegundos = 1 segundos
   }
 
   async mostrarRegistroEmpresa() {
@@ -54,16 +49,92 @@ export class EmpresasComponent implements OnInit {
     if (success) this.getEmpresas();
   }
 
-  //Consulta a la api:
-  getEmpresas() {
+  async getEmpresas() {
+    const loading = await this.utils.loading();
+    await loading.present();
+
     let path = 'empresas';
 
-    let sub = this.firebase.getCollectionData(path).subscribe({
+    const sub = this.firebase.getCollectionData(path).subscribe({
       next: (res: any) => {
         this.empresas = res;
-        sub.unsubscribe();
+      },
+      error: (err) => {
+        console.error('Error fetching admins:', err);
       },
     });
+
+    this.subscriptions.push(sub); // Guarda la suscripción
+    setTimeout(() => {
+      loading.dismiss();
+      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
+    }, 1000);
+  }
+
+  async getEmpresasAprobadas() {
+    const loading = await this.utils.loading();
+    await loading.present();
+
+    let path = 'empresas';
+    let query = where('estado', '==', 0);
+    const sub = this.firebase.getCollectionData(path, query).subscribe({
+      next: (res: any) => {
+        this.empresas = res;
+      },
+      error: (err) => {
+        console.error('Error fetching admins:', err);
+      },
+    });
+
+    this.subscriptions.push(sub); // Guarda la suscripción
+    setTimeout(() => {
+      loading.dismiss();
+      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
+    }, 1000);
+  }
+
+  async getEmpresasEspera() {
+    const loading = await this.utils.loading();
+    await loading.present();
+
+    let path = 'empresas';
+    let query = where('estado', '==', 1);
+    const sub = this.firebase.getCollectionData(path, query).subscribe({
+      next: (res: any) => {
+        this.empresas = res;
+      },
+      error: (err) => {
+        console.error('Error fetching admins:', err);
+      },
+    });
+
+    this.subscriptions.push(sub); // Guarda la suscripción
+    setTimeout(() => {
+      loading.dismiss();
+      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
+    }, 1000);
+  }
+
+  async getEmpresasRechazadas() {
+    const loading = await this.utils.loading();
+    await loading.present();
+
+    let path = 'empresas';
+    let query = where('estado', '==', 2);
+    const sub = this.firebase.getCollectionData(path, query).subscribe({
+      next: (res: any) => {
+        this.empresas = res;
+      },
+      error: (err) => {
+        console.error('Error fetching admins:', err);
+      },
+    });
+
+    this.subscriptions.push(sub); // Guarda la suscripción
+    setTimeout(() => {
+      loading.dismiss();
+      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
+    }, 1000);
   }
 
   async confirmarEliminarEmpresa(empresa: Empresa) {

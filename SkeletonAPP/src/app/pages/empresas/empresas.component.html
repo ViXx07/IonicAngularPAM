@@ -2,6 +2,32 @@
   <app-header titulo="Empresas"></app-header>
 
   <ion-card>
+    <table class="filtros">
+      <thead>
+        <tr>
+          <th scope="col">
+            <ion-button (click)="getEmpresas()" expand="full" color="warning">
+              <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+              Todos</ion-button>
+          </th>
+          <th scope="col">
+            <ion-button (click)="getEmpresasAprobadas()" expand="full" color="warning">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Aprobados</ion-button>
+          </th>
+          <th scope="col">
+            <ion-button (click)="getEmpresasEspera()" expand="full" color="warning">
+              <ion-icon name="ellipsis-horizontal-circle-outline" slot="start"></ion-icon>
+              En espera</ion-button>
+          </th>
+          <th scope="col">
+            <ion-button (click)="getEmpresasRechazadas()" expand="full" color="warning">
+              <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+              Rechazado</ion-button>
+          </th>
+        </tr>
+      </thead>
+    </table>
     <div *ngIf="loadingData">Cargando datos...</div>
 
     <div *ngIf="!loadingData">
@@ -15,7 +41,7 @@
           </tr>
         </thead>
 
-        <tbody >
+        <tbody>
           <tr class="row" *ngFor="let e of empresas">
             <td class="col">
               <ion-avatar *ngIf="e.logo; else sinImagen">
