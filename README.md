@@ -12,3 +12,8 @@ TO DO:
 7.- Interfaz admin de sistema solo web. => Página de redirección mobile, en caso de login con admin sistema.
 8.- Implementación de retry policy y circuit-breaker.
 9.- API gateway?
+
+
+Usuario: usuario@usuario.us 123456
+Admin Empresa: admin@empresa.ad 123456
+Admin Sistema: admin@admin.ad 123456
