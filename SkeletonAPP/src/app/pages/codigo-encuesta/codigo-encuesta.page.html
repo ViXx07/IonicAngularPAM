@@ -25,7 +25,7 @@
             color="primary"
             shape="round"
             fill="outline"
-            [routerLink]="['/home/opina']"
+            (click)="redireccionEncuesta()"
             [disabled]="!codigoForm.valid"
             >Enviar</ion-button
           >

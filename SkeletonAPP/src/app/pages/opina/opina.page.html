@@ -1,10 +1,21 @@
 <ion-content>
-  <app-header titulo="Encuesta"></app-header>
-  <form [formGroup]="encuesta">
+  <ion-item>
+    <ion-title>{{empresa.nombreEmpresa}}</ion-title>
+    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+      <ion-icon
+        color="danger"
+        slot="icon-only"
+        size="large"
+        name="close-circle-outline"
+      ></ion-icon>
+    </ion-button>
+  </ion-item>
+  
+  <form [formGroup]="encuestaForm">
     <ion-list class="ion-text-center">
       <!--Tipo de opinión-->
       <ion-item class="ion-text-center">
-        <ion-label>¿Cómo se siente con respecto a la empresa?: </ion-label>
+        <ion-label>{{encuesta.pregunta}} </ion-label>
       </ion-item>
       <div id="emoji">
         <input
@@ -44,28 +55,31 @@
       </ion-item>
 
       <ion-item>
-        <ion-avatar *ngIf="encuesta.value.evidencia">
-          <img [src]="encuesta.value.evidencia" />
-        </ion-avatar>
-        <ion-button
-          color="primary"
-          shape="round"
-          fill="outline"
-          (click)="evidencia()"
-          >Sube tu evidencia!</ion-button
-        >
-      </ion-item>
+        <div class="botones">
+          <ion-avatar *ngIf="encuestaForm.value.evidencia;else placeholder">
+            <img [src]="encuestaForm.value.evidencia" />
+          </ion-avatar>
+          <ng-template #placeholder>
+            <ion-avatar>
+              <img src="../../../assets/placeholder.png" />
+            </ion-avatar>
+          </ng-template>
+          <ion-button
+            color="primary"
+            shape="round"
+            fill="outline"
+            (click)="evidencia()"
+            >Sube tu evidencia!</ion-button>
+          <ion-button
+            color="warning"
+            shape="round"
+            fill="outline"
+            class="enviar"
+            (click)="submit()"
+            [disabled]="!encuestaForm.valid"
+            >Enviar</ion-button>
+        </div>
 
-      <ion-item>
-        <ion-button
-          color="primary"
-          shape="round"
-          fill="outline"
-          class="enviar"
-          (click)="submit()"
-          [disabled]="!encuesta.valid"
-          >Enviar</ion-button
-        >
       </ion-item>
     </ion-list>
   </form>

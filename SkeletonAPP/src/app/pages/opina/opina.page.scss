@@ -4,12 +4,9 @@ ion-button {
 }
 
 form {
-  width: 80vw;
-  margin-top: 5vh;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  min-height: 60vh;
 }
 
 #emoji {
@@ -47,15 +44,6 @@ ion-item {
   padding-bottom: 3vh;
 }
 
-ion-button {
-  min-width: 25vw;
-  --background: #00446d;
-  color: white;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 ion-text {
   display: block;
   margin-left: auto;
@@ -69,4 +57,10 @@ ion-title {
 
 input{ 
   .text-input{ text-align: center; }
+}
+
+.botones {
+  display: flex;
+  justify-content: space-evenly; /* O space-between, depende del efecto deseado */
+  width: 100%; /* Asegura que ocupen todo el ancho disponible */
 }

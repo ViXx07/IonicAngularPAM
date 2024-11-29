@@ -12,10 +12,6 @@ const routes: Routes = [
     component: HomePage,
   },
   {
-    path: 'opina',
-    component: OpinaPage,
-  },
-  {
     path: 'codigo',
     component: CodigoEncuestaPage,
   },
