@@ -3,7 +3,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "canvasjs": ["node_modules/canvasjs/dist/canvasjs.min"]
+    }
   },
   "files": [
     "src/main.ts",

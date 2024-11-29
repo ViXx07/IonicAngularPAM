@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import { FirebaseConfigService } from './services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from './services/utils/utils.service';
 import { User } from './models/user.model';
+import * as CanvasJS from 'canvasjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
+  imports: [CanvasJS],
 })
 export class AppComponent implements OnInit {
   router = inject(Router);

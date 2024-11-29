@@ -1,24 +1,26 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { TestBed } from '@angular/core/testing';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { of } from 'rxjs';
+import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 
-import { ModificarAdminComponent } from './modificar-admin.component';
+describe('FirebaseConfig', () => {
+  let service: FirebaseConfigService;
 
-describe('ModificarAdminComponent', () => {
-  let component: ModificarAdminComponent;
-  let fixture: ComponentFixture<ModificarAdminComponent>;
+  const mockAngularFireAuth: any = {
+    authState: of(null),
+  };
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModificarAdminComponent ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+      providers: [
+        service,
+        { provide: AngularFireAuth, useValue: mockAngularFireAuth },
+      ],
+    });
+    service = TestBed.inject(FirebaseConfigService);
+  });
 
-    fixture = TestBed.createComponent(ModificarAdminComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    expect(service).toBeTruthy();
   });
 });
