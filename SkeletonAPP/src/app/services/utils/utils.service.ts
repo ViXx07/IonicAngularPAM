@@ -148,6 +148,11 @@ export class UtilsService {
             url: '/admin-empresa/contacto',
             icono: 'chatbubbles-outline',
           },
+          {
+            titulo: 'Gráfico',
+            url: 'admin-empresa/grafico',
+            icono: 'bar-chart-outline'
+          },
         ]);
       }
       case 3: {

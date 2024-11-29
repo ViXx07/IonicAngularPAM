@@ -15,6 +15,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactoPage } from './pages/contacto/contacto.page';
 
+
 @NgModule({
   declarations: [AppComponent, ContactoPage],
   imports: [
@@ -26,7 +27,8 @@ import { ContactoPage } from './pages/contacto/contacto.page';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

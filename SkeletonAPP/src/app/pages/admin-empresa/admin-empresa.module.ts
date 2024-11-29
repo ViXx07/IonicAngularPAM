@@ -9,6 +9,8 @@ import { AdminEmpresaPageRoutingModule } from './admin-empresa-routing.module';
 import { AdminEmpresaPage } from './admin-empresa.page';
 import { SharedModule } from 'src/app/components/shared/shared.module';
 import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuesta/modificar-encuesta.component';
+import { GraficoEmpresaComponent } from 'src/app/components/grafico-empresa/grafico-empresa.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 @NgModule({
   imports: [
@@ -17,8 +19,9 @@ import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuest
     IonicModule,
     AdminEmpresaPageRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CanvasJSAngularChartsModule
   ],
-  declarations: [AdminEmpresaPage, ModificarEncuestaComponent]
+  declarations: [AdminEmpresaPage, ModificarEncuestaComponent, GraficoEmpresaComponent]
 })
 export class AdminEmpresaPageModule {}

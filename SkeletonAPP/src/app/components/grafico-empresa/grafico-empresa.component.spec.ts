@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { GraficoAdminComponent } from './grafico-admin.component';
+import { GraficoEmpresaComponent } from './grafico-empresa.component';
 
 describe('GraficoAdminComponent', () => {
-  let component: GraficoAdminComponent;
-  let fixture: ComponentFixture<GraficoAdminComponent>;
+  let component: GraficoEmpresaComponent;
+  let fixture: ComponentFixture<GraficoEmpresaComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GraficoAdminComponent ],
+      declarations: [ GraficoEmpresaComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GraficoAdminComponent);
+    fixture = TestBed.createComponent(GraficoEmpresaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

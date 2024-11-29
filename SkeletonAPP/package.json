@@ -26,6 +26,8 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@awesome-cordova-plugins/core": "^6.8.0",
+    "@canvasjs/angular-charts": "^1.2.0",
+    "@canvasjs/charts": "^3.10.17",
     "@capacitor-mlkit/barcode-scanning": "^6.2.0",
     "@capacitor/android": "^6.1.2",
     "@capacitor/app": "6.0.1",
