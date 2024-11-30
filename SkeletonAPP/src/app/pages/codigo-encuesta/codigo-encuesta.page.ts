@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { documentId, where } from '@angular/fire/firestore';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import { Empresa } from 'src/app/models/empresa.model';
   templateUrl: './codigo-encuesta.page.html',
   styleUrls: ['./codigo-encuesta.page.scss'],
 })
-export class CodigoEncuestaPage {
+export class CodigoEncuestaPage implements OnDestroy{
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
 
@@ -81,5 +81,10 @@ export class CodigoEncuestaPage {
       component: OpinaPage,
       componentProps: {encuesta, empresa}
     })
+  }
+
+  ngOnDestroy() {
+    // Desuscribirse de todas las suscripciones
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

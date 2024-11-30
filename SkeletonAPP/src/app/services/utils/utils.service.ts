@@ -10,7 +10,6 @@ import {
 } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',

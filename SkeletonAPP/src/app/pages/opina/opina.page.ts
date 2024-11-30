@@ -60,7 +60,7 @@ export class OpinaPage implements OnInit {
         .addDocument(path, this.encuestaForm.value)
         .then(async (res) => {
           this.encuestaForm.reset;
-          this.utils.cerrarModal();
+          this.cerrarModal();
           this.utils.routerlink('home');
           this.utils.presentToast({
             message: 'Encuesta enviada correctamente',
