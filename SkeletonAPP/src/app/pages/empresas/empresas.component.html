@@ -11,19 +11,14 @@
               Todos</ion-button>
           </th>
           <th scope="col">
-            <ion-button (click)="getEmpresasAprobadas()" expand="full" color="warning">
+            <ion-button (click)="getEmpresasAprobadas()" expand="full" color="success">
               <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
               Aprobados</ion-button>
           </th>
           <th scope="col">
-            <ion-button (click)="getEmpresasEspera()" expand="full" color="warning">
+            <ion-button (click)="getEmpresasEspera()" expand="full" color="danger">
               <ion-icon name="ellipsis-horizontal-circle-outline" slot="start"></ion-icon>
               En espera</ion-button>
-          </th>
-          <th scope="col">
-            <ion-button (click)="getEmpresasRechazadas()" expand="full" color="warning">
-              <ion-icon name="close-circle-outline" slot="start"></ion-icon>
-              Rechazado</ion-button>
           </th>
         </tr>
       </thead>
@@ -58,17 +53,23 @@
               {{ e.nombreEmpresa }}
             </td>
 
-            <td class="col">
-              {{ e.estado }}
+            <td class="col" *ngIf="e.estado == 0; else enEspera">
+              Aprobado
             </td>
-
+            <ng-template #enEspera>
+              <td class="col">
+                En espera
+            </td>
+            </ng-template>
+            
             <td class="col">
               <ion-button color="warning" (click)="mostrarModificarEmpresa(e)"
-                >Modificar</ion-button
-              >
-              <ion-button color="danger" (click)="confirmarEliminarEmpresa(e)"
-                >Eliminar</ion-button
-              >
+                >Modificar</ion-button>
+              <ion-button color="danger" (click)="confirmarEliminarEmpresa(e)" 
+                >Eliminar</ion-button>
+              <ion-button *ngIf="e.estado == 1" color="success" (click)="aprobarEmpresa(e)"
+                >Aprobar</ion-button>
+              
             </td>
           </tr>
         </tbody>

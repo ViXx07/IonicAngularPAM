@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { where } from '@angular/fire/firestore';
 import { Platform } from '@ionic/angular';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   templateUrl: './empresas.component.html',
   styleUrls: ['./empresas.component.scss'],
 })
-export class EmpresasComponent implements OnInit {
+export class EmpresasComponent implements OnInit, OnDestroy {
   empresas: any = [];
   private subscriptions: Subscription[] = [];
 
@@ -115,28 +115,6 @@ export class EmpresasComponent implements OnInit {
     }, 1000);
   }
 
-  async getEmpresasRechazadas() {
-    const loading = await this.utils.loading();
-    await loading.present();
-
-    let path = 'empresas';
-    let query = where('estado', '==', 2);
-    const sub = this.firebase.getCollectionData(path, query).subscribe({
-      next: (res: any) => {
-        this.empresas = res;
-      },
-      error: (err) => {
-        console.error('Error fetching admins:', err);
-      },
-    });
-
-    this.subscriptions.push(sub); // Guarda la suscripción
-    setTimeout(() => {
-      loading.dismiss();
-      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
-    }, 1000);
-  }
-
   async confirmarEliminarEmpresa(empresa: Empresa) {
     this.utils.presentAlert({
       header: 'Eliminar Empresa',
@@ -190,5 +168,46 @@ export class EmpresasComponent implements OnInit {
         loading.dismiss();
         this.getEmpresas();
       });
+  }
+
+  async aprobarEmpresa(empresa: Empresa) {
+    if (empresa.estado !== 0) {
+      let path = `empresas/${empresa.id}`;
+
+      const loading = await this.utils.loading();
+      await loading.present();
+
+      empresa.estado = 0;
+
+      this.firebase
+        .updateDocument(path, empresa)
+        .then(async (res) => {
+          this.utils.routerlink('admin/empresas');
+          this.utils.presentToast({
+            message: 'Empresa aprobada',
+            duration: 2500,
+            color: 'success',
+            position: 'middle',
+            icon: 'checkmark-circle-outline',
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          this.utils.presentToast({
+            message: error.message,
+            duration: 2500,
+            color: 'danger',
+            position: 'middle',
+            icon: 'alert-circle-outline',
+          });
+        })
+        .finally(() => {
+          loading.dismiss();
+        });
+    }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 }

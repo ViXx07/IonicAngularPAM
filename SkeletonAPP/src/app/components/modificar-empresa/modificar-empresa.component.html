@@ -35,34 +35,38 @@
     </ion-item>
 
     <ion-item>
-      <ion-avatar *ngIf="modificarEmpresa.value.logo">
-        <img [src]="modificarEmpresa.value.logo" />
-      </ion-avatar>
-      <ion-button color="dark" shape="round" fill="outline" (click)="logo()"
-        >Sube tu logo</ion-button
-      >
-    </ion-item>
-
-    <ion-item>
-      <ion-select label="Estado" label-placement="stacked" formControlName="estado">
-        <ion-select-option value="0">Aprobado</ion-select-option>
-        <ion-select-option value="1">En espera</ion-select-option>
-        <ion-select-option value="2">Rechazado</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
       <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-col col="4">
-            <ion-button
-              color="dark"
-              shape="round"
-              fill="outline"
-              [disabled]="!modificarEmpresa.valid"
-              (click)="submit()"
-              >Modificar</ion-button
-            >
+        <ion-row>
+          <ion-col col="1">
+            <!--Logo-->
+            <ion-row>
+              <ion-col>
+                <ion-avatar *ngIf="modificarEmpresa.value.logo;else placeHolder">
+                  <img [src]="modificarEmpresa.value.logo" />
+                </ion-avatar>
+                <ng-template #placeHolder>
+                  <ion-avatar>
+                    <img src="../../../assets/placeholder.png" />
+                  </ion-avatar>
+                </ng-template>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col col="11">
+            <ion-row>
+              <ion-row class="ion-text-center">
+                <!--Botón subir logo-->
+                <ion-col col="6">
+                  <app-boton icono="arrow-up-circle-outline" texto="Sube tu logo" (click)="logo()"></app-boton>
+                </ion-col>
+                <!--Botón modificar-->
+                <ion-col col="6">
+                  <app-boton icono="add-circle-outline" texto="Modificar" (click)="submit()"></app-boton>
+                </ion-col>
+              </ion-row>
+            </ion-row>
+              
           </ion-col>
         </ion-row>
       </ion-grid>

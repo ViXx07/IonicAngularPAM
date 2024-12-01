@@ -84,7 +84,6 @@ export class CodigoEncuestaPage implements OnDestroy{
   }
 
   ngOnDestroy() {
-    // Desuscribirse de todas las suscripciones
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

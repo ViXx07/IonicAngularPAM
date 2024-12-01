@@ -68,10 +68,12 @@ export class RegistroEmpresaComponent {
             console.log(resultado);
           });
           // Registro de la encuesta base en firebase:
-          const encuesta = await this.firebase.addDocument('encuestas', {
-            pregunta: '',
-            idEmpresa: idEmp,
-          });
+          if(this.utils.getUserRole() === 3) {
+            const encuesta = await this.firebase.addDocument('encuestas', {
+              pregunta: '',
+              idEmpresa: idEmp,
+            });
+          }
           this.registroEmpresa.reset();
           this.utils.routerlink('admin/empresas');
           this.utils.presentToast({
