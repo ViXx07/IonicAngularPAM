@@ -5,21 +5,22 @@
     <table class="filtros">
       <thead>
         <tr>
+          <!--
           <th scope="col">
-            <ion-button (click)="getEmpresas()" expand="full" color="warning">
+            <button (click)="getEmpresas()" style="background: khaki;">
               <ion-icon name="add-circle-outline" slot="start"></ion-icon>
-              Todos</ion-button>
+              Todos</button>
           </th>
           <th scope="col">
-            <ion-button (click)="getEmpresasAprobadas()" expand="full" color="success">
+            <button (click)="getEmpresasAprobadas()" style="background: orange;">
               <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
-              Aprobados</ion-button>
+              Aprobados</button>
           </th>
           <th scope="col">
-            <ion-button (click)="getEmpresasEspera()" expand="full" color="danger">
+            <button (click)="getEmpresasEspera()" style="background: orangered;">
               <ion-icon name="ellipsis-horizontal-circle-outline" slot="start"></ion-icon>
-              En espera</ion-button>
-          </th>
+              En espera</button>
+          </th>-->
         </tr>
       </thead>
     </table>
@@ -63,17 +64,18 @@
             </ng-template>
             
             <td class="col">
-              <ion-button color="warning" (click)="mostrarModificarEmpresa(e)"
-                >Modificar</ion-button>
-              <ion-button color="danger" (click)="confirmarEliminarEmpresa(e)" 
-                >Eliminar</ion-button>
-              <ion-button *ngIf="e.estado == 1" color="success" (click)="aprobarEmpresa(e)"
-                >Aprobar</ion-button>
+              <button style="background: yellow;" (click)="mostrarModificarEmpresa(e)"
+                >Modificar</button>
+              <button style="background: red;" (click)="confirmarEliminarEmpresa(e)" 
+                >Eliminar</button>
+              <button style="background: greenyellow;" *ngIf="e.estado == 1" color="success" (click)="aprobarEmpresa(e)"
+                >Aprobar</button>
               
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+    <app-tabs [tabsInput]="tabs" (actionTriggered)="onFilterAction($event)"></app-tabs>
   </ion-card>
 </ion-content>

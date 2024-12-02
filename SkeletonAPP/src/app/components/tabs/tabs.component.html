@@ -1,0 +1,26 @@
+<div *ngIf="tabs && tabs.length">
+  <!-- Solo muestra los tabs si existe un elemento -->
+  <div *ngIf="router">
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button *ngFor="let t of tabs" [tab]="t.nombre">
+          <!-- Itera sobre cada objeto dentro de tabs -->
+          <ion-icon [name]="t.icono"></ion-icon>
+          <ion-label>{{ t.nombre }}</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+
+  <div *ngIf="!router">
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button *ngFor="let t of tabs" (click)="filtrar(t.nombre)">
+          <!-- Itera sobre cada objeto dentro de tabs -->
+          <ion-icon [name]="t.icono"></ion-icon>
+          <ion-label>{{ t.nombre }}</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</div>

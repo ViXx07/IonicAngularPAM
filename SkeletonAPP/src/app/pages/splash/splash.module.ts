@@ -8,7 +8,6 @@ import { SplashPageRoutingModule } from './splash-routing.module';
 
 import { SplashPage } from './splash.page';
 import { LoginPage } from '../login/login.page';
-import { BotonComponent } from 'src/app/components/boton/boton.component';
 import { RegistroClienteComponent } from 'src/app/components/registro-cliente/registro-cliente.component';
 import { SharedModule } from 'src/app/components/shared/shared.module';
 

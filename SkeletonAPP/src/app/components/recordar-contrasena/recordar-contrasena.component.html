@@ -2,14 +2,14 @@
     <!--Titulo-->
     <ion-item class="ion-text-center">
       <ion-title>Recordar contraseña</ion-title>
-      <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+      <button shape="round" fill="clear" (click)="cerrarModal()">
         <ion-icon
           color="danger"
           slot="icon-only"
           size="large"
           name="close-circle-outline"
         ></ion-icon>
-      </ion-button>
+      </button>
     </ion-item>
     <!--Logo-->
     <ion-item>
@@ -35,14 +35,14 @@
           <!--Botón 'Enviar' que se activa al ingresar un correo correcto-->
           <ion-row class="ion-text-center">
             <ion-col col="4">
-              <ion-button
+              <button
                 color="dark"
                 shape="round"
                 fill="outline"
                 [routerLink]="['/login']"
                 [disabled]="!emailForm.valid"
                 (click)="submit()"
-                >Enviar</ion-button
+                >Enviar</button
               >
             </ion-col>
           </ion-row>

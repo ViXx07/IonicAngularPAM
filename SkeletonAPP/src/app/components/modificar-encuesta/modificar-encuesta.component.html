@@ -2,14 +2,14 @@
   <!--Titulo-->
   <ion-item class="ion-text-center">
     <ion-title>Modificar Encuesta</ion-title>
-    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+    <button shape="round" fill="clear" (click)="cerrarModal()">
       <ion-icon
         color="danger"
         slot="icon-only"
         size="large"
         name="close-circle-outline"
       ></ion-icon>
-    </ion-button>
+    </button>
   </ion-item>
   <!--logo-->
   <ion-item *ngIf="empresa.logo;else sinLogo">
@@ -38,13 +38,13 @@
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button
+            <button
               color="dark"
               shape="round"
               fill="outline"
               [disabled]="!modificarEncuesta.valid"
               (click)="submit()"
-              >Modificar</ion-button
+              >Modificar</button
             >
           </ion-col>
         </ion-row>

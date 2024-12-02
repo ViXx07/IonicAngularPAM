@@ -1,14 +1,14 @@
 <ion-content>
   <ion-item>
     <ion-title>{{empresa.nombreEmpresa}}</ion-title>
-    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+    <button shape="round" fill="clear" (click)="cerrarModal()">
       <ion-icon
         color="danger"
         slot="icon-only"
         size="large"
         name="close-circle-outline"
       ></ion-icon>
-    </ion-button>
+    </button>
   </ion-item>
   
   <form [formGroup]="encuestaForm">
@@ -64,20 +64,20 @@
               <img src="../../../assets/placeholder.png" />
             </ion-avatar>
           </ng-template>
-          <ion-button
+          <button
             color="primary"
             shape="round"
             fill="outline"
             (click)="evidencia()"
-            >Sube tu evidencia!</ion-button>
-          <ion-button
+            >Sube tu evidencia!</button>
+          <button
             color="warning"
             shape="round"
             fill="outline"
             class="enviar"
             (click)="submit()"
             [disabled]="!encuestaForm.valid"
-            >Enviar</ion-button>
+            >Enviar</button>
         </div>
 
       </ion-item>

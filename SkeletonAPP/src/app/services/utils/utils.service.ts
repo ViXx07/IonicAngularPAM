@@ -95,6 +95,12 @@ export class UtilsService {
     } else return 0;
   }
 
+  getEmpresa(): string {
+    if (this.getFromLocalStorage('user').empresa) {
+      return this.getFromLocalStorage('user').empresa;
+    } else return null;
+  }
+
   redireccionPorRol(rolUsuario: number) {
     switch (rolUsuario) {
       case 1: {

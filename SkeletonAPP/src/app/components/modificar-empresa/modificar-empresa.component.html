@@ -2,14 +2,14 @@
   <!--Titulo-->
   <ion-item class="ion-text-center">
     <ion-title>Modificar Empresa</ion-title>
-    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+    <button shape="round" fill="clear" (click)="cerrarModal()">
       <ion-icon
         color="danger"
         slot="icon-only"
         size="large"
         name="close-circle-outline"
       ></ion-icon>
-    </ion-button>
+    </button>
   </ion-item>
   <!--Logo-->
   <ion-item *ngIf="empresa.logo;else sinLogo">
@@ -58,11 +58,15 @@
               <ion-row class="ion-text-center">
                 <!--Botón subir logo-->
                 <ion-col col="6">
-                  <app-boton icono="arrow-up-circle-outline" texto="Sube tu logo" (click)="logo()"></app-boton>
+                  <button (click)="logo()">
+                    Sube tu logo<ion-icon name="arrow-up-circle-outline"></ion-icon>
+                  </button>
                 </ion-col>
                 <!--Botón modificar-->
                 <ion-col col="6">
-                  <app-boton icono="add-circle-outline" texto="Modificar" (click)="submit()"></app-boton>
+                  <button (click)="submit()">
+                    <ion-icon name="add-circle-outline"></ion-icon>Modificar
+                  </button>
                 </ion-col>
               </ion-row>
             </ion-row>

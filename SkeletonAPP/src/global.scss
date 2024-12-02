@@ -59,3 +59,46 @@ ion-card {
 form ion-item {
   max-width: 100vw;
 }
+
+// Estilo para los botones //
+$button-text: #ffffff;
+$regular-text: #333;
+$button-tint: fadeout(#000, 90%);
+$background: #303036;
+
+button {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: space-between;
+  font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  padding: 0.8em 0.4em;
+  border: none;
+  color: white;
+  transition: 0.2s;
+  font-size: 1.2em; 
+  width: auto; 
+  white-space: nowrap; 
+
+  ion-icon {
+    font-size: 1.2em; 
+    margin-left: 0.5em;
+  }
+
+  &:hover {
+    filter: brightness(0.9); /* Oscurece el color */
+  }
+
+  &:active,
+  &:focus {
+    filter: brightness(0.7); /* Oscurece aún más */
+    outline: none;
+  }
+}
+
+button .text {
+  text-align: center; 
+  flex-grow: 1; 
+  display: inline-block; 
+}

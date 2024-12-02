@@ -2,14 +2,14 @@
   <!--Titulo-->
   <ion-item class="ion-text-center">
     <ion-title>Modificar Admin</ion-title>
-    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+    <button shape="round" fill="clear" (click)="cerrarModal()">
       <ion-icon
         color="danger"
         slot="icon-only"
         size="large"
         name="close-circle-outline"
       ></ion-icon>
-    </ion-button>
+    </button>
   </ion-item>
   <!--Logo-->
   <ion-item>
@@ -47,13 +47,13 @@
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button
+            <button
               color="dark"
               shape="round"
               fill="outline"
               (click)="submit()"
               [disabled]="!modificarAdmin.valid"
-              >Modificar</ion-button
+              >Modificar</button
             >
           </ion-col>
         </ion-row>

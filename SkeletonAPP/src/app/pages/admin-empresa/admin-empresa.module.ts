@@ -20,8 +20,8 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     AdminEmpresaPageRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    CanvasJSAngularChartsModule
+    CanvasJSAngularChartsModule,
   ],
-  declarations: [AdminEmpresaPage, ModificarEncuestaComponent, GraficoEmpresaComponent]
+  declarations: [AdminEmpresaPage, ModificarEncuestaComponent, GraficoEmpresaComponent,]
 })
 export class AdminEmpresaPageModule {}

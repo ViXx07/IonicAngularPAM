@@ -59,10 +59,10 @@ export class LoginPage {
         .then((user: User) => {
           this.loginForm.controls.userRole.setValue(user.userRole);
           this.rolUsuario = user.userRole;
-
+          
           this.loginForm.controls.password.setValue('');
 
-          this.utils.saveInlocalStorage('user', this.loginForm.value);
+          this.utils.saveInlocalStorage('user', user);
           this.loginForm.reset();
 
           this.utils.redireccionPorRol(this.rolUsuario);

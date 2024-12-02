@@ -13,6 +13,7 @@ import { RegistroEmpresaComponent } from 'src/app/components/registro-empresa/re
 import { ModificarEmpresaComponent } from 'src/app/components/modificar-empresa/modificar-empresa.component';
 import { ModificarAdminComponent } from 'src/app/components/modificar-admin/modificar-admin.component';
 import { EmpresasComponent } from '../empresas/empresas.component';
+import { TabsComponent } from 'src/app/components/tabs/tabs.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { EmpresasComponent } from '../empresas/empresas.component';
     ModificarEmpresaComponent,
     ModificarAdminComponent,
     EmpresasComponent,
+    TabsComponent,
   ],
 })
 export class AdminSysPageModule {}

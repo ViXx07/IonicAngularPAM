@@ -2,14 +2,14 @@
   <!--Titulo-->
   <ion-item class="ion-text-center">
     <ion-title>Registro Cliente</ion-title>
-    <ion-button shape="round" fill="clear" (click)="cerrarModal()">
+    <button shape="round" fill="clear" (click)="cerrarModal()">
       <ion-icon
         color="danger"
         slot="icon-only"
         size="large"
         name="close-circle-outline"
       ></ion-icon>
-    </ion-button>
+    </button>
   </ion-item>
   <!--Logo-->
   <ion-item>
@@ -38,7 +38,7 @@
         type="password"
         maxlength="10"
         errorText="Contraseña inválida."
-        helperText="Largo 4"
+        helperText="Largo máximo 10 cáracteres."
       ></ion-input>
     </ion-item>
 
@@ -46,13 +46,13 @@
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button
+            <button
               color="dark"
               shape="round"
               fill="outline"
               (click)="submit()"
               [disabled]="!registroCliente.valid"
-              >Registrar</ion-button
+              >Registrar</button
             >
           </ion-col>
         </ion-row>

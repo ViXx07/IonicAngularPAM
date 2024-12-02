@@ -30,7 +30,7 @@
           minlength="6"
           maxlength="20"
           errorText="Contraseña inválida."
-          helperText="Largo 4"
+          helperText="Largo minimo 6 y máximo 20"
         >
         </ion-input>
       </ion-item>
@@ -40,21 +40,16 @@
       </ion-item>
       <!--Botón login/registro con google-->
       <ion-item>
-        <app-google-button (click)="loginGoogle()"></app-google-button> &nbsp;&nbsp;
-        <app-boton texto="Registro" icono="person-add-outline" (click)="registroCliente()"></app-boton>
+        <button (click)="loginGoogle()"> Google <ion-icon name="logo-google"></ion-icon></button>
+        <button (click)="registroCliente()"> Registro <ion-icon name="person-add-outline"></ion-icon></button>
       </ion-item>
       <!--Boton 'Ingresar', centrado con grid, con función login() Que de momento solo acepta usuario: admin contraseña: 1234-->
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
-            <ion-button
-              color="dark"
-              shape="round"
-              fill="outline"
-              (click)="submit()"
-              [disabled]="!loginForm.valid"
-              >Ingresar</ion-button
-            >
+            <button (click)="submit()" style="background: #ff8728;" [disabled]="!loginForm.valid"
+              >Ingresar <ion-icon name="log-in-outline"></ion-icon>
+            </button>
           </ion-col>
         </ion-row>
       </ion-grid>

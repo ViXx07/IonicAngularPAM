@@ -36,7 +36,7 @@
 
     <ion-footer class="ion-no-border safe-p-bottom">
       <ion-item *ngIf="usuario()" lines="none">
-        <app-boton texto="Cerrar sesión" icono="log-out-outline" (click)="logout()"></app-boton>
+        <button (click)="logout()"> Cerrar sesión <ion-icon name="log-out-outline"></ion-icon></button>
       </ion-item>
     </ion-footer>
   </ion-menu>

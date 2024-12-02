@@ -5,11 +5,9 @@
     <ion-grid>
       <ion-row class="ion-justify-content-center">
         <ion-col col="5" size="default">
-          <app-boton
-            texto="Registrar Admin"
-            icono="person-add-outline"
-            (click)="mostrarRegistroAdmin()"
-          ></app-boton>
+          <button (click)="mostrarRegistroAdmin()">
+            Registrar admin <ion-icon name="person-add-outline"></ion-icon>
+          </button>
         </ion-col>
       </ion-row>
     </ion-grid>

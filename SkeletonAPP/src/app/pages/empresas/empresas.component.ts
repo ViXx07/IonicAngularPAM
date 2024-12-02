@@ -17,7 +17,11 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 export class EmpresasComponent implements OnInit, OnDestroy {
   empresas: any = [];
   private subscriptions: Subscription[] = [];
-
+  tabs = [
+    { icono: 'list-outline', nombre: 'Todos' },
+    { icono: 'checkmark-circle-outline', nombre: 'Aprobados' },
+    { icono: 'ellipsis-horizontal-circle-outline', nombre: 'En espera' },
+  ];
   loadingData: boolean = true;
   platform = inject(Platform);
   utils = inject(UtilsService);
@@ -26,7 +30,7 @@ export class EmpresasComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     try {
-      this.getEmpresas();
+      this.getEmpresas(2);
     } catch (error) {
       console.error('Error loading data', error);
     }
@@ -37,7 +41,7 @@ export class EmpresasComponent implements OnInit, OnDestroy {
       component: RegistroEmpresaComponent,
     });
 
-    if (success) this.getEmpresas();
+    if (success) this.getEmpresas(2);
   }
 
   async mostrarModificarEmpresa(empresa: Empresa) {
@@ -46,37 +50,25 @@ export class EmpresasComponent implements OnInit, OnDestroy {
       componentProps: { empresa },
     });
 
-    if (success) this.getEmpresas();
+    if (success) this.getEmpresas(2);
   }
 
-  async getEmpresas() {
-    const loading = await this.utils.loading();
-    await loading.present();
-
-    let path = 'empresas';
-
-    const sub = this.firebase.getCollectionData(path).subscribe({
-      next: (res: any) => {
-        this.empresas = res;
-      },
-      error: (err) => {
-        console.error('Error fetching admins:', err);
-      },
-    });
-
-    this.subscriptions.push(sub); // Guarda la suscripción
-    setTimeout(() => {
-      loading.dismiss();
-      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
-    }, 1000);
+  onFilterAction(filtro: string) {
+    const numFiltro = Number(filtro);
+    this.getEmpresas(numFiltro);  
   }
-
-  async getEmpresasAprobadas() {
+  
+  async getEmpresas(filtro?: number) {
     const loading = await this.utils.loading();
     await loading.present();
-
+  
     let path = 'empresas';
-    let query = where('estado', '==', 0);
+    let query = null;
+
+    if (filtro != 2) {
+      query = where('estado', '==', filtro);
+    }
+
     const sub = this.firebase.getCollectionData(path, query).subscribe({
       next: (res: any) => {
         this.empresas = res;
@@ -85,34 +77,13 @@ export class EmpresasComponent implements OnInit, OnDestroy {
         console.error('Error fetching admins:', err);
       },
     });
+  
+    this.subscriptions.push(sub);  
 
-    this.subscriptions.push(sub); // Guarda la suscripción
     setTimeout(() => {
       loading.dismiss();
-      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
-    }, 1000);
-  }
-
-  async getEmpresasEspera() {
-    const loading = await this.utils.loading();
-    await loading.present();
-
-    let path = 'empresas';
-    let query = where('estado', '==', 1);
-    const sub = this.firebase.getCollectionData(path, query).subscribe({
-      next: (res: any) => {
-        this.empresas = res;
-      },
-      error: (err) => {
-        console.error('Error fetching admins:', err);
-      },
-    });
-
-    this.subscriptions.push(sub); // Guarda la suscripción
-    setTimeout(() => {
-      loading.dismiss();
-      this.loadingData = false; // Cambia a false una vez que los datos están cargados y después de la espera
-    }, 1000);
+      this.loadingData = false;  
+    }, 500);
   }
 
   async confirmarEliminarEmpresa(empresa: Empresa) {
@@ -166,7 +137,7 @@ export class EmpresasComponent implements OnInit, OnDestroy {
       })
       .finally(() => {
         loading.dismiss();
-        this.getEmpresas();
+        this.getEmpresas(2);
       });
   }
 
