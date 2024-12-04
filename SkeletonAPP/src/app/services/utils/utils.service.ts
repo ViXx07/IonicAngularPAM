@@ -10,6 +10,8 @@ import {
 } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Empresa } from 'src/app/models/empresa.model';
+import { Encuesta } from 'src/app/models/encuesta.model';
 
 @Injectable({
   providedIn: 'root',
@@ -95,11 +97,18 @@ export class UtilsService {
     } else return 0;
   }
 
-  getEmpresa(): string {
-    if (this.getFromLocalStorage('user').empresa) {
-      return this.getFromLocalStorage('user').empresa;
+  getEmpresa(): Empresa {
+    if (this.getFromLocalStorage('empresa')) {
+      return this.getFromLocalStorage('empresa');
     } else return null;
   }
+
+  getEncuesta(): Encuesta {
+    if (this.getFromLocalStorage('encuesta')) {
+      return this.getFromLocalStorage('escuesta');
+    } else return null;
+  }
+
 
   redireccionPorRol(rolUsuario: number) {
     switch (rolUsuario) {
@@ -126,6 +135,7 @@ export class UtilsService {
     let rolUsuario = this.getUserRole();
     let paginas = [];
     switch (rolUsuario) {
+      // Cliente //
       case 1: {
         return (paginas = [
           { titulo: 'Home', url: '/home', icono: 'person-outline' },
@@ -141,6 +151,7 @@ export class UtilsService {
           }
         ]);
       }
+      // Admin de empresa //
       case 2: {
         return (paginas = [
           {
@@ -156,10 +167,16 @@ export class UtilsService {
           {
             titulo: 'Gráfico',
             url: 'admin-empresa/grafico',
-            icono: 'bar-chart-outline'
+            icono: 'bar-chart-outline',
+          },
+          {
+            titulo: 'Generar QR',
+            url: 'admin-empresa/generarQR',
+            icono: 'qr-code-outline',
           },
         ]);
       }
+      // Admin de sistema //
       case 3: {
         return (paginas = [
           { titulo: 'Admin', url: '/admin', icono: 'person-add-outline' },

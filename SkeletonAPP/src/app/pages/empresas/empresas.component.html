@@ -2,28 +2,6 @@
   <app-header titulo="Empresas"></app-header>
 
   <ion-card>
-    <table class="filtros">
-      <thead>
-        <tr>
-          <!--
-          <th scope="col">
-            <button (click)="getEmpresas()" style="background: khaki;">
-              <ion-icon name="add-circle-outline" slot="start"></ion-icon>
-              Todos</button>
-          </th>
-          <th scope="col">
-            <button (click)="getEmpresasAprobadas()" style="background: orange;">
-              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
-              Aprobados</button>
-          </th>
-          <th scope="col">
-            <button (click)="getEmpresasEspera()" style="background: orangered;">
-              <ion-icon name="ellipsis-horizontal-circle-outline" slot="start"></ion-icon>
-              En espera</button>
-          </th>-->
-        </tr>
-      </thead>
-    </table>
     <div *ngIf="loadingData">Cargando datos...</div>
 
     <div *ngIf="!loadingData">
@@ -69,13 +47,12 @@
               <button style="background: red;" (click)="confirmarEliminarEmpresa(e)" 
                 >Eliminar</button>
               <button style="background: greenyellow;" *ngIf="e.estado == 1" color="success" (click)="aprobarEmpresa(e)"
-                >Aprobar</button>
-              
+                >Aprobar</button> 
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <app-tabs [tabsInput]="tabs" (actionTriggered)="onFilterAction($event)"></app-tabs>
   </ion-card>
+  <app-tabs [tabsInput]="tabs" (actionTriggered)="onFilterAction($event)"></app-tabs>
 </ion-content>

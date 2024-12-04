@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { documentId, where } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
 import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuesta/modificar-encuesta.component';
@@ -13,7 +13,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   templateUrl: './admin-empresa.page.html',
   styleUrls: ['./admin-empresa.page.scss'],
 })
-export class AdminEmpresaPage implements OnInit {
+export class AdminEmpresaPage implements OnInit, OnDestroy {
   usuario: User;
   empresa: Empresa;
   encuesta: Encuesta;
@@ -42,7 +42,7 @@ export class AdminEmpresaPage implements OnInit {
       await loading.dismiss();
     }
   }
-
+  
   modificarEncuesta(encuesta: Encuesta, empresa: Empresa) {
     this.utils.presentarModal({
       component: ModificarEncuestaComponent,
@@ -110,6 +110,11 @@ export class AdminEmpresaPage implements OnInit {
       });
       this.subscriptions.push(sub);
     });
+  }
+
+  ngOnDestroy() {
+    // Desuscribirse de todas las suscripciones
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
 }

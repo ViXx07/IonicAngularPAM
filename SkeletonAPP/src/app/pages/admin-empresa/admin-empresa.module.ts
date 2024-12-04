@@ -11,6 +11,7 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
 import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuesta/modificar-encuesta.component';
 import { GraficoEmpresaComponent } from 'src/app/components/grafico-empresa/grafico-empresa.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { GenerarQRComponent } from 'src/app/components/generar-qr/generar-qr.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     ReactiveFormsModule,
     CanvasJSAngularChartsModule,
   ],
-  declarations: [AdminEmpresaPage, ModificarEncuestaComponent, GraficoEmpresaComponent,]
+  declarations: [AdminEmpresaPage, ModificarEncuestaComponent, GraficoEmpresaComponent, GenerarQRComponent]
 })
 export class AdminEmpresaPageModule {}

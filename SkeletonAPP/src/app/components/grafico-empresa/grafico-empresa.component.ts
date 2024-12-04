@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class GraficoEmpresaComponent {
   chartOptions = {
+    backgroundColor: 'transparent', // Aquí defines el color de fondo
     animationEnabled: true,
     title: {
       text: 'Sales by Department',

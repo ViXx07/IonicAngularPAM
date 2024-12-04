@@ -53,6 +53,8 @@ export class FirebaseConfigService {
   signOut() {
     getAuth().signOut();
     localStorage.removeItem('user');
+    localStorage.removeItem('empresa');
+    localStorage.removeItem('encuesta');
   }
 
   //Crear cuenta

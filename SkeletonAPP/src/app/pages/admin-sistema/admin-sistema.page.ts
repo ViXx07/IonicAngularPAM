@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ModificarAdminComponent } from 'src/app/components/modificar-admin/modificar-admin.component';
 import { RegistroAdminComponent } from 'src/app/components/registro-admin/registro-admin.component';
 import { RegistroEmpresaComponent } from 'src/app/components/registro-empresa/registro-empresa.component';
@@ -15,7 +15,7 @@ import { Platform } from '@ionic/angular';
   templateUrl: './admin-sistema.page.html',
   styleUrls: ['./admin-sistema.page.scss'],
 })
-export class AdminSistemaPage implements OnInit {
+export class AdminSistemaPage implements OnInit, OnDestroy{
 
   admins: User[] = [];
   private subscriptions: Subscription[] = [];

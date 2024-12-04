@@ -52,7 +52,7 @@ ion-card {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  min-height: 60vh;
+  min-height: 80vh;
   background-color: #fdd775;
 }
 
@@ -80,6 +80,8 @@ button {
   font-size: 1.2em; 
   width: auto; 
   white-space: nowrap; 
+  margin: 0.5em;
+
 
   ion-icon {
     font-size: 1.2em; 
