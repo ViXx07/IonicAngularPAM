@@ -54,12 +54,13 @@
       <ion-row class="ion-justify-content-center">
         <ion-col col="5" size="default">
           <button
-            color="primary"
-            shape="round"
-            fill="outline"
             (click)="modificarEncuesta(encuesta, empresa)"
-            >Modificar Encuesta</button
-          >
+            >Modificar Encuesta <ion-icon name="create-outline"></ion-icon>
+          </button>
+          <button
+          (click)="generarQR(encuesta, empresa)"
+          >Ver QR <ion-icon name="qr-code-outline"></ion-icon>
+        </button>
         </ion-col>
 
       </ion-row>

@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminEmpresaPage } from './admin-empresa.page';
 import { ContactoPage } from '../contacto/contacto.page';
 import { GraficoEmpresaComponent } from 'src/app/components/grafico-empresa/grafico-empresa.component';
-import { GenerarQRComponent } from 'src/app/components/generar-qr/generar-qr.component';
 
 const routes: Routes = [
   {
@@ -18,11 +17,7 @@ const routes: Routes = [
   {
     path: 'grafico',
     component: GraficoEmpresaComponent,
-  },
-  {
-    path: 'generarQR',
-    component: GenerarQRComponent,
-  },
+  }
 ];
 
 @NgModule({

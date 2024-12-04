@@ -1,6 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { documentId, where } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import { GenerarQrComponent } from 'src/app/components/generar-qr/generar-qr.component';
 import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuesta/modificar-encuesta.component';
 import { Empresa } from 'src/app/models/empresa.model';
 import { Encuesta } from 'src/app/models/encuesta.model';
@@ -46,6 +47,13 @@ export class AdminEmpresaPage implements OnInit, OnDestroy {
   modificarEncuesta(encuesta: Encuesta, empresa: Empresa) {
     this.utils.presentarModal({
       component: ModificarEncuestaComponent,
+      componentProps: { encuesta, empresa},
+    });
+  }
+
+  generarQR(encuesta: Encuesta, empresa: Empresa) {
+    this.utils.presentarModal({
+      component: GenerarQrComponent,
       componentProps: { encuesta, empresa},
     });
   }
