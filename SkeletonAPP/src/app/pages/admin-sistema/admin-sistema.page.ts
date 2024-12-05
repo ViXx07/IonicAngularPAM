@@ -1,7 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ModificarAdminComponent } from 'src/app/components/modificar-admin/modificar-admin.component';
 import { RegistroAdminComponent } from 'src/app/components/registro-admin/registro-admin.component';
-import { RegistroEmpresaComponent } from 'src/app/components/registro-empresa/registro-empresa.component';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { User } from 'src/app/models/user.model';

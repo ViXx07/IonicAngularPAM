@@ -1,21 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  inject,
-  Input,
-  NgZone,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import {
-  BarcodeFormat,
-  BarcodeScanner,
-  LensFacing,
-  StartScanOptions,
-} from '@capacitor-mlkit/barcode-scanning';
+import { Component, ElementRef, Inject, Input, NgZone, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { BarcodeFormat, BarcodeScanner, LensFacing, StartScanOptions } from '@capacitor-mlkit/barcode-scanning';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { Platform } from '@ionic/angular';  // Import Platform service to detect platform
 import { Torch } from '@capawesome/capacitor-torch';
 
 @Component({
@@ -24,90 +10,83 @@ import { Torch } from '@capawesome/capacitor-torch';
   styleUrls: ['./qr-scanner.component.scss'],
 })
 export class QrScannerComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input()
-  public formats: BarcodeFormat[] = [];
-  @Input()
-  public lensFacing: LensFacing = LensFacing.Back;
+  @Input() public formats: BarcodeFormat[] = [];
+  @Input() public lensFacing: LensFacing = LensFacing.Back;
 
-  @ViewChild('square')
-  utils = inject(UtilsService);
-
+  @ViewChild('square') utils = Inject(UtilsService);
   public squareElement: ElementRef<HTMLDivElement> | undefined;
-
   public isTorchAvailable = false;
 
-  constructor(private readonly ngZone: NgZone) {}
+  constructor(
+    private readonly ngZone: NgZone,
+    private platform: Platform
+  ) {}
 
-  public ngOnInit(): void {
-    Torch.isAvailable().then((result) => {
-      this.isTorchAvailable = result.available;
-    });
+  ngOnInit(): void {
+    if (this.platform.is('capacitor')) {
+      Torch.isAvailable().then((result) => {
+        this.isTorchAvailable = result.available;
+      });
+    }
   }
 
-  public ngAfterViewInit() {
-    //Inicializa el escáner despues de 1/4 de segundo.
+  ngAfterViewInit() {
     setTimeout(() => {
       this.startScan();
     }, 250);
   }
 
-  public ngOnDestroy() {
+  ngOnDestroy() {
     this.stopScan();
   }
 
   public async toggleTorch(): Promise<void> {
-    await Torch.enable();
+    if (this.platform.is('capacitor') && this.isTorchAvailable) {
+      await Torch.enable();
+    }
   }
 
   private async startScan(): Promise<void> {
-    // Esconde todo detras del modal:
+    if (!this.platform.is('capacitor')) {
+      console.log('BarcodeScanner not available on web');
+      return;
+    }
+
     document.querySelector('body')?.classList.add('barcode-scanning-active');
 
-    //Opciones del escaneo, dirección de la camára:
     const options: StartScanOptions = {
       formats: this.formats,
       lensFacing: this.lensFacing,
     };
 
-    //Dimensiones del rectángulo de detección:
     const squareElementBoundingClientRect =
       this.squareElement?.nativeElement.getBoundingClientRect();
 
-    //Escala las coordenadas basándose en el devicePixelRatio, para que se ajusten a diferentes pantallas.
     const scaledRect = squareElementBoundingClientRect
       ? {
           left: squareElementBoundingClientRect.left * window.devicePixelRatio,
-          right:
-            squareElementBoundingClientRect.right * window.devicePixelRatio,
+          right: squareElementBoundingClientRect.right * window.devicePixelRatio,
           top: squareElementBoundingClientRect.top * window.devicePixelRatio,
-          bottom:
-            squareElementBoundingClientRect.bottom * window.devicePixelRatio,
-          width:
-            squareElementBoundingClientRect.width * window.devicePixelRatio,
-          height:
-            squareElementBoundingClientRect.height * window.devicePixelRatio,
+          bottom: squareElementBoundingClientRect.bottom * window.devicePixelRatio,
+          width: squareElementBoundingClientRect.width * window.devicePixelRatio,
+          height: squareElementBoundingClientRect.height * window.devicePixelRatio,
         }
       : undefined;
 
-    //Define los puntos de las esquinas del rectángulo:
     const detectionCornerPoints = scaledRect
       ? [
           [scaledRect.left, scaledRect.top],
           [scaledRect.left + scaledRect.width, scaledRect.top],
-          [
-            scaledRect.left + scaledRect.width,
-            scaledRect.top + scaledRect.height,
-          ],
+          [scaledRect.left + scaledRect.width, scaledRect.top + scaledRect.height],
           [scaledRect.left, scaledRect.top + scaledRect.height],
         ]
       : undefined;
-    //Listener que se espera a que se encuentre un código QR:
+
     const listener = await BarcodeScanner.addListener(
       'barcodeScanned',
       async (event) => {
         this.ngZone.run(() => {
           const cornerPoints = event.barcode.cornerPoints;
-          //Verifica que las esquinas del escaner se encuentren fuera de las esquinas del QR:
           if (detectionCornerPoints && cornerPoints) {
             if (
               detectionCornerPoints[0][0] > cornerPoints[0][0] ||
@@ -126,14 +105,14 @@ export class QrScannerComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
     );
-    //Procesa la variable encontrada en el QR:
+
     await BarcodeScanner.startScan(options);
   }
 
   private async stopScan(): Promise<void> {
-    // Muestra el home otra vez al apretar el botón 'Regresar'.
+    if (!this.platform.is('capacitor')) {
+      await BarcodeScanner.stopScan();
+    }
     document.querySelector('body')?.classList.remove('barcode-scanning-active');
-
-    await BarcodeScanner.stopScan();
   }
 }

@@ -1,5 +1,4 @@
-import { Injectable, inject } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Injectable } from '@angular/core';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -11,7 +10,6 @@ import {
 import { User } from '../../models/user.model';
 import {
   doc,
-  collectionData,
   query,
   getDoc,
   setDoc,
@@ -20,8 +18,10 @@ import {
   deleteDoc,
   collection,
   getFirestore,
-} from '@angular/fire/firestore';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+} from 'firebase/firestore';
+import {
+  collectionData
+} from '@angular/fire/firestore'
 import {
   getStorage,
   uploadString,
@@ -34,9 +34,15 @@ import { UtilsService } from '../utils/utils.service';
   providedIn: 'root',
 })
 export class FirebaseConfigService {
-  auth = inject(AngularFireAuth);
-  firestore = inject(AngularFirestore);
-  utils = inject(UtilsService);
+
+  utils: UtilsService;
+
+  constructor(
+
+    utilsService: UtilsService
+  ) {
+    this.utils = utilsService;
+  }
   user: User = {
     uid: '',
     email: '',

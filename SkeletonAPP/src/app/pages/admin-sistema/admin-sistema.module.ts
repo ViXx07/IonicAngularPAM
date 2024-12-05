@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminSysPageRoutingModule } from './admin-sistema-routing.module';
+import { AdminSistemaPageRoutingModule } from './admin-sistema-routing.module';
 
 import { AdminSistemaPage } from './admin-sistema.page';
 import { SharedModule } from '../../components/shared/shared.module';
@@ -20,7 +20,7 @@ import { TabsComponent } from 'src/app/components/tabs/tabs.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminSysPageRoutingModule,
+    AdminSistemaPageRoutingModule,
     SharedModule,
     ReactiveFormsModule,
   ],
@@ -33,4 +33,4 @@ import { TabsComponent } from 'src/app/components/tabs/tabs.component';
     TabsComponent,
   ],
 })
-export class AdminSysPageModule {}
+export class AdminSistemaPageModule {}
