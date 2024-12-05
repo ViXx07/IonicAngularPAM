@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http'; // Import HttpClientMod
 import { ModificarEmpresaComponent } from './modificar-empresa.component';
 import { ApiRestService } from 'src/app/services/restApi/api-rest.service'; 
 import { Empresa } from 'src/app/models/empresa.model'; 
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment.prod';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 describe('ModificarEmpresaComponent', () => {
   let component: ModificarEmpresaComponent;
@@ -19,7 +22,11 @@ describe('ModificarEmpresaComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ModificarEmpresaComponent ],
-      imports: [IonicModule.forRoot(), HttpClientModule], 
+      imports: [
+        IonicModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule, 
+        HttpClientModule], 
       providers: [ApiRestService], 
     }).compileComponents();
 

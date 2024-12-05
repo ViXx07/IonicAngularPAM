@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { RecordarContrasenaComponent } from './recordar-contrasena.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment.prod';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 describe('RecordarContrasenaComponent', () => {
   let component: RecordarContrasenaComponent;
@@ -10,7 +13,11 @@ describe('RecordarContrasenaComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RecordarContrasenaComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [
+        IonicModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(RecordarContrasenaComponent);

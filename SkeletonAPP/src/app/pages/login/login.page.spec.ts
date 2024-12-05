@@ -5,6 +5,9 @@ import { FormBuilder } from '@angular/forms';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { HttpClientModule } from '@angular/common/http'; 
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment.prod';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 describe('LoginPage', () => {
   let component: LoginPage;
@@ -14,6 +17,8 @@ describe('LoginPage', () => {
     TestBed.configureTestingModule({
       imports: [
         IonicModule.forRoot(),  
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
         HttpClientModule        
       ],
       declarations: [LoginPage],

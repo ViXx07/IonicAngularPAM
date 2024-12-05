@@ -6,6 +6,9 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 import { Empresa } from 'src/app/models/empresa.model'; 
 import { Encuesta } from 'src/app/models/encuesta.model';
 import { User } from 'src/app/models/user.model'; 
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment.prod';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 describe('OpinaPage', () => {
   let component: OpinaPage;
@@ -35,7 +38,10 @@ describe('OpinaPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OpinaPage ],
-      imports: [IonicModule.forRoot()],
+      imports: [
+        IonicModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,],
       providers: [
         FirebaseConfigService,
         UtilsService,

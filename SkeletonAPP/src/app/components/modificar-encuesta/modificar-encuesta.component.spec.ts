@@ -3,6 +3,9 @@ import { IonicModule } from '@ionic/angular';
 import { ModificarEncuestaComponent } from './modificar-encuesta.component';
 import { Encuesta } from 'src/app/models/encuesta.model';
 import { Empresa } from 'src/app/models/empresa.model';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment.prod';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 describe('ModificarEncuestaComponent', () => {
   let component: ModificarEncuestaComponent;
@@ -11,7 +14,10 @@ describe('ModificarEncuestaComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ModificarEncuestaComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [
+        IonicModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ModificarEncuestaComponent);
