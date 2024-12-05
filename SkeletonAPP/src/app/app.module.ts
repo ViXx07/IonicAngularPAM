@@ -20,12 +20,12 @@ import { ContactoPage } from './pages/contacto/contacto.page';
   declarations: [AppComponent, ContactoPage],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
     SharedModule,
     HttpClientModule,
     

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseConfigService } from './services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from './services/utils/utils.service';

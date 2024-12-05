@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -10,6 +11,7 @@ import {
 import { User } from '../../models/user.model';
 import {
   doc,
+  collectionData,
   query,
   getDoc,
   setDoc,
@@ -18,10 +20,8 @@ import {
   deleteDoc,
   collection,
   getFirestore,
-} from 'firebase/firestore';
-import {
-  collectionData
-} from '@angular/fire/firestore'
+} from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   getStorage,
   uploadString,
@@ -34,15 +34,9 @@ import { UtilsService } from '../utils/utils.service';
   providedIn: 'root',
 })
 export class FirebaseConfigService {
-
-  utils: UtilsService;
-
-  constructor(
-
-    utilsService: UtilsService
-  ) {
-    this.utils = utilsService;
-  }
+  auth = inject(AngularFireAuth);
+  firestore = inject(AngularFirestore);
+  utils = inject(UtilsService);
   user: User = {
     uid: '',
     email: '',
@@ -52,12 +46,12 @@ export class FirebaseConfigService {
 
   //Acceder
   signIn(user: User) {
-    return signInWithEmailAndPassword(getAuth(), user.email, user.password);
+    return this.auth.signInWithEmailAndPassword(user.email, user.password); 
   }
 
   //Cerrar sesión
   signOut() {
-    getAuth().signOut();
+    this.auth.signOut();
     localStorage.removeItem('user');
     localStorage.removeItem('empresa');
     localStorage.removeItem('encuesta');
@@ -65,19 +59,17 @@ export class FirebaseConfigService {
 
   //Crear cuenta
   signUp(user: User) {
-    return createUserWithEmailAndPassword(getAuth(), user.email, user.password);
+    return this.auth.createUserWithEmailAndPassword(user.email, user.password);
   }
 
   //Recuperar contraseña
   recoveryEmail(email: string) {
-    return sendPasswordResetEmail(getAuth(), email);
+    return this.auth.sendPasswordResetEmail(email); 
   }
 
   //Autenticación
 
-  getAuth() {
-    return getAuth();
-  }
+
 
   //Autenticación Google
 
@@ -90,8 +82,8 @@ export class FirebaseConfigService {
     await signInWithPopup(getAuth(), provider);
     const loading = await this.utils.loading();
     await loading.present();
-    this.user.email = this.getAuth().currentUser.email;
-    this.user.uid = this.getAuth().currentUser.uid;
+    this.user.email = (await this.auth.currentUser).email;
+    this.user.uid = (await this.auth.currentUser).uid;
     this.utils.saveInlocalStorage('user', this.user);
     delete this.user.password;
     let path = `users/${this.user.uid}`;
