@@ -46,3 +46,12 @@ ion-avatar {
 .filtros {
   width: 100%;
 }
+ion-card {
+  position: relative;
+  z-index: 1; 
+}
+
+ion-tabs {
+  position: relative; 
+  z-index: 2; 
+}
