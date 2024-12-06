@@ -18,14 +18,14 @@ ion-avatar {
 }
 
 .table td ion-avatar {
-    display: block; /* Asegura que el ion-avatar se trate como un bloque */
-    margin: 0 auto; /* Centra el avatar en su celda */
-    border: 1px solid #f7f4af;
-  }
+  display: block; /* Asegura que el ion-avatar se trate como un bloque */
+  margin: 0 auto; /* Centra el avatar en su celda */
+  border: 1px solid #f7f4af;
+}
 
 /* Estilo para las filas */
-.table tr{
-    background-color: #fdd775; /* Color de fondo para las filas inpares */
+.table tr {
+  background-color: #fdd775; /* Color de fondo para las filas inpares */
 }
 
 .table tr:nth-child(even) {

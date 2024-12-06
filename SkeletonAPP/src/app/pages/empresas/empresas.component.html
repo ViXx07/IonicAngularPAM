@@ -41,8 +41,8 @@
             </td>
             </ng-template>
             
-            <td class="col">
-              <button style="background: yellow;" (click)="mostrarModificarEmpresa(e)"
+            <td class="col button-cell">
+              <button type="button" style="background: yellow;" (click)="mostrarModificarEmpresa(e)"
                 >Modificar</button>
               <button style="background: red;" (click)="confirmarEliminarEmpresa(e)" 
                 >Eliminar</button>
@@ -54,5 +54,5 @@
       </table>
     </div>
   </ion-card>
-  <app-tabs [tabsInput]="tabs" (actionTriggered)="onFilterAction($event)"></app-tabs>
+ <!-- <app-tabs [tabsInput]="tabs" (actionTriggered)="onFilterAction($event)"></app-tabs>-->
 </ion-content>
