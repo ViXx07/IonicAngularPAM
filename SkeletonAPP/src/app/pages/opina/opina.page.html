@@ -1,22 +1,27 @@
 <ion-content>
-  <ion-item>
-    <ion-title>{{empresa.nombreEmpresa}}</ion-title>
-    <button shape="round" fill="clear" (click)="cerrarModal()">
-      <ion-icon
-        color="danger"
-        slot="icon-only"
-        size="large"
-        name="close-circle-outline"
-      ></ion-icon>
-    </button>
-  </ion-item>
-  
-  <form [formGroup]="encuestaForm">
-    <ion-list class="ion-text-center">
+  <ion-card class="area-texto">
+    <div class="logo-area">
+      <ion-button
+        shape="round"
+        fill="clear"
+        (click)="cerrarModal()"
+        class="boton-cerrar"
+      >
+        <ion-icon
+          slot="icon-only"
+          size="large"
+          name="close-circle-sharp"
+        ></ion-icon>
+      </ion-button>
+      <ion-avatar class="card-avatar">
+        <img src="../../../assets/logo.png" class="card-logo" />
+      </ion-avatar>
+    </div>
+    <ion-card-title>{{empresa.nombreEmpresa}}</ion-card-title>
+    <form [formGroup]="encuestaForm">
       <!--Tipo de opinión-->
-      <ion-item class="ion-text-center">
-        <ion-label>{{encuesta.pregunta}} </ion-label>
-      </ion-item>
+
+      <ion-card-content>{{encuesta.pregunta}}</ion-card-content>
       <div id="emoji">
         <input
           formControlName="tipoDeOpinion"
@@ -38,49 +43,40 @@
           id="enojado"
           value="3"
         /><label for="enojado">😡</label>
-
       </div>
       <!--Comentario-->
-      <ion-item>
-        <ion-textarea
-          formControlName="comentario"
-          label="Dejenos su comentario:"
-          labelPlacement="stacked"
-          [counter]="true"
-          maxlength="100"
-          helperText="Largo máximo 100"
-          [counterFormatter]="customCounterFormatter"
-        >
-        </ion-textarea>
-      </ion-item>
 
-      <ion-item>
-        <div class="botones">
-          <ion-avatar *ngIf="encuestaForm.value.evidencia;else placeholder">
-            <img [src]="encuestaForm.value.evidencia" />
+      <ion-textarea
+        formControlName="comentario"
+        label="Dejenos su comentario:"
+        labelPlacement="stacked"
+        [counter]="true"
+        maxlength="100"
+        helperText="Largo máximo 100"
+        [counterFormatter]="customCounterFormatter"
+      >
+      </ion-textarea>
+
+      <div class="botones">
+        <ion-avatar *ngIf="encuestaForm.value.evidencia;else placeholder">
+          <img [src]="encuestaForm.value.evidencia" class="input-logo"/>
+        </ion-avatar>
+        <ng-template #placeholder>
+          <ion-avatar>
+            <img src="../../../assets/placeholder.png" class="input-logo"/>
           </ion-avatar>
-          <ng-template #placeholder>
-            <ion-avatar>
-              <img src="../../../assets/placeholder.png" />
-            </ion-avatar>
-          </ng-template>
-          <button
-            color="primary"
-            shape="round"
-            fill="outline"
-            (click)="evidencia()"
-            >Sube tu evidencia!</button>
-          <button
-            color="warning"
-            shape="round"
-            fill="outline"
-            class="enviar"
-            (click)="submit()"
-            [disabled]="!encuestaForm.valid"
-            >Enviar</button>
-        </div>
-
-      </ion-item>
-    </ion-list>
-  </form>
+        </ng-template>
+        <button style="background-color: #00bd94" (click)="evidencia()">
+          Sube tu evidencia!
+        </button>
+        <button
+          style="background-color: #00bd94"
+          (click)="submit()"
+          [disabled]="!encuestaForm.valid"
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+  </ion-card>
 </ion-content>

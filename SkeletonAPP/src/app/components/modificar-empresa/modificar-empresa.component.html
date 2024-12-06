@@ -35,43 +35,34 @@
       ></ion-input>
 
       <ion-grid>
-        <ion-row>
-          <ion-col col="1">
-            <!--Logo-->
-            <ion-row>
-              <ion-col>
-                <ion-avatar *ngIf="modificarEmpresa.value.logo;else placeHolder">
-                  <img [src]="modificarEmpresa.value.logo" />
-                </ion-avatar>
-                <ng-template #placeHolder>
-                  <ion-avatar>
-                    <img src="../../../assets/placeholder.png" />
-                  </ion-avatar>
-                </ng-template>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-
-          <ion-col col="11">
-            <ion-row>
+          <ion-col>
               <ion-row class="ion-text-center">
+                <ion-col col="4"></ion-col>
+                <ion-col col="1">
+                  <ion-avatar *ngIf="modificarEmpresa.value.logo;else placeHolder">
+                    <img class="input-logo" [src]="modificarEmpresa.value.logo" />
+                  </ion-avatar>
+                  <ng-template #placeHolder>
+                    <ion-avatar>
+                      <img class="input-logo" src="../../../assets/placeholder.png" />
+                    </ion-avatar>
+                  </ng-template>
+                </ion-col>
                 <!--Botón subir logo-->
-                <ion-col col="6">
-                  <button (click)="logo()">
+                <ion-col col="4">
+                  <button (click)="logo()" style="background-color: #00bd94;">
                     Sube tu logo<ion-icon name="arrow-up-circle-outline"></ion-icon>
                   </button>
                 </ion-col>
                 <!--Botón modificar-->
-                <ion-col col="6">
-                  <button (click)="submit()">
-                    <ion-icon name="add-circle-outline"></ion-icon>Modificar
+                <ion-col col="3">
+                  <button (click)="submit()" style="background-color: #ff932b;">
+                    Modificar<ion-icon name="add-circle-outline"></ion-icon>
                   </button>
                 </ion-col>
-              </ion-row>
             </ion-row>
               
           </ion-col>
-        </ion-row>
       </ion-grid>
   </form>
 </ion-card>

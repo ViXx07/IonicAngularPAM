@@ -36,6 +36,9 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
+// Colores //
+$Verde: #00bd94;
+$Naranjo: #ff932b;
 //Estilos globales:
 .logo {
   height: 30vh;
@@ -53,6 +56,12 @@
   object-fit: contain; 
 }
 
+.input-logo {
+  border: 3px solid $Verde;
+  border-radius: 50&;
+  object-fit: contain;
+}
+
 .card-avatar {
   margin: 0 auto;
   display: block;
@@ -61,7 +70,7 @@
 }
 
 .logo-area {
-  background-color: #00bd94;
+  background-color: $Verde;
   padding-top: 1em;
   padding-bottom: 1em;
   position: relative;
