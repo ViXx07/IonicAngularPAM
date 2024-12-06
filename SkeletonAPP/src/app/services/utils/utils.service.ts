@@ -17,11 +17,14 @@ import { Encuesta } from 'src/app/models/encuesta.model';
   providedIn: 'root',
 })
 export class UtilsService {
-  loadingCtrl = inject(LoadingController);
-  toastCtrl = inject(ToastController);
-  router = inject(Router);
-  modalCtrl = inject(ModalController);
-  alertCtrl = inject(AlertController);
+
+  constructor(
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    private router: Router,
+    public modalCtrl: ModalController,
+    private alertCtrl: AlertController
+  ) {}
 
   loading() {
     return this.loadingCtrl.create({ spinner: 'crescent' });
@@ -97,19 +100,6 @@ export class UtilsService {
     } else return 0;
   }
 
-  getEmpresa(): Empresa {
-    if (this.getFromLocalStorage('empresa')) {
-      return this.getFromLocalStorage('empresa');
-    } else return null;
-  }
-
-  getEncuesta(): Encuesta {
-    if (this.getFromLocalStorage('encuesta')) {
-      return this.getFromLocalStorage('escuesta');
-    } else return null;
-  }
-
-
   redireccionPorRol(rolUsuario: number) {
     switch (rolUsuario) {
       case 1: {
@@ -168,11 +158,6 @@ export class UtilsService {
             titulo: 'Gráfico',
             url: 'admin-empresa/grafico',
             icono: 'bar-chart-outline',
-          },
-          {
-            titulo: 'Generar QR',
-            url: 'admin-empresa/generarQR',
-            icono: 'qr-code-outline',
           },
         ]);
       }

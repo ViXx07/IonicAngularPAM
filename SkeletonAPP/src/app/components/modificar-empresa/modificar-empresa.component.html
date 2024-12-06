@@ -1,28 +1,29 @@
 <ion-content>
+  <ion-card class="area-texto">
   <!--Titulo-->
-  <ion-item class="ion-text-center">
-    <ion-title>Modificar Empresa</ion-title>
-    <button shape="round" fill="clear" (click)="cerrarModal()">
+
+  <div class="logo-area">
+    <ion-button shape="round" fill="clear" (click)="cerrarModal()" class="boton-cerrar">
       <ion-icon
-        color="danger"
         slot="icon-only"
         size="large"
-        name="close-circle-outline"
+        name="close-circle-sharp"
       ></ion-icon>
-    </button>
-  </ion-item>
-  <!--Logo-->
-  <ion-item *ngIf="empresa.logo;else sinLogo">
-    <img class="logo" alt="..." [src]="empresa.logo" />
-  </ion-item>
-  <ng-template #sinLogo>
-    <ion-item>
-      <img class="logo" src="../../../assets/placeholder.png">
-    </ion-item>
-  </ng-template>
+    </ion-button>
+    <ion-avatar *ngIf="empresa.logo;else sinLogo" class="card-avatar">
+      <img [src]="empresa.logo" class="card-logo">
+    </ion-avatar>
+    <ng-template #sinLogo>
+      <ion-avatar>
+        <img src="../../../assets/placeholder.png" class="card-logo">
+      </ion-avatar>
+    </ng-template>
+  </div>
+
+  <ion-card-title>Modificar Empresa</ion-card-title>
+
   <!--Formulario-->
   <form [formGroup]="modificarEmpresa">
-    <ion-item>
       <ion-input
         formControlName="nombreEmpresa"
         label="Ingrese el nombre de la empresa:"
@@ -32,9 +33,7 @@
         errorText="Nombre inválido."
         helperText="---"
       ></ion-input>
-    </ion-item>
 
-    <ion-item>
       <ion-grid>
         <ion-row>
           <ion-col col="1">
@@ -74,6 +73,6 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-item>
   </form>
+</ion-card>
 </ion-content>

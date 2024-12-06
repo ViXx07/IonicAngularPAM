@@ -31,6 +31,7 @@ export class EmpresasComponent implements OnInit, OnDestroy {
   ngOnInit() {
     try {
       this.getEmpresas(2);
+      
     } catch (error) {
       console.error('Error loading data', error);
     }
@@ -57,7 +58,7 @@ export class EmpresasComponent implements OnInit, OnDestroy {
     const numFiltro = Number(filtro);
     this.getEmpresas(numFiltro);  
   }
-  
+
   async getEmpresas(filtro?: number) {
     const loading = await this.utils.loading();
     await loading.present();
@@ -72,6 +73,7 @@ export class EmpresasComponent implements OnInit, OnDestroy {
     const sub = this.firebase.getCollectionData(path, query).subscribe({
       next: (res: any) => {
         this.empresas = res;
+        console.log(this.empresas);
       },
       error: (err) => {
         console.error('Error fetching admins:', err);
@@ -109,6 +111,8 @@ export class EmpresasComponent implements OnInit, OnDestroy {
   }
 
   async eliminarEmpresa(empresa: Empresa) {
+    console.log(empresa);
+    
     let path = `empresas/${empresa.id}`;
 
     const loading = await this.utils.loading();
@@ -181,4 +185,5 @@ export class EmpresasComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
+
 }

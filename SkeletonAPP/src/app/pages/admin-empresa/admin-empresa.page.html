@@ -57,7 +57,7 @@
             (click)="modificarEncuesta(encuesta, empresa)"
             >Modificar Encuesta <ion-icon name="create-outline"></ion-icon>
           </button>
-          <button
+          <button *ngIf="encuesta"
           (click)="generarQR(encuesta, empresa)"
           >Ver QR <ion-icon name="qr-code-outline"></ion-icon>
         </button>

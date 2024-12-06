@@ -12,6 +12,7 @@ import { ModificarEncuestaComponent } from 'src/app/components/modificar-encuest
 import { GraficoEmpresaComponent } from 'src/app/components/grafico-empresa/grafico-empresa.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { GenerarQrComponent } from 'src/app/components/generar-qr/generar-qr.component';
+import { QrCodeModule } from 'ng-qrcode';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { GenerarQrComponent } from 'src/app/components/generar-qr/generar-qr.com
     SharedModule,
     ReactiveFormsModule,
     CanvasJSAngularChartsModule,
+    QrCodeModule
   ],
   declarations: [AdminEmpresaPage, ModificarEncuestaComponent, GraficoEmpresaComponent, GenerarQrComponent]
 })

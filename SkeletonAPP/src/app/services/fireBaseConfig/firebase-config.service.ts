@@ -1,10 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from '@firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
 import { User } from '../../models/user.model';
 import {
   doc,
@@ -31,9 +27,13 @@ import { UtilsService } from '../utils/utils.service';
   providedIn: 'root',
 })
 export class FirebaseConfigService {
-  auth = inject(AngularFireAuth);
-  firestore = inject(AngularFirestore);
-  utils = inject(UtilsService);
+
+  constructor(
+    public auth: AngularFireAuth,
+    private firestore: AngularFirestore,
+    private utils: UtilsService
+  ) {}
+
   user: User = {
     uid: '',
     email: '',
@@ -43,7 +43,7 @@ export class FirebaseConfigService {
 
   //Acceder
   signIn(user: User) {
-    return this.auth.signInWithEmailAndPassword(user.email, user.password); 
+    return this.auth.signInWithEmailAndPassword(user.email, user.password);
   }
 
   //Cerrar sesión
@@ -61,12 +61,10 @@ export class FirebaseConfigService {
 
   //Recuperar contraseña
   recoveryEmail(email: string) {
-    return this.auth.sendPasswordResetEmail(email); 
+    return this.auth.sendPasswordResetEmail(email);
   }
 
   //Autenticación
-
-
 
   //Autenticación Google
 
@@ -110,8 +108,8 @@ export class FirebaseConfigService {
   async getDocument(path: string) {
     return (await getDoc(doc(getFirestore(), path))).data();
   }
-//------------------------CRUD------------------------//
-  //Agregar un documento 
+  //------------------------CRUD------------------------//
+  //Agregar un documento
   addDocument(path: string, data: any) {
     return addDoc(collection(getFirestore(), path), data);
   }
@@ -128,8 +126,8 @@ export class FirebaseConfigService {
   deleteDocument(path: string) {
     return deleteDoc(doc(getFirestore(), path));
   }
-//---------------------------------------------------//
-  
+  //---------------------------------------------------//
+
   //Almacenamiento
 
   async subirImagen(path: string, dataUrl: string) {
@@ -143,5 +141,4 @@ export class FirebaseConfigService {
   async getFilePath(url: string) {
     return ref(getStorage(), url).fullPath;
   }
-  
 }

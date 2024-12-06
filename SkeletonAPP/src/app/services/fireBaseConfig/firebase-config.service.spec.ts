@@ -3,29 +3,27 @@ import { FirebaseConfigService } from '../fireBaseConfig/firebase-config.service
 import { IonicModule } from '@ionic/angular';
 import { environment } from 'src/environments/environment.prod';
 import { UtilsService } from '../utils/utils.service';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { provideStorage, getStorage } from '@angular/fire/storage';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { GoogleAuthService } from '../googleAuth/google-auth.service';
 
 describe('FirebaseConfigService', () => {
   let service: FirebaseConfigService;
   let utilsService: UtilsService;
-
+      
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         IonicModule.forRoot(),
-        ReactiveFormsModule,
-        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-        provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore()),
-        provideStorage(() => getStorage()),
+        AngularFireModule.initializeApp(environment.firebaseConfig), 
       ],
       providers: [
         FirebaseConfigService,
-        UtilsService
+        UtilsService,
+        AngularFirestore,
+        AngularFireAuth,
+        GoogleAuthService
       ]
     });
     service = TestBed.inject(FirebaseConfigService);

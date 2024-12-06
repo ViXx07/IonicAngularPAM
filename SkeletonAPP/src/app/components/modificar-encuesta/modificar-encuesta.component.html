@@ -1,29 +1,34 @@
 <ion-content>
-  <!--Titulo-->
-  <ion-item class="ion-text-center">
-    <ion-title>Modificar Encuesta</ion-title>
-    <button shape="round" fill="clear" (click)="cerrarModal()">
-      <ion-icon
-        color="danger"
-        slot="icon-only"
-        size="large"
-        name="close-circle-outline"
-      ></ion-icon>
-    </button>
-  </ion-item>
-  <!--logo-->
-  <ion-item *ngIf="empresa.logo;else sinLogo">
-    <img class="logo" alt="..." [src]="empresa.logo" />
-  </ion-item>
-  <ng-template #sinLogo>
-    <ion-item>
-      <img class="logo" src="../../../assets/placeholder.png">
-    </ion-item>
-  <!--Encuesta-->
-  </ng-template>
-  <form [formGroup]="modificarEncuesta">
+  <ion-card class="area-texto">
+    <!--Titulo-->
 
-    <ion-item>
+    <div class="logo-area">
+      <ion-button
+        shape="round"
+        fill="clear"
+        (click)="cerrarModal()"
+        class="boton-cerrar"
+      >
+        <ion-icon
+          slot="icon-only"
+          size="large"
+          name="close-circle-sharp"
+        ></ion-icon>
+      </ion-button>
+      <ion-avatar *ngIf="empresa.logo; else sinLogo" class="card-avatar">
+        <img [src]="empresa.logo" class="card-logo" />
+      </ion-avatar>
+      <ng-template #sinLogo>
+        <ion-avatar>
+          <img src="../../../assets/placeholder.png" class="card-logo" />
+        </ion-avatar>
+      </ng-template>
+    </div>
+
+    <ion-card-title>Modificar Encuesta</ion-card-title>
+
+    <!--Encuesta-->
+    <form [formGroup]="modificarEncuesta">
       <ion-input
         formControlName="pregunta"
         label="Ingrese la pregunta de la Encuesta:"
@@ -32,9 +37,7 @@
         minlength="1"
         errorText="pregunta inválida."
       ></ion-input>
-    </ion-item>
 
-    <ion-item>
       <ion-grid>
         <ion-row class="ion-text-center">
           <ion-col col="4">
@@ -44,11 +47,12 @@
               fill="outline"
               [disabled]="!modificarEncuesta.valid"
               (click)="submit()"
-              >Modificar</button
             >
+              Modificar
+            </button>
           </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-item>
-  </form>
+    </form>
+  </ion-card>
 </ion-content>
