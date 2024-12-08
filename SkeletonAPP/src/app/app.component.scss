@@ -1,15 +1,12 @@
 * {
-  font-size: 2.5vh;
-}
-
-.logo {
-  height: 4vh;
-  border-radius: 50%;
+  font-size: 3vh;
 }
 
 ion-item {
   font-size: 2vh;
-
+  --background: white;
+  --color: #00bd94;
+  --border-color: #00bd94;
   &.active {
     color: var(--ion-color-warning);
 
@@ -19,6 +16,20 @@ ion-item {
   }
 }
 
-ion-menu{
-  --min-width: 27vw
+ion-menu {
+  --min-width: 27vw;
+}
+
+ion-icon {
+  color: #00bd94;
+}
+
+button ion-icon {
+  color: white;
+}
+
+ion-list {
+  padding: 0;
+  border: #00bd94 solid 1px;
+  border-radius: 3%;
 }

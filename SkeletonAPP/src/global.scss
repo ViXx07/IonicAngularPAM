@@ -37,27 +37,48 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 // Colores //
-$Verde: #00bd94;
-$Naranjo: #ff932b;
+$verde: #00bd94;
+$naranjo: #ff932b;
 //Estilos globales:
+
 .logo {
-  height: 30vh;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  height: 2.5rem;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
 }
+
+.page-card {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+  padding: 1.5em 1.5em;
+  --background: white;
+  margin-top: 1em;
+}
+
+.enviar{
+  margin: 0 auto;
+  display: block;
+  background-color: #00bd94;
+}
+
+ion-card-title{
+  margin-bottom: 1.5em;
+}
+
 // Estilos Modal //
 
 .card-logo {
   border: 2px solid white;
   border-radius: 50%;
   object-fit: contain; 
+
 }
 
 .input-logo {
-  border: 3px solid $Verde;
+  border: 3px solid $verde;
   border-radius: 50&;
   object-fit: contain;
 }
@@ -70,7 +91,7 @@ $Naranjo: #ff932b;
 }
 
 .logo-area {
-  background-color: $Verde;
+  background-color: $verde;
   padding-top: 1em;
   padding-bottom: 1em;
   position: relative;
@@ -84,6 +105,7 @@ $Naranjo: #ff932b;
   color: #000;
   margin: 0;
   padding-bottom: 1em;
+  padding: 0.5em;
 }
 
 .boton-cerrar{
@@ -116,16 +138,6 @@ ion-card-content {
 
 //------------------------------------------------------------------------------//
 
-/*ion-card {
-  width: 95vw;
-  margin-top: 5vh;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  min-height: 50vh;
-  background-color: #fdd775;
-}*/
-
 form ion-item {
   max-width: 100vw;
 }
@@ -151,6 +163,7 @@ button {
   width: auto;
   white-space: nowrap;
   margin: 0.5em;
+  border-radius: 3%;
 
   ion-icon {
     font-size: 1.2em;
@@ -163,7 +176,7 @@ button {
 
   &:active,
   &:focus {
-    filter: brightness(0.7); /* Oscurece aún más */
+    filter: brightness(0.9); /* Oscurece aún más */
     outline: none;
   }
 }

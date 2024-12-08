@@ -2,59 +2,73 @@
   <app-header titulo="Empresas"></app-header>
 
   <ion-card>
-    <div *ngIf="loadingData">Cargando datos...</div>
+    <div *ngIf="loadingData" style="background: #ff932b; color: white;">Cargando datos...</div>
 
     <div *ngIf="!loadingData">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Logo</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Acciones</th>
-          </tr>
-        </thead>
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Logo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr class="row" *ngFor="let e of empresas">
-            <td class="col">
-              <ion-avatar *ngIf="e.logo; else sinImagen">
-                <img [src]="e.logo" />
-              </ion-avatar>
-              <ng-template #sinImagen>
-                <ion-avatar slot="start">
-                  <img src="../../../assets/placeholder.png" />
-                </ion-avatar>
-              </ng-template>
-            </td>
-
-            <td class="col">
-              {{ e.nombreEmpresa }}
-            </td>
-
-            <td class="col" *ngIf="e.estado == 0; else enEspera">
-              Aprobado
-            </td>
-            <ng-template #enEspera>
+          <tbody>
+            <tr class="row" *ngFor="let e of empresas">
               <td class="col">
-                En espera
-            </td>
-            </ng-template>
-            
-            <td class="col button-cell">
-              <button type="button" style="background: yellow;" (click)="mostrarModificarEmpresa(e)"
-                >Modificar</button>
-              <button style="background: red;" (click)="confirmarEliminarEmpresa(e)" 
-                >Eliminar</button>
-              <button style="background: greenyellow;" *ngIf="e.estado == 1" color="success" (click)="aprobarEmpresa(e)"
-                >Aprobar</button> 
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
-  </ion-card>
-  <app-tabs [tabsInput]="tabs" (actionTriggered)="onFilterAction($event)"></app-tabs>
-</ion-content>
+                <ion-avatar *ngIf="e.logo; else sinImagen">
+                  <img [src]="e.logo" />
+                </ion-avatar>
+                <ng-template #sinImagen>
+                  <ion-avatar slot="start">
+                    <img src="../../../assets/placeholder.png" />
+                  </ion-avatar>
+                </ng-template>
+              </td>
 
+              <td class="col">
+                {{ e.nombreEmpresa }}
+              </td>
+
+              <td class="col" *ngIf="e.estado == 0; else enEspera">Aprobado</td>
+              <ng-template #enEspera>
+                <td class="col">En espera</td>
+              </ng-template>
+
+              <td class="col button-cell">
+                <button
+                  type="button"
+                  style="background: #ff932b"
+                  (click)="mostrarModificarEmpresa(e)"
+                >
+                  Modificar
+                </button>
+                <button
+                  style="background: #ff194c"
+                  (click)="confirmarEliminarEmpresa(e)"
+                >
+                  Eliminar
+                </button>
+                <button
+                  style="background: #00bd94"
+                  *ngIf="e.estado == 1"
+                  color="success"
+                  (click)="aprobarEmpresa(e)"
+                >
+                  Aprobar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ion-card>
+  <app-tabs
+    [tabsInput]="tabs"
+    (actionTriggered)="onFilterAction($event)"
+  ></app-tabs>
+</ion-content>

@@ -1,17 +1,11 @@
 <ion-content>
   <app-header titulo="Login"></app-header>
-  <ion-card>
-    <!--Logo-->
-    <ion-item>
-      <img class="logo" alt="..." src="assets/logo.png" />
-    </ion-item>
+  <ion-card class="page-card">
     <!--Input de usuario, con restricción de largo, mensaje de ayuda y de error-->
     <form [formGroup]="loginForm">
-      <ion-item>
+        <label>Ingrese su usuario:</label>
         <ion-input
           formControlName="email"
-          label="Ingrese su usuario: "
-          labelPlacement="stacked"
           minlength="3"
           maxlength="25"
           errorText="Usuario inválido."
@@ -19,13 +13,10 @@
           [required]="true"
         >
         </ion-input>
-      </ion-item>
       <!--Input de contraseña, con restricción de largo, mensaje de ayuda y de error-->
-      <ion-item>
+        <label>Ingrese su contraseña:</label>
         <ion-input
           formControlName="password"
-          label="Ingrese su contraseña:"
-          labelPlacement="stacked"
           type="password"
           minlength="6"
           maxlength="20"
@@ -33,26 +24,27 @@
           helperText="Largo minimo 6 y máximo 20"
         >
         </ion-input>
-      </ion-item>
       <!--Link a página de recuperación de contraseña-->
-      <ion-item>
-        <a (click)="recordarContrasena()" style="color: #ff8728;">¿Olvidaste tu contraseña?</a>
-      </ion-item>
-      <!--Botón login/registro con google-->
-      <ion-item>
-        <button (click)="loginGoogle()"> Google <ion-icon name="logo-google"></ion-icon></button>
-        <button (click)="registroCliente()"> Registro <ion-icon name="person-add-outline"></ion-icon></button>
-      </ion-item>
-      <!--Boton 'Ingresar', centrado con grid, con función login() Que de momento solo acepta usuario: admin contraseña: 1234-->
+      <div class="link-container">
+        <a (click)="recordarContrasena()" style="color: #ff932b;">¿Olvidaste tu contraseña?</a>
+      </div>
+
       <ion-grid>
-        <ion-row class="ion-text-center">
+        <ion-row>
           <ion-col col="4">
-            <button (click)="submit()" style="background: #ff8728;" [disabled]="!loginForm.valid"
-              >Ingresar <ion-icon name="log-in-outline"></ion-icon>
-            </button>
+            <button (click)="loginGoogle()" style="background: #4285F4;">Google<ion-icon name="logo-google"></ion-icon></button>
+          </ion-col>
+          <ion-col col="4">
+            <ion-row><button (click)="registroCliente()" style="background: #00bd94;">Registro <ion-icon name="person-add-outline"></ion-icon></button></ion-row>
+          </ion-col>
+          <ion-col col="4">
+            <button (click)="submit()" style="background: #ff8728;" [disabled]="!loginForm.valid">
+              Ingresar <ion-icon name="log-in-outline"></ion-icon></button>
           </ion-col>
         </ion-row>
+
       </ion-grid>
+
     </form>
   </ion-card>
 </ion-content>

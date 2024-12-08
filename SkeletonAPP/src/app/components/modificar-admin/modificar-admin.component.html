@@ -1,8 +1,12 @@
 <ion-content>
-  <ion-card class="area-texto">
   <!--Titulo-->
   <div class="logo-area">
-    <ion-button shape="round" fill="clear" (click)="cerrarModal()" class="boton-cerrar">
+    <ion-button
+      shape="round"
+      fill="clear"
+      (click)="cerrarModal()"
+      class="boton-cerrar"
+    >
       <ion-icon
         slot="icon-only"
         size="large"
@@ -10,25 +14,24 @@
       ></ion-icon>
     </ion-button>
     <ion-avatar class="card-avatar">
-      <img src="../../../assets/logo.png" class="card-logo">
+      <img src="../../../assets/logo.png" class="card-logo" />
     </ion-avatar>
   </div>
-  <ion-card-title>Modificar Admin</ion-card-title>
+  <ion-card class="area-texto">
+    <ion-card-title>Modificar Admin</ion-card-title>
 
-  <form [formGroup]="modificarAdmin">
-    <!--Correo-->
+    <form [formGroup]="modificarAdmin">
+      <!--Correo-->
+      <label>Ingrese su usuario:</label>
       <ion-input
         formControlName="email"
-        label="Ingrese su usuario: "
-        labelPlacement="stacked"
         minlength="3"
         maxlength="25"
         errorText="Usuario inválido."
         helperText="Largo entre 3 y 8"
-      >
-      </ion-input>
+      ></ion-input>
 
-    <!--Empresa-->
+      <!--Empresa-->
       <ion-select
         formControlName="empresa"
         interface="popover"
@@ -39,20 +42,9 @@
         </ion-select-option>
       </ion-select>
 
-      <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-col col="4">
-            <button
-              color="dark"
-              shape="round"
-              fill="outline"
-              (click)="submit()"
-              [disabled]="!modificarAdmin.valid"
-              >Modificar</button
-            >
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  </form>
+      <button (click)="submit()" class="enviar" [disabled]="!modificarAdmin.valid">
+        Modificar
+      </button>
+    </form>
   </ion-card>
 </ion-content>

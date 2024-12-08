@@ -1,30 +1,27 @@
 <ion-content>
-  <ion-card class="area-texto">
-    <!--Titulo-->
-
-    <div class="logo-area">
-      <ion-button
-        shape="round"
-        fill="clear"
-        (click)="cerrarModal()"
-        class="boton-cerrar"
-      >
-        <ion-icon
-          slot="icon-only"
-          size="large"
-          name="close-circle-sharp"
-        ></ion-icon>
-      </ion-button>
-      <ion-avatar *ngIf="empresa.logo; else sinLogo" class="card-avatar">
-        <img [src]="empresa.logo" class="card-logo" />
+  <div class="logo-area">
+    <ion-button
+      shape="round"
+      fill="clear"
+      (click)="cerrarModal()"
+      class="boton-cerrar"
+    >
+      <ion-icon
+        slot="icon-only"
+        size="large"
+        name="close-circle-sharp"
+      ></ion-icon>
+    </ion-button>
+    <ion-avatar *ngIf="empresa.logo; else sinLogo" class="card-avatar">
+      <img [src]="empresa.logo" class="card-logo" />
+    </ion-avatar>
+    <ng-template #sinLogo>
+      <ion-avatar>
+        <img src="../../../assets/placeholder.png" class="card-logo" />
       </ion-avatar>
-      <ng-template #sinLogo>
-        <ion-avatar>
-          <img src="../../../assets/placeholder.png" class="card-logo" />
-        </ion-avatar>
-      </ng-template>
-    </div>
-
+    </ng-template>
+  </div>
+  <ion-card class="area-texto">
     <ion-card-title>Modificar Encuesta</ion-card-title>
 
     <!--Encuesta-->

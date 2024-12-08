@@ -1,9 +1,3 @@
-.logo {
-  height: 2.5rem;
-  border-radius: 50%;
-  margin: 0;
-  padding: 0;
-}
 
 ion-title{
   font-size: 3vh;
@@ -12,3 +6,8 @@ ion-title{
   text-align: center;
   font-weight: bold;
 }
+
+ ion-toolbar, ion-item{
+  --background: #00bd94;
+}
+

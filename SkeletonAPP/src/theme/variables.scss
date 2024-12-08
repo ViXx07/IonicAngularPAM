@@ -1,5 +1,9 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+ion-content{
+    --ion-background-color:white;
+}
+
 body.barcode-scanning-active{
     visibility: hidden;
     --background: transparent;
@@ -10,7 +14,7 @@ body.barcode-scanning-active{
     visibility: visible;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
     .barcode-scanning-active{
     visibility: hidden;
     --background: transparent;

@@ -28,7 +28,7 @@ export class RecordarContrasenaComponent {
           this.utils.presentToast({
             message: 'Correo enviado exitosamente',
             duration: 2500,
-            color: 'primary',
+            color: 'success',
             position: 'middle',
             icon: 'mail-outline',
           });

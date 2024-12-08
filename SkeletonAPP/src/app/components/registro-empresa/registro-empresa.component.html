@@ -1,65 +1,48 @@
 <ion-content>
-  <app-header titulo="Registra tu empresa"></app-header>
-  <ion-card>
-    <!--Logo-->
-    <ion-item>
-      <img class="logo" alt="..." src="assets/logo.png" />
-    </ion-item>
+  <app-header titulo=""></app-header>
+  <ion-card class="page-card">
     <form [formGroup]="registroEmpresa">
+      <ion-card-title>Registra una empresa</ion-card-title>
       <!--Empresa-->
-      <ion-item>
-        <ion-input
-          formControlName="nombreEmpresa"
-          label="Ingrese el nombre de la empresa:"
-          labelPlacement="stacked"
-          type="text"
-          minlength="1"
-          errorText="Nombre inválido."
-          helperText="---"
-        ></ion-input>
-      </ion-item>
+      <label>Ingrese el nombre de la empresa:</label>
+      <ion-input
+        formControlName="nombreEmpresa"
+        type="text"
+        minlength="1"
+        errorText="Nombre inválido."
+        helperText="---"
+      ></ion-input>
 
-      <ion-item>
-        <ion-grid>
-          <ion-row>
-            <ion-col col="1">
-              <!--Logo-->
-              <ion-row>
-                <ion-col>
-                  <ion-avatar *ngIf="registroEmpresa.value.logo;else placeHolder">
-                    <img [src]="registroEmpresa.value.logo" />
-                  </ion-avatar>
-                  <ng-template #placeHolder>
-                    <ion-avatar>
-                      <img src="../../../assets/placeholder.png" />
-                    </ion-avatar>
-                  </ng-template>
-                </ion-col>
-              </ion-row>
-            </ion-col>
-  
-            <ion-col col="11">
-              <ion-row>
-                <ion-row class="ion-text-center">
-                  <!--Botón subir logo-->
-                  <ion-col col="6">
-                    <button (click)="logo()">
-                      Sube tu logo <ion-icon name="arrow-up-circle-outline"></ion-icon>
-                    </button>
-                  </ion-col>
-                  <!--Botón Registrar-->
-                  <ion-col col="6">
-                    <button (click)="submit()">
-                      Registrar <ion-icon name="add-circle-outline"></ion-icon>
-                    </button>
-                  </ion-col>
-                </ion-row>
-              </ion-row>
-                
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col="4">
+            <!--Logo-->
+            <ion-avatar
+              *ngIf="registroEmpresa.value.logo; else placeHolder" class="card-avatar">
+              <img [src]="registroEmpresa.value.logo" class="input-logo" />
+            </ion-avatar>
+            <ng-template #placeHolder>
+              <ion-avatar class="card-avatar">
+                <img src="../../../assets/placeholder.png" class="input-logo" />
+              </ion-avatar>
+            </ng-template>
+          </ion-col>
+
+          <ion-col col="4">
+            <!--Botón subir logo-->
+            <button (click)="logo()" style="background: #ff932b;">
+              Sube tu logo <ion-icon name="arrow-up-circle-outline"></ion-icon>
+            </button>
+          </ion-col>
+
+          <ion-col col="4">
+            <!--Botón Registrar-->
+            <button (click)="submit()" style="background: #00bd94;">
+              Registrar <ion-icon name="add-circle-outline"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </form>
   </ion-card>
 </ion-content>

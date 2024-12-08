@@ -1,31 +1,30 @@
 <ion-content>
+  <div class="logo-area">
+    <ion-button
+      shape="round"
+      fill="clear"
+      (click)="cerrarModal()"
+      class="boton-cerrar"
+    >
+      <ion-icon
+        slot="icon-only"
+        size="large"
+        name="close-circle-sharp"
+      ></ion-icon>
+    </ion-button>
+    <ion-avatar class="card-avatar">
+      <img src="../../../assets/logo.png" class="card-logo" />
+    </ion-avatar>
+  </div>
   <ion-card class="area-texto">
-    <div class="logo-area">
-      <ion-button
-        shape="round"
-        fill="clear"
-        (click)="cerrarModal()"
-        class="boton-cerrar"
-      >
-        <ion-icon
-          slot="icon-only"
-          size="large"
-          name="close-circle-sharp"
-        ></ion-icon>
-      </ion-button>
-      <ion-avatar class="card-avatar">
-        <img src="../../../assets/logo.png" class="card-logo" />
-      </ion-avatar>
-    </div>
     <!--Titulo-->
     <ion-card-title>Registro Admin</ion-card-title>
 
     <form [formGroup]="registroAdmin">
       <!--Correo-->
+      <label>Ingrese su correo:</label>
       <ion-input
         formControlName="email"
-        label="Ingrese su correo: "
-        labelPlacement="stacked"
         minlength="3"
         maxlength="25"
         errorText="Correo inválido."
@@ -46,11 +45,9 @@
       </ion-select>
 
       <!--Contraseña-->
-
+      <label>Ingrese la contraseña:</label>
       <ion-input
         formControlName="password"
-        label="Ingrese la contraseña:"
-        labelPlacement="stacked"
         type="password"
         minlength="6"
         maxlength="20"
@@ -59,24 +56,11 @@
       ></ion-input>
 
       <ion-toggle (ionChange)="cambiarRol()" labelPlacement="start"
-        >¿Admin de Sistema?</ion-toggle
-      >
+        >¿Admin de Sistema?</ion-toggle>
 
-      <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-col col="4">
-            <button
-              color="dark"
-              shape="round"
-              fill="outline"
-              (click)="submit()"
-              [disabled]="!registroAdmin.valid"
-            >
-              Registrar
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <button class="enviar" (click)="submit()" [disabled]="!registroAdmin.valid">
+        Registrar
+      </button>
     </form>
   </ion-card>
 </ion-content>

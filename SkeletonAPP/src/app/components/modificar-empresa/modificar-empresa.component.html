@@ -1,29 +1,32 @@
 <ion-content>
-  <ion-card class="area-texto">
-  <!--Titulo-->
-
   <div class="logo-area">
-    <ion-button shape="round" fill="clear" (click)="cerrarModal()" class="boton-cerrar">
+    <ion-button
+      shape="round"
+      fill="clear"
+      (click)="cerrarModal()"
+      class="boton-cerrar"
+    >
       <ion-icon
         slot="icon-only"
         size="large"
         name="close-circle-sharp"
       ></ion-icon>
     </ion-button>
-    <ion-avatar *ngIf="empresa.logo;else sinLogo" class="card-avatar">
-      <img [src]="empresa.logo" class="card-logo">
+    <ion-avatar *ngIf="empresa.logo; else sinLogo" class="card-avatar">
+      <img [src]="empresa.logo" class="card-logo" />
     </ion-avatar>
     <ng-template #sinLogo>
       <ion-avatar>
-        <img src="../../../assets/placeholder.png" class="card-logo">
+        <img src="../../../assets/placeholder.png" class="card-logo" />
       </ion-avatar>
     </ng-template>
   </div>
 
-  <ion-card-title>Modificar Empresa</ion-card-title>
+  <ion-card class="area-texto">
+    <ion-card-title>Modificar Empresa</ion-card-title>
 
-  <!--Formulario-->
-  <form [formGroup]="modificarEmpresa">
+    <!--Formulario-->
+    <form [formGroup]="modificarEmpresa">
       <ion-input
         formControlName="nombreEmpresa"
         label="Ingrese el nombre de la empresa:"
@@ -35,35 +38,37 @@
       ></ion-input>
 
       <ion-grid>
-          <ion-col>
-              <ion-row class="ion-text-center">
-                <ion-col col="4"></ion-col>
-                <ion-col col="1">
-                  <ion-avatar *ngIf="modificarEmpresa.value.logo;else placeHolder">
-                    <img class="input-logo" [src]="modificarEmpresa.value.logo" />
-                  </ion-avatar>
-                  <ng-template #placeHolder>
-                    <ion-avatar>
-                      <img class="input-logo" src="../../../assets/placeholder.png" />
-                    </ion-avatar>
-                  </ng-template>
-                </ion-col>
-                <!--Botón subir logo-->
-                <ion-col col="4">
-                  <button (click)="logo()" style="background-color: #00bd94;">
-                    Sube tu logo<ion-icon name="arrow-up-circle-outline"></ion-icon>
-                  </button>
-                </ion-col>
-                <!--Botón modificar-->
-                <ion-col col="3">
-                  <button (click)="submit()" style="background-color: #ff932b;">
-                    Modificar<ion-icon name="add-circle-outline"></ion-icon>
-                  </button>
-                </ion-col>
-            </ion-row>
-              
-          </ion-col>
+        <ion-col>
+          <ion-row class="ion-text-center">
+            <ion-col col="4"></ion-col>
+            <ion-col col="1">
+              <ion-avatar *ngIf="modificarEmpresa.value.logo; else placeHolder">
+                <img class="input-logo" [src]="modificarEmpresa.value.logo" />
+              </ion-avatar>
+              <ng-template #placeHolder>
+                <ion-avatar>
+                  <img
+                    class="input-logo"
+                    src="../../../assets/placeholder.png"
+                  />
+                </ion-avatar>
+              </ng-template>
+            </ion-col>
+            <!--Botón subir logo-->
+            <ion-col col="4">
+              <button (click)="logo()" style="background-color: #00bd94">
+                Sube tu logo<ion-icon name="arrow-up-circle-outline"></ion-icon>
+              </button>
+            </ion-col>
+            <!--Botón modificar-->
+            <ion-col col="3">
+              <button (click)="submit()" style="background-color: #ff932b">
+                Modificar<ion-icon name="add-circle-outline"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
       </ion-grid>
-  </form>
-</ion-card>
+    </form>
+  </ion-card>
 </ion-content>

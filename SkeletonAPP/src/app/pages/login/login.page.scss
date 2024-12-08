@@ -1,23 +1,32 @@
 * {
-  font-size: 2.5vh;
+  font-size: 1.5rem;
 }
 
-ion-button {
-  min-width: 25vw;
-  --background: #00446d;
-  color: white;
+a {
+  font-size: 1rem;
 }
 
-ion-title {
-  text-align: center;
-  font-size: 3vh;
-}
-
-a:hover{
+a:hover {
   cursor: pointer;
 }
 
-ion-button{
-  --color: "dark"
-
+.link-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1em;
 }
+
+ion-col {
+  margin: 0 auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 6em;
+  padding: 0.5em; /* Ajusta el tamaño de los botones */
+  font-size: 1.2em;
+  text-align: center;
+}
+

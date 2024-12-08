@@ -1,32 +1,29 @@
-<ion-app
-  ><ion-menu
+<ion-app>
+  <ion-menu
     *ngIf="usuario()"
     side="start"
     menuId="m1"
     contentId="main"
-    swipe-gesture="false"
-  >
+    swipe-gesture="false">
+    
     <app-header titulo="QueOpinas?"></app-header>
     <ion-content class="ion-padding">
       <ion-list>
-          <ion-item>
-            <ion-icon name="person-circle-outline"></ion-icon>
-            {{ usuario()?.email }}
-          </ion-item>
-      </ion-list>
+        <ion-item>
+          <ion-icon name="person-circle-outline"></ion-icon>
+          {{ usuario()?.email }}
+        </ion-item>
 
-      <ion-list lines="none">
         <ion-menu-toggle
           slot="start"
           autoHide="false"
-          *ngFor="let p of paginas"
-        >
+          *ngFor="let p of paginas">
           <ion-item
             [ngClass]="{ active: rutaActual === p.url }"
             [routerLink]="p.url"
             routerDirection="root"
             detail
-          >
+            lines="none">
             <ion-icon slot="start" [name]="p.icono"></ion-icon>
             <ion-label>{{ p.titulo }}</ion-label>
           </ion-item>
@@ -36,7 +33,9 @@
 
     <ion-footer class="ion-no-border safe-p-bottom">
       <ion-item *ngIf="usuario()" lines="none">
-        <button (click)="logout()"> Cerrar sesión <ion-icon name="log-out-outline"></ion-icon></button>
+        <button (click)="logout()" style="background-color: #ff932b">
+          Cerrar sesión <ion-icon name="log-out-outline"></ion-icon>
+        </button>
       </ion-item>
     </ion-footer>
   </ion-menu>

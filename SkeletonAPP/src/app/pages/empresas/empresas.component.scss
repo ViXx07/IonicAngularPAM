@@ -1,45 +1,56 @@
+* {
+  font-size: 1.1rem;
+}
+
 ion-avatar {
   height: 6vh;
   width: 6vh;
 }
 
+.table-container {
+  width: 100%;
+  overflow-x: auto;  
+}
+
 .table {
   width: 100%;
-  border-collapse: collapse; /* Para evitar el espacio entre bordes */
-  color: black; /* Color de texto */
+  border-collapse: collapse; 
+  color: black; 
+  border-radius: 9%;
 }
 
 .table th,
 .table td {
-  border: 1px solid #f7f4af; /* Agrega un borde */
-  padding-left: 1vw;
-  padding-right: 1vw; /* Añade relleno a las celdas */
-  text-align: center; /* Alineación del texto al centro */
+  border: 1px solid #f7f4af; 
+  padding-left: 0.5vw;
+  padding-right: 0.5vw; 
+  text-align: center; 
 }
 
 .table td ion-avatar {
-  display: block; /* Asegura que el ion-avatar se trate como un bloque */
-  margin: 0 auto; /* Centra el avatar en su celda */
+  display: block; 
+  margin: 0 auto; 
   border: 1px solid #f7f4af;
 }
 
 /* Estilo para las filas */
 .table tr {
-  background-color: #fdd775; /* Color de fondo para las filas inpares */
+  background-color: #fdd775; 
 }
 
 .table tr:nth-child(even) {
-  background-color: #fadc81; /* Color de fondo para las filas pares */
+  background-color: #fadc81; 
 }
 
 .table tr:hover {
-  background-color: #ff9b32; /* Color de fondo cuando el cursor pasa sobre una fila */
+  background-color: #f8d469; 
 }
 
 /* Estilo para las cabeceras */
 .table th {
-  background-color: #ff9b32; /* Fondo para cabeceras */
-  font-weight: bold; /* Negrita en las cabeceras */
+  background-color: #ff9b32; 
+  font-weight: bold; 
+  color: white;
 }
 
 /* Estilo para los filtros */

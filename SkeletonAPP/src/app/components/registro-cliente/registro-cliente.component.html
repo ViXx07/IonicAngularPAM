@@ -1,62 +1,48 @@
 <ion-content>
-  <!--Titulo-->
-  <ion-item class="ion-text-center">
-    <ion-title>Registro Cliente</ion-title>
-    <button shape="round" fill="clear" (click)="cerrarModal()">
+  <div class="logo-area">
+    <ion-button
+      shape="round"
+      fill="clear"
+      (click)="cerrarModal()"
+      class="boton-cerrar"
+    >
       <ion-icon
-        color="danger"
         slot="icon-only"
         size="large"
-        name="close-circle-outline"
+        name="close-circle-sharp"
       ></ion-icon>
-    </button>
-  </ion-item>
-  <!--Logo-->
-  <ion-item>
-    <img class="logo" alt="..." src="assets/logo.png" />
-  </ion-item>
-  <form [formGroup]="registroCliente">
-    <ion-item>
+    </ion-button>
+    <ion-avatar class="card-avatar">
+      <img src="../../../assets/logo.png" class="card-logo" />
+    </ion-avatar>
+  </div>
+
+  <ion-card class="area-texto">
+    <ion-card-title>Registro de cliente</ion-card-title>
+    <form [formGroup]="registroCliente">
       <!--Correo-->
+      <label>Ingrese su correo:</label>
       <ion-input
         formControlName="email"
-        label="Ingrese su correo: "
-        labelPlacement="stacked"
         minlength="3"
         maxlength="25"
         errorText="Correo inválido."
         helperText="Formato Email(@ y .)"
       >
       </ion-input>
-    </ion-item>
-    <!--Contraseña-->
-    <ion-item>
+      <!--Contraseña-->
+      <label>Ingrese la contraseña:</label>
       <ion-input
         formControlName="password"
-        label="Ingrese la contraseña:"
-        labelPlacement="stacked"
         type="password"
         maxlength="10"
         errorText="Contraseña inválida."
         helperText="Largo máximo 10 cáracteres."
       ></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-col col="4">
-            <button
-              color="dark"
-              shape="round"
-              fill="outline"
-              (click)="submit()"
-              [disabled]="!registroCliente.valid"
-              >Registrar</button
-            >
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-  </form>
+      <button (click)="submit()" class="enviar" [disabled]="!registroCliente.valid">
+        Registrar
+      </button>
+    </form>
+  </ion-card>
 </ion-content>
