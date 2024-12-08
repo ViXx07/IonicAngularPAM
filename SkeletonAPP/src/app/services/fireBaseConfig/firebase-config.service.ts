@@ -22,20 +22,13 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { UtilsService } from '../utils/utils.service';
-import {
-  Observable,
-  concatMap,
-  delay,
-  from,
-  of,
-  retry,
-  throwError,
-} from 'rxjs';
+import { concatMap, delay, EMPTY, from, interval, Observable, of, retryWhen, switchMap, takeUntil, tap, throwError, timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseConfigService {
+
   constructor(
     public auth: AngularFireAuth,
     private firestore: AngularFirestore,
@@ -48,6 +41,8 @@ export class FirebaseConfigService {
     password: '',
     userRole: 1,
   };
+
+  isCircuitOpen = false;
 
   //Acceder
   signIn(user: User) {
@@ -113,27 +108,65 @@ export class FirebaseConfigService {
   }
 
   //Obtener datos
-  async getDocument(path: string) {
-    return (await getDoc(doc(getFirestore(), path))).data();
+  //return (await getDoc(doc(getFirestore(), path))).data();
+  
+  async getDocument(path: string): Promise<any> {
+    const maxRetries = 3; // Número máximo de intentos
+    const circuitBreakerTimeout = 10000; // Tiempo de espera en ms (10 segundos)
+    
+    try {
+      return (await getDoc(doc(getFirestore(), path))).data();
+    } catch (error) {
+      
+    // Si el circuito está abierto, deshabilitamos la función y mostramos un mensaje
+    if (this.isCircuitOpen) {
+      console.log('El circuito está abierto. La función no está disponible temporalmente.');
+      return Promise.reject(new Error('El circuito está abierto. La función no está disponible temporalmente.'));
+    }
+  
+    // Llamada real para obtener el documento
+    const getDocumentPromise = this.getDocument(path);
+  
+    // Convertimos la promesa en un observable y aplicamos la política de reintentos con circuit breaker
+    return from(getDocumentPromise).pipe(
+      retryWhen((errors) =>
+        errors.pipe(
+          concatMap((error, attempt) => {
+            if (attempt < maxRetries) {
+              console.log(`Intento ${attempt + 1} fallido. Reintentando en 2 segundos...`);
+              return of(error).pipe(delay(2000)); // Retrasar 2 segundos entre intentos
+            } else {
+              console.log('Número máximo de intentos alcanzado. Abriendo el circuito...');
+              
+              // Abrimos el circuito y esperamos el tiempo definido
+              this.isCircuitOpen = true; // Activamos el circuito abierto
+  
+              // Después de esperar el tiempo de espera del circuit breaker, no se hace más reintentos
+              return timer(circuitBreakerTimeout).pipe( // Esperamos el tiempo de espera del circuit breaker
+                tap(() => {
+                  console.log('El circuito ha sido cerrado. Puede realizar un nuevo intento.');
+                  this.isCircuitOpen = false; // Cerramos el circuito después del tiempo de espera
+                }),
+                // No continuamos con más reintentos, solo cerramos el circuito
+                switchMap(() => EMPTY)
+              );
+            }
+          })
+        )
+      ),
+      tap(() => {
+        console.log('No se harán más reintentos automáticos. El flujo ha finalizado.');
+      })
+    ).toPromise(); // Convertimos el Observable nuevamente a una Promesa
   }
+  }
+  
+  
   //------------------------CRUD------------------------//
   //Agregar un documento
-  addDocument(path: string, data: any): Observable<any> {
-    const addDocumentPromise = addDoc(collection(getFirestore(), path), data); // Returns a Promise
-
-    return from(addDocumentPromise).pipe(
-      // Convert the Promise to an Observable
-      retry({
-        delay: (errors) =>
-          errors.pipe(
-            concatMap((error, attempt) =>
-              attempt < 3 ? of(error).pipe(delay(2000)) : throwError(error)
-            )
-          ),
-      })
-    );
+  addDocument(path: string, data: any) {
+    return addDoc(collection(getFirestore(), path), data);
   }
-
   //Obtener todos los documentos de una colección
   getCollectionData(path: string, collectionQuery?: any) {
     const ref = collection(getFirestore(), path);
