@@ -8,6 +8,7 @@ import { Encuesta } from 'src/app/models/encuesta.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { OpinaPage } from '../opina/opina.page';
 
 @Component({
   selector: 'app-admin-empresa',
@@ -118,6 +119,13 @@ export class AdminEmpresaPage implements OnInit, OnDestroy {
       });
       this.subscriptions.push(sub);
     });
+  }
+
+  verEncuesta(empresa: Empresa, encuesta: Encuesta, deshabilitado: boolean){
+    this.utils.presentarModal({
+      component: OpinaPage,
+      componentProps: [empresa, encuesta, deshabilitado]
+    })
   }
 
   ngOnDestroy() {

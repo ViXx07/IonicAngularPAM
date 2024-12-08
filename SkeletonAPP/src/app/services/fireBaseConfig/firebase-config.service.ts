@@ -22,12 +22,20 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { UtilsService } from '../utils/utils.service';
+import {
+  Observable,
+  concatMap,
+  delay,
+  from,
+  of,
+  retry,
+  throwError,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseConfigService {
-
   constructor(
     public auth: AngularFireAuth,
     private firestore: AngularFirestore,
@@ -110,9 +118,22 @@ export class FirebaseConfigService {
   }
   //------------------------CRUD------------------------//
   //Agregar un documento
-  addDocument(path: string, data: any) {
-    return addDoc(collection(getFirestore(), path), data);
+  addDocument(path: string, data: any): Observable<any> {
+    const addDocumentPromise = addDoc(collection(getFirestore(), path), data); // Returns a Promise
+
+    return from(addDocumentPromise).pipe(
+      // Convert the Promise to an Observable
+      retry({
+        delay: (errors) =>
+          errors.pipe(
+            concatMap((error, attempt) =>
+              attempt < 3 ? of(error).pipe(delay(2000)) : throwError(error)
+            )
+          ),
+      })
+    );
   }
+
   //Obtener todos los documentos de una colección
   getCollectionData(path: string, collectionQuery?: any) {
     const ref = collection(getFirestore(), path);

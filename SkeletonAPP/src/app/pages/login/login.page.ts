@@ -70,7 +70,7 @@ export class LoginPage {
             header: 'Login exitoso!',
             message: `Te damos la bienvenida ${user.email}`,
             duration: 2000,
-            color: 'primary',
+            color: 'success',
             position: 'middle',
             icon: 'person-circle-outline',
           });

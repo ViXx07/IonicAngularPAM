@@ -18,6 +18,7 @@ export class OpinaPage implements OnInit {
 
   @Input() encuesta: Encuesta;
   @Input() empresa: Empresa;
+  @Input() deshabilitado: boolean;
 
   usuario = {} as User;
   subirEvidencia = false;

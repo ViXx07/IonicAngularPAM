@@ -1,43 +1,15 @@
-ion-item,
-ion-button {
-  font-size: 2.5vh;
+* {
+  font-size: 1.5rem;
 }
 
-#emoji {
-  font-size: 8vh;
-  text-align: center;
+.botones {
+  display: flex;
+  justify-content: space-evenly; 
+  width: 100%; 
 }
 
-label {
-  filter: grayscale(100%);
-  transition: all 0.5s ease;
-  transition: border 0.2s ease;
-}
-
-ion-item {
-  padding-bottom: 3vh;
-}
-
-ion-button {
-  min-width: 25vw;
-  --background: #00446d;
+ion-card-title {
   color: white;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 2rem;
 }
 
-ion-text {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-ion-title {
-  text-align: center;
-  font-size: 3vh;
-}
-
-input{ 
-  .text-input{ text-align: center; }
-}

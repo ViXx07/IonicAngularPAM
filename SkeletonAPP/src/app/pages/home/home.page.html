@@ -1,53 +1,40 @@
 <ion-content>
   <app-header titulo="Home"></app-header>
-  <ion-card>
-    <!--Logo-->
-    <ion-item>
-      <img class="logo" alt="..." src="assets/logo.png" />
-    </ion-item>
-    <ion-item class="ion-text-center">
-      <ion-label> Seleccione su método de ingreso a la encuesta: </ion-label>
-    </ion-item>
-    <!--Botones QR y código, centrados con grid-->
-    <ion-item>
-      <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-col col="6">
-            <div *ngIf="isMobile; else disable">
-              <button
-                color="dark"
-                shape="round"
-                fill="outline"
-                (click)="scannerQR()"
-                >Escanear QR&nbsp;
-                <ion-icon name="qr-code-outline"></ion-icon>
-              </button>
-            </div>
 
-            <ng-template #disable>
-              <button
-                color="dark"
-                shape="round"
-                fill="outline"
-                disabled="true"
-                >Escanear QR&nbsp;
-                <ion-icon name="qr-code-outline"></ion-icon>
-              </button>
-            </ng-template>
-          </ion-col>
-          <ion-col col="6">
-            <button
-              color="dark"
-              shape="round"
-              fill="outline"
-              [routerLink]="['/home/codigo']"
-              >Ingresar código&nbsp;
-              <ion-icon name="code-working-outline"></ion-icon>
+  <div class="page-logo-area">
+    <ion-avatar class="card-avatar">
+      <img src="../../../assets/logo.png" class="card-logo" />
+    </ion-avatar>
+    <ion-card-title *ngIf="usuario">Bienvenido {{usuario.email}}</ion-card-title>
+  </div>
+  
+  <ion-card class="page-card">
+    <ion-card-header> Seleccione su método de ingreso a la encuesta: </ion-card-header>
+    <!--Botones QR y código, centrados con grid-->
+    <ion-grid>
+      <ion-row class="ion-text-center">
+        <ion-col size="6" class="button-col">
+          <div *ngIf="isMobile; else disable">
+            <button style="background: #ff932b;" (click)="scannerQR()">
+              Escanear QR&nbsp;
+              <ion-icon name="qr-code-outline"></ion-icon>
             </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
+          </div>
+          <ng-template #disable>
+            <button style="background: #ff922b9d;" disabled="true">
+              Escanear QR&nbsp;
+              <ion-icon name="qr-code-outline"></ion-icon>
+            </button>
+          </ng-template>
+        </ion-col>
+        <ion-col size="6" class="button-col">
+          <button style="background: #ff932b;" [routerLink]="['/home/codigo']">
+            Ingresar código&nbsp;
+            <ion-icon name="code-working-outline"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 
 </ion-content>

@@ -5,8 +5,8 @@
 ion-item {
   font-size: 2vh;
   --background: white;
-  --color: #00bd94;
-  --border-color: #00bd94;
+  --color: #02e7d0;
+  --border-color: #02e7d0;
   &.active {
     color: var(--ion-color-warning);
 
@@ -21,7 +21,7 @@ ion-menu {
 }
 
 ion-icon {
-  color: #00bd94;
+  color: #02e7d0;
 }
 
 button ion-icon {
@@ -30,6 +30,6 @@ button ion-icon {
 
 ion-list {
   padding: 0;
-  border: #00bd94 solid 1px;
+  border: #02e7d0 solid 1px;
   border-radius: 3%;
 }

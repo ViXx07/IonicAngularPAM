@@ -37,7 +37,7 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 // Colores //
-$verde: #00bd94;
+$verde: #02e7d0;
 $naranjo: #ff932b;
 //Estilos globales:
 
@@ -58,10 +58,22 @@ $naranjo: #ff932b;
   margin-top: 1em;
 }
 
+.page-logo-area {
+  background-color: #02e7d0;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  position: relative;
+  display:flex;
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 .enviar{
   margin: 0 auto;
   display: block;
-  background-color: #00bd94;
+  background-color: #02e7d0;
 }
 
 ion-card-title{
@@ -74,7 +86,6 @@ ion-card-title{
   border: 2px solid white;
   border-radius: 50%;
   object-fit: contain; 
-
 }
 
 .input-logo {

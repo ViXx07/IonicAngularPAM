@@ -1,33 +1,30 @@
 <ion-content>
   <app-header titulo="Encuesta por Código"></app-header>
-  <ion-card>
-
-    <ion-item>
-      <img class="logo" alt="..." src="assets/logo.png" />
-    </ion-item>
+  <ion-card class="page-card">
+    <div class="page-logo-area">
+      <ion-avatar class="card-avatar">
+        <img src="../../../assets/logo.png" class="card-logo" />
+      </ion-avatar>
+      <ion-card-title>Ingrese el código de la encuesta</ion-card-title>
+    </div>
 
     <form [formGroup]="codigoForm">
-      <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-input
-            formControlName="codigo"
-            label="Ingrese el código:"
-            labelPlacement="stacked"
-            helperText="(20 carácteres)"
-            type="text"
-            errorText="Código incorrecto (20 carácteres)"
-          >
-          </ion-input>
-        </ion-row>
+      <label>Ingrese el código:</label>
+      <ion-input
+        formControlName="codigo"
+        helperText="(20 carácteres)"
+        type="text"
+        errorText="Código incorrecto (20 carácteres)"
+      >
+      </ion-input>
 
-        <ion-row>
-          <button
-            (click)="redireccionEncuesta()"
-            [disabled]="!codigoForm.valid"
-            >Enviar</button
-          >
-        </ion-row>
-      </ion-grid>
+      <button
+        class="enviar"
+        (click)="redireccionEncuesta()"
+        [disabled]="!codigoForm.valid"
+      >
+        Enviar
+      </button>
     </form>
   </ion-card>
 </ion-content>

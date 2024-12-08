@@ -4,6 +4,7 @@ import { QrScannerComponent } from 'src/app/components/qr-scanner/qr-scanner.com
 import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { Platform } from '@ionic/angular';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
+import { User } from '@codetrix-studio/capacitor-google-auth';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class HomePage {
   firebase = inject(FirebaseConfigService)
   scanResult = '';
   isMobile = false;
+  usuario: User;
 
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class HomePage {
       BarcodeScanner.removeAllListeners();
       this.isMobile = true;
     }
+    this.usuario = this.utils.getFromLocalStorage('user');
   }
 
   async scannerQR() {

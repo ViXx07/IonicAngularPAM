@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="logo-area">
+  <div class="page-logo-area">
     <ion-button
       shape="round"
       fill="clear"
@@ -15,9 +15,10 @@
     <ion-avatar class="card-avatar">
       <img src="../../../assets/logo.png" class="card-logo" />
     </ion-avatar>
+    <ion-card-title *ngIf="encuesta">Encuesta {{empresa.nombreEmpresa}}</ion-card-title>
   </div>
   <ion-card class="area-texto">
-    <ion-card-title>{{empresa.nombreEmpresa}}</ion-card-title>
+
     <form [formGroup]="encuestaForm">
       <!--Tipo de opinión-->
 
@@ -28,6 +29,7 @@
           type="radio"
           id="feliz"
           value="1"
+          name="emoji"
         /><label for="feliz">😁</label>
 
         <input
@@ -35,6 +37,7 @@
           type="radio"
           id="triste"
           value="2"
+          name="emoji"
         /><label for="triste">😢</label>
 
         <input
@@ -42,6 +45,7 @@
           type="radio"
           id="enojado"
           value="3"
+          name="emoji"
         /><label for="enojado">😡</label>
       </div>
       <!--Comentario-->
@@ -66,11 +70,11 @@
             <img src="../../../assets/placeholder.png" class="input-logo" />
           </ion-avatar>
         </ng-template>
-        <button style="background-color: #00bd94" (click)="evidencia()">
+        <button style="background: #ff932b" (click)="evidencia()">
           Sube tu evidencia!
         </button>
         <button
-          style="background-color: #00bd94"
+          style="background: #02e7d0"
           (click)="submit()"
           [disabled]="!encuestaForm.valid"
         >

@@ -1,18 +1,28 @@
 * {
-  font-size: 2.5vh;
+  font-size: 1.5rem;
 }
 
-ion-button {
-  min-width: 25vw;
-  --background: #00446d;
+ion-card-title {
   color: white;
+  font-size: 2rem;
 }
 
-ion-item {
-  padding-bottom: 3vh;
+.button-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  margin-bottom: 1rem;
 }
 
-ion-title {
-  text-align: center;
-  font-size: 3vh;
+@media (max-width: 768px) {
+  .ion-row {
+    display: flex;
+    flex-direction: column;  
+  }
+  
+  .button-col {
+    width: 100%;  
+    margin-bottom: 1rem; 
+  }
 }

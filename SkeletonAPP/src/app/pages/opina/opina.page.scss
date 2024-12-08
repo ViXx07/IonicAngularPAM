@@ -33,34 +33,17 @@ label {
   transition: border 0.2s ease;
 }
 
-#resultado {
-  background: orange;
-  padding: 3px;
-  color: white;
-  border-radius: 30px;
-}
-
-ion-item {
-  padding-bottom: 3vh;
-}
-
-ion-text {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-ion-title {
-  text-align: center;
-  font-size: 3vh;
-}
-
 input{ 
   .text-input{ text-align: center; }
 }
 
 .botones {
   display: flex;
-  justify-content: space-evenly; /* O space-between, depende del efecto deseado */
-  width: 100%; /* Asegura que ocupen todo el ancho disponible */
+  justify-content: space-evenly; 
+  width: 100%; 
+}
+
+ion-card-title {
+  color: white;
+  font-size: 2rem;
 }
