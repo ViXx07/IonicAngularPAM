@@ -16,7 +16,7 @@ export class OpinaPage implements OnInit {
     return `${maxLength - inputLength} carácteres restantes.`;
   }
 
-  @Input() encuesta: Encuesta;
+  @Input() encuesta: Encuesta = null;
   @Input() empresa: Empresa;
   @Input() deshabilitado: boolean;
 

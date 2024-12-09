@@ -23,16 +23,22 @@ import {
 } from 'firebase/storage';
 import { UtilsService } from '../utils/utils.service';
 import { concatMap, delay, EMPTY, from, interval, Observable, of, retryWhen, switchMap, takeUntil, tap, throwError, timer } from 'rxjs';
+import { initializeApp } from 'firebase/app';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseConfigService {
 
+  private app = initializeApp(environment.firebaseConfig);
+  private storage = getStorage(this.app);
+
   constructor(
     public auth: AngularFireAuth,
     private firestore: AngularFirestore,
-    private utils: UtilsService
+    private utils: UtilsService,
+    
   ) {}
 
   user: User = {
@@ -185,9 +191,10 @@ export class FirebaseConfigService {
   //Almacenamiento
 
   async subirImagen(path: string, dataUrl: string) {
-    return uploadString(ref(getStorage(), path), dataUrl, 'data_url').then(
+    const storageRef = ref(this.storage, path);
+    return uploadString(ref(storageRef), dataUrl, 'data_url').then(
       () => {
-        return getDownloadURL(ref(getStorage(), path));
+        return getDownloadURL(storageRef);
       }
     );
   }

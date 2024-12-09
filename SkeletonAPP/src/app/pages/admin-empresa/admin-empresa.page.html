@@ -4,10 +4,15 @@
     <ion-avatar class="card-avatar">
       <img src="../../../assets/logo.png" class="card-logo" />
     </ion-avatar>
-    <ion-card-title *ngIf="usuario">Bienvenido {{usuario.email}}</ion-card-title>
+    <ion-card-title *ngIf="usuario"
+      >Bienvenido {{usuario.email}}</ion-card-title
+    >
   </div>
   <div class="botones" *ngIf="encuesta">
-    <button style="background-color: #01436d;" (click)="verEncuesta(empresa, encuesta, true)">
+    <button
+      style="background-color: #01436d"
+      (click)="verEncuesta(empresa, encuesta)"
+    >
       Ver encuesta <ion-icon name="search-circle-outline"></ion-icon>
     </button>
     <button

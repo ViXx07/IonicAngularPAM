@@ -1,28 +1,55 @@
 * {
   font-size: 1.5rem;
+  box-sizing: border-box; /* Para evitar problemas con el padding y el ancho */
 }
 
 ion-card-title {
   color: white;
   font-size: 2rem;
+  text-align: center;  
+  word-wrap: break-word;
 }
 
-.button-col {
+ion-card-header {
+  color: #ff932b;
+  text-align: center;  
+  word-wrap: break-word;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* Asegura que los botones se apilen en columnas */
+  justify-content: center;
+  align-items: center; /* Centra los botones */
+  width: 100%;
+}
+
+.action-button {
+  background-color: #ff932b;
+  margin: 0.5rem 0;  /* Espaciado entre los botones */
+  width: 100%; /* Los botones ocupan el 100% del ancho disponible */
+  max-width: 300px; /* Limitar el ancho máximo de los botones */
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; 
-  margin-bottom: 1rem;
+  border-radius: 8px;
 }
 
 @media (max-width: 768px) {
-  .ion-row {
-    display: flex;
-    flex-direction: column;  
+  /* Hacer que los botones se acomoden uno encima del otro */
+  .button-container {
+    flex-direction: column;
   }
-  
-  .button-col {
-    width: 100%;  
-    margin-bottom: 1rem; 
+
+  .action-button {
+    width: 90%;  /* Asegurar que los botones ocupen el 90% del ancho */
+    font-size: 1.4rem;  /* Ajustar el tamaño de los botones */
+  }
+
+  ion-card-title {
+    font-size: 1.8rem; /* Reducir tamaño del título en pantallas pequeñas */
   }
 }

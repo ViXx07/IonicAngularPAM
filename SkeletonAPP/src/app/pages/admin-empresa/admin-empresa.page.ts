@@ -121,10 +121,10 @@ export class AdminEmpresaPage implements OnInit, OnDestroy {
     });
   }
 
-  verEncuesta(empresa: Empresa, encuesta: Encuesta, deshabilitado: boolean){
+  verEncuesta(empresa: Empresa, encuesta: Encuesta){
     this.utils.presentarModal({
       component: OpinaPage,
-      componentProps: [empresa, encuesta, deshabilitado]
+      componentProps: [empresa, encuesta]
     })
   }
 

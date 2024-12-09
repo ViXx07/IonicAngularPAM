@@ -5,7 +5,15 @@
 .botones {
   display: flex;
   justify-content: space-evenly; 
-  width: 100%; 
+  flex-wrap: wrap; /* Permite que los botones se acomoden en una nueva línea si no hay suficiente espacio */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+.botones button {
+  text-align: center;
+  white-space: normal; /* Permite que el texto se ajuste */
+  overflow: hidden; /* Evita desbordamientos de texto */
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
 }
 
 ion-card-title {
@@ -13,3 +21,8 @@ ion-card-title {
   font-size: 2rem;
 }
 
+@media (max-width: 768px) {
+  .botones {
+    justify-content: center; /* Centra los botones en pantallas pequeñas */
+  }
+}

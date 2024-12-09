@@ -22,7 +22,7 @@
     <form [formGroup]="encuestaForm">
       <!--Tipo de opinión-->
 
-      <ion-card-content>{{encuesta.pregunta}}</ion-card-content>
+      <ion-card-content>{{encuesta?.pregunta}}</ion-card-content>
       <div id="emoji">
         <input
           formControlName="tipoDeOpinion"
@@ -70,13 +70,13 @@
             <img src="../../../assets/placeholder.png" class="input-logo" />
           </ion-avatar>
         </ng-template>
-        <button style="background: #ff932b" (click)="evidencia()">
+        <button style="background: #ff932b" (click)="evidencia()" [disabled]="!encuesta">
           Sube tu evidencia!
         </button>
         <button
           style="background: #02e7d0"
           (click)="submit()"
-          [disabled]="!encuestaForm.valid"
+          [disabled]="!encuestaForm.valid || !encuesta"
         >
           Enviar
         </button>
