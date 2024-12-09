@@ -1,12 +1,65 @@
 * {
   font-size: 1.5rem;
+  box-sizing: border-box; /* Para evitar problemas con el padding y el ancho */
+}
+
+ion-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Alinea los elementos con espacio uniforme */
+  padding: 2rem;
+  height: 100%; /* Hace que el formulario ocupe toda la altura disponible */
+}
+
+ion-card-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column; /* Los elementos se apilan de manera vertical */
+  justify-content: space-between; /* Espacio uniforme entre los elementos */
+  align-items: center; /* Centra los elementos horizontalmente */
+  flex-grow: 1; /* Permite que el formulario crezca si es necesario */
+}
+
+ion-avatar {
+  margin-bottom: 2rem; /* Espacio entre el logo y el primer botón */
 }
 
 button {
-    width: 9em;
-    padding: 0.5em; /* Ajusta el tamaño de los botones */
-    font-size: 1.2em;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
+  width: 9em;
+  padding: 0.5em; /* Ajusta el tamaño de los botones */
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0 auto; /* Espaciado entre botones y centrado */
+  display: block;
+  border-radius: 8px;
+  transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  ion-card {
+    padding: 1rem; /* Reducir padding en pantallas pequeñas */
   }
+
+  form {
+    flex-direction: column; /* Asegura que los elementos se apilen en pantallas pequeñas */
+    align-items: center;
+  }
+
+  ion-avatar {
+    margin-bottom: 1.5rem; /* Reducir el margen entre el logo y el primer botón */
+  }
+
+  button {
+    width: 80%; /* Los botones ocupan más espacio en pantallas pequeñas */
+    max-width: 300px; /* Asegurar un ancho máximo para los botones */
+  }
+
+  ion-card-title {
+    font-size: 1.8rem; /* Ajustar el tamaño del título en pantallas pequeñas */
+  }
+}

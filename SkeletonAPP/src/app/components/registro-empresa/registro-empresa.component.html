@@ -13,36 +13,28 @@
         helperText="---"
       ></ion-input>
 
-      <ion-grid>
-        <ion-row>
-          <ion-col col="4">
-            <!--Logo-->
-            <ion-avatar
-              *ngIf="registroEmpresa.value.logo; else placeHolder" class="card-avatar">
-              <img [src]="registroEmpresa.value.logo" class="input-logo" />
-            </ion-avatar>
-            <ng-template #placeHolder>
-              <ion-avatar class="card-avatar">
-                <img src="../../../assets/placeholder.png" class="input-logo" />
-              </ion-avatar>
-            </ng-template>
-          </ion-col>
+      <!--Logo-->
+      <ion-avatar
+        *ngIf="registroEmpresa.value.logo; else placeHolder"
+        class="card-avatar"
+      >
+        <img [src]="registroEmpresa.value.logo" class="input-logo" />
+      </ion-avatar>
+      <ng-template #placeHolder>
+        <ion-avatar class="card-avatar">
+          <img src="../../../assets/placeholder.png" class="input-logo" />
+        </ion-avatar>
+      </ng-template>
 
-          <ion-col col="4">
-            <!--Botón subir logo-->
-            <button (click)="logo()" style="background: #ff932b;">
-              Sube tu logo <ion-icon name="arrow-up-circle-outline"></ion-icon>
-            </button>
-          </ion-col>
+      <!--Botón subir logo-->
+      <button (click)="logo()" style="background: #ff932b">
+        Sube tu logo <ion-icon name="arrow-up-circle-outline"></ion-icon>
+      </button>
 
-          <ion-col col="4">
-            <!--Botón Registrar-->
-            <button (click)="submit()" style="background: #02e7d0;">
-              Registrar <ion-icon name="add-circle-outline"></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <!--Botón Registrar-->
+      <button (click)="submit()" style="background: #02e7d0">
+        Registrar <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
     </form>
   </ion-card>
 </ion-content>

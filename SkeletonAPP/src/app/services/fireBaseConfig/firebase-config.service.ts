@@ -22,7 +22,7 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { UtilsService } from '../utils/utils.service';
-import { concatMap, delay, EMPTY, from, interval, Observable, of, retryWhen, switchMap, takeUntil, tap, throwError, timer } from 'rxjs';
+//import { concatMap, delay, EMPTY, from, interval, Observable, of, retryWhen, switchMap, takeUntil, tap, throwError, timer } from 'rxjs';
 import { initializeApp } from 'firebase/app';
 import { environment } from 'src/environments/environment.prod';
 
@@ -117,12 +117,11 @@ export class FirebaseConfigService {
   //return (await getDoc(doc(getFirestore(), path))).data();
   
   async getDocument(path: string): Promise<any> {
+    return (await getDoc(doc(getFirestore(), path))).data();
+    /*
     const maxRetries = 3; // Número máximo de intentos
     const circuitBreakerTimeout = 10000; // Tiempo de espera en ms (10 segundos)
     
-    try {
-      return (await getDoc(doc(getFirestore(), path))).data();
-    } catch (error) {
       
     // Si el circuito está abierto, deshabilitamos la función y mostramos un mensaje
     if (this.isCircuitOpen) {
@@ -164,7 +163,7 @@ export class FirebaseConfigService {
         console.log('No se harán más reintentos automáticos. El flujo ha finalizado.');
       })
     ).toPromise(); // Convertimos el Observable nuevamente a una Promesa
-  }
+  */
   }
   
   
