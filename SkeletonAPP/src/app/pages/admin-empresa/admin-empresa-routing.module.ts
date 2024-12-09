@@ -14,10 +14,6 @@ const routes: Routes = [
     path: 'contacto',
     component: ContactoPage,
   },
-  {
-    path: 'grafico',
-    component: GraficoEmpresaComponent,
-  }
 ];
 
 @NgModule({

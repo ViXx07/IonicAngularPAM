@@ -28,5 +28,12 @@
     >
       Ver QR <ion-icon name="qr-code-outline"></ion-icon>
     </button>
+    <button
+      *ngIf="empresa"
+      style="background: #ff2344;"
+      (click)="verGrafico(empresa)"
+    >
+      Ver gráfico <ion-icon name="bar-chart-outline"></ion-icon>
+    </button>
   </div>
 </ion-content>

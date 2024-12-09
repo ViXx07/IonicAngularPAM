@@ -153,12 +153,7 @@ export class UtilsService {
             titulo: 'Contacto',
             url: '/admin-empresa/contacto',
             icono: 'chatbubbles-outline',
-          },
-          {
-            titulo: 'Gráfico',
-            url: 'admin-empresa/grafico',
-            icono: 'bar-chart-outline',
-          },
+          }
         ]);
       }
       // Admin de sistema //
@@ -177,7 +172,7 @@ export class UtilsService {
           },
           {
             titulo: 'Registro de empresas',
-            url: 'admin/registroEmpresas',
+            url: '/admin/registroEmpresas',
             icono: 'business-outline'
           }
         ]);

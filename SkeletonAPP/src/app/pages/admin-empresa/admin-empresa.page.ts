@@ -9,6 +9,7 @@ import { User } from 'src/app/models/user.model';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { OpinaPage } from '../opina/opina.page';
+import { GraficoEmpresaComponent } from 'src/app/components/grafico-empresa/grafico-empresa.component';
 
 @Component({
   selector: 'app-admin-empresa',
@@ -32,6 +33,7 @@ export class AdminEmpresaPage implements OnInit, OnDestroy {
       await this.getUser(); // Espera a que se recupere el usuario
       if (this.usuario) {
         await this.getEmpresa(); // Espera a que se recupere la empresa
+        
         if (this.empresa) {
           await this.getEncuesta(); // Espera a que se recupere la encuesta
         }
@@ -126,6 +128,17 @@ export class AdminEmpresaPage implements OnInit, OnDestroy {
       component: OpinaPage,
       componentProps: [empresa, encuesta]
     })
+  }
+
+  verGrafico(empresa: Empresa) {
+    if (empresa) {
+      this.utils.presentarModal({
+        component: GraficoEmpresaComponent,
+        componentProps: { empresa },  
+      });
+    } else {
+      console.error('La empresa no está definida');
+    }
   }
 
   ngOnDestroy() {
