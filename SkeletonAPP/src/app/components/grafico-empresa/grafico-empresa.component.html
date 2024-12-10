@@ -1,4 +1,21 @@
 <ion-content>
+  <div class="page-logo-area">
+    <ion-button
+      shape="round"
+      fill="clear"
+      (click)="cerrarModal()"
+      class="boton-cerrar"
+    >
+      <ion-icon
+        slot="icon-only"
+        size="large"
+        name="close-circle-sharp"
+      ></ion-icon>
+    </ion-button>
+    <ion-avatar class="card-avatar">
+      <img src="../../../assets/logo.png" class="card-logo" />
+    </ion-avatar>
+  </div>
   <div style="width: 100%; height: 100%; display: block; margin: 0 auto; justify-content: center; align-items: center;">
     <canvasjs-chart [options]="chartOptions" style="width: 100%; height: 100%;"></canvasjs-chart>
   </div>

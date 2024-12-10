@@ -19,6 +19,8 @@ export class CodigoEncuestaPage implements OnDestroy{
 
   encuesta: Encuesta;
   empresa: Empresa;
+  deshabilitado: boolean = false;
+
   private subscriptions: Subscription[] = [];
 
   codigoForm = new FormGroup({
@@ -39,7 +41,7 @@ export class CodigoEncuestaPage implements OnDestroy{
           if (res.length > 0) {
             this.encuesta = res[0]; // Asigna el primer usuario encontrado
             await this.getEmpresa();
-            this.presentarEncuesta(res[0], this.empresa);
+            this.presentarEncuesta(res[0], this.empresa, this.deshabilitado);
           } else {
             this.encuesta = null; // Maneja el caso donde no se encuentra el usuario
             console.log("No se encontro la encuesta.");
@@ -76,10 +78,10 @@ export class CodigoEncuestaPage implements OnDestroy{
     });
   }
 
-  presentarEncuesta(encuesta: Encuesta, empresa: Empresa){
+  presentarEncuesta(encuesta: Encuesta, empresa: Empresa, deshabilitado: boolean){
     this.utils.presentarModal({
       component: OpinaPage,
-      componentProps: {encuesta, empresa}
+      componentProps: {encuesta, empresa, deshabilitado}
     })
   }
 

@@ -70,13 +70,13 @@
             <img src="../../../assets/placeholder.png" class="input-logo" />
           </ion-avatar>
         </ng-template>
-        <button style="background: #ff932b" (click)="evidencia()" [disabled]="!encuesta">
+        <button style="background: #ff932b" (click)="evidencia()" [disabled]="deshabilitado">
           Sube tu evidencia!
         </button>
         <button
           style="background: #02e7d0"
           (click)="submit()"
-          [disabled]="!encuestaForm.valid || !encuesta"
+          [disabled]="!encuestaForm.valid || deshabilitado"
         >
           Enviar
         </button>

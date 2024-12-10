@@ -11,7 +11,6 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   styleUrls: ['./grafico-empresa.component.scss'],
 })
 export class GraficoEmpresaComponent implements OnInit {
-
   firebase = inject(FirebaseConfigService);
   utils = inject(UtilsService);
 
@@ -34,7 +33,7 @@ export class GraficoEmpresaComponent implements OnInit {
         type: 'pie',
         startAngle: -90,
         indexLabel: '{name}: {y}',
-        yValueFormatString: "#,###.##",
+        yValueFormatString: '#,###.##',
         dataPoints: [
           { y: this.enojados, name: '😡' },
           { y: this.tristes, name: '😢' },
@@ -53,11 +52,12 @@ export class GraficoEmpresaComponent implements OnInit {
         await Promise.all([
           this.getTipoOpinion(this.empresa, '1'),
           this.getTipoOpinion(this.empresa, '2'),
-          this.getTipoOpinion(this.empresa, '3')
+          this.getTipoOpinion(this.empresa, '3'),
         ]).finally(() => {
           loading.dismiss();
+          this.updateChart();
         });
-        this.updateChart();
+        
       } catch (error) {
         console.error('Error en las consultas:', error);
       }
@@ -69,7 +69,7 @@ export class GraficoEmpresaComponent implements OnInit {
   getTipoOpinion(empresa: Empresa, idOpinion: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const path = `empresas/${empresa.id}/respuestas`;
-      const query = where('tipoDeOpinion', '==', idOpinion); 
+      const query = where('tipoDeOpinion', '==', idOpinion);
 
       const sub = this.firebase.getCollectionData(path, query).subscribe({
         next: (res: any[]) => {
@@ -83,7 +83,6 @@ export class GraficoEmpresaComponent implements OnInit {
             this.enojados = res.length;
           }
           resolve();
-
         },
         error: (err) => {
           console.error('Error fetching empresa:', err);
@@ -96,7 +95,30 @@ export class GraficoEmpresaComponent implements OnInit {
   }
 
   private updateChart() {
-    if (this.enojados >= 0 && this.tristes >= 0 && this.felices >= 0) {
+    if (this.enojados == 0 && this.tristes == 0 && this.felices == 0) {
+      this.chartOptions = {
+        backgroundColor: 'transparent',
+        animationEnabled: true,
+        title: {
+          text: 'Sin respuestas :(',
+        },
+        data: [
+          {
+            type: 'pie',
+            startAngle: -90,
+            indexLabel: '{name}: {y}',
+            yValueFormatString: '#,###.##',
+            dataPoints: [
+              { y: this.enojados, name: '😡' },
+              { y: this.tristes, name: '😢' },
+              { y: this.felices, name: '😊' },
+            ],
+          },
+        ],
+      };
+    }
+
+    else {
       this.chartOptions = {
         backgroundColor: 'transparent',
         animationEnabled: true,
@@ -108,7 +130,7 @@ export class GraficoEmpresaComponent implements OnInit {
             type: 'pie',
             startAngle: -90,
             indexLabel: '{name}: {y}',
-            yValueFormatString: "#,###.##",
+            yValueFormatString: '#,###.##',
             dataPoints: [
               { y: this.enojados, name: '😡' },
               { y: this.tristes, name: '😢' },
@@ -119,7 +141,10 @@ export class GraficoEmpresaComponent implements OnInit {
       };
     }
   }
-  
+
+  cerrarModal(){
+    this.utils.cerrarModal();
+  }
 
   ngOnDestroy() {
     this.subscriptions.forEach((sub) => sub.unsubscribe());

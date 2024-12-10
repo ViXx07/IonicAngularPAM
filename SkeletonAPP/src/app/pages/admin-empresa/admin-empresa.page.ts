@@ -17,9 +17,11 @@ import { GraficoEmpresaComponent } from 'src/app/components/grafico-empresa/graf
   styleUrls: ['./admin-empresa.page.scss'],
 })
 export class AdminEmpresaPage implements OnInit, OnDestroy {
-  usuario: User;
+  usuario: User = null;
   empresa: Empresa;
   encuesta: Encuesta;
+  deshabilitado: boolean = true;
+
   private subscriptions: Subscription[] = [];
 
   utils = inject(UtilsService);
@@ -28,37 +30,27 @@ export class AdminEmpresaPage implements OnInit, OnDestroy {
   async ngOnInit() {
     const loading = await this.utils.loading();
     await loading.present();
-  
-    try {
-      await this.getUser(); // Espera a que se recupere el usuario
-      if (this.usuario) {
-        await this.getEmpresa(); // Espera a que se recupere la empresa
-        
-        if (this.empresa) {
-          await this.getEncuesta(); // Espera a que se recupere la encuesta
-        }
-      } else {
-        console.error('No se encontró el usuario.');
-      }
-    } catch (error) {
-      console.error('Error loading data', error);
-    } finally {
-      await loading.dismiss();
-    }
-  }
-  
-  modificarEncuesta(encuesta: Encuesta, empresa: Empresa) {
-    this.utils.presentarModal({
-      component: ModificarEncuestaComponent,
-      componentProps: { encuesta, empresa},
-    });
-  }
 
-  generarQR(encuesta: Encuesta, empresa: Empresa) {
-    this.utils.presentarModal({
-      component: GenerarQrComponent,
-      componentProps: { encuesta, empresa},
-    });
+    if(!this.usuario){
+      try {
+        await this.getUser(); // Espera a que se recupere el usuario
+        if (this.usuario) {
+          await this.getEmpresa(); // Espera a que se recupere la empresa
+          
+          if (this.empresa) {
+            await this.getEncuesta(); // Espera a que se recupere la encuesta
+            console.log(this.usuario, this.empresa, this.encuesta);
+            
+          }
+        } else {
+          console.error('No se encontró el usuario.');
+        }
+      } catch (error) {
+        console.error('Error loading data', error);
+      } finally {
+        await loading.dismiss();
+      }
+    }
   }
 
   getUser(): Promise<void> {
@@ -123,11 +115,30 @@ export class AdminEmpresaPage implements OnInit, OnDestroy {
     });
   }
 
-  verEncuesta(empresa: Empresa, encuesta: Encuesta){
+  verEncuesta(empresa: Empresa, encuesta: Encuesta, deshabilitado: boolean){
+    if (empresa) {
+      this.utils.presentarModal({
+        component: OpinaPage,
+        componentProps: {empresa, encuesta, deshabilitado}
+      })
+    } else {
+      console.error('La empresa no está definida')
+    }
+
+  }
+
+  modificarEncuesta(empresa: Empresa, encuesta: Encuesta) {
     this.utils.presentarModal({
-      component: OpinaPage,
-      componentProps: [empresa, encuesta]
-    })
+      component: ModificarEncuestaComponent,
+      componentProps: {empresa, encuesta},
+    });
+  }
+
+  generarQR(empresa: Empresa, encuesta: Encuesta) {
+    this.utils.presentarModal({
+      component: GenerarQrComponent,
+      componentProps: { empresa, encuesta },
+    });
   }
 
   verGrafico(empresa: Empresa) {

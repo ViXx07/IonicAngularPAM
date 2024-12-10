@@ -5,26 +5,26 @@
       <img src="../../../assets/logo.png" class="card-logo" />
     </ion-avatar>
     <ion-card-title *ngIf="usuario"
-      >Bienvenido {{usuario.email}}</ion-card-title
+      >Bienvenido {{usuario?.email}}</ion-card-title
     >
   </div>
   <div class="botones" *ngIf="encuesta">
     <button
       style="background-color: #01436d"
-      (click)="verEncuesta(empresa, encuesta)"
+      (click)="verEncuesta(empresa, encuesta, deshabilitado)"
     >
       Ver encuesta <ion-icon name="search-circle-outline"></ion-icon>
     </button>
     <button
       style="background: #02e7d0"
-      (click)="modificarEncuesta(encuesta, empresa)"
+      (click)="modificarEncuesta(empresa, encuesta)"
     >
       Modificar Encuesta <ion-icon name="create-outline"></ion-icon>
     </button>
     <button
       *ngIf="encuesta"
       style="background: #ff932b"
-      (click)="generarQR(encuesta, empresa)"
+      (click)="generarQR(empresa, encuesta)"
     >
       Ver QR <ion-icon name="qr-code-outline"></ion-icon>
     </button>
