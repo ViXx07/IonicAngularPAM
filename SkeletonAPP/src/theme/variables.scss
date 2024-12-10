@@ -1,23 +1,24 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
-ion-content{
-    --ion-background-color:white;
+ion-content {
+    --ion-background-color: white;
 }
 
-body.barcode-scanning-active{
+body.barcode-scanning-active {
+    /* Ocultamos el fondo pero mantenemos la cámara visible */
     visibility: hidden;
-    --background: transparent;
     --ion-background-color: transparent;
+    --background: transparent; /* Esto asegura que el fondo sea transparente */
 }
 
-.barcode-scanning-modal{
-    visibility: visible;
+.barcode-scanning-modal {
+    visibility: visible; /* Mantener visible el modal o área de escaneo */
 }
 
-@media (prefers-color-scheme: light) {
-    .barcode-scanning-active{
-    visibility: hidden;
-    --background: transparent;
-    --ion-background-color: transparent;
-}
+@media (prefers-color-scheme: dark) {
+    body.barcode-scanning-active {
+        visibility: hidden;
+        --ion-background-color: transparent;
+        --background: transparent; /* Fondo transparente en modo oscuro */
+    }
 }

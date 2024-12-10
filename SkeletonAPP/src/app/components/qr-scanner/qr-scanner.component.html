@@ -1,4 +1,14 @@
-<ion-content>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="tool-bar-qr">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="barcode-scanning-modal">
   <div #square class="square"></div>
   <ion-fab
     *ngIf="isTorchAvailable"
@@ -10,4 +20,4 @@
       <ion-icon name="flashlight"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-</ion-content>
+</div>

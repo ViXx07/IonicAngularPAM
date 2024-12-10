@@ -5,7 +5,11 @@ import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { Platform } from '@ionic/angular';
 import { FirebaseConfigService } from 'src/app/services/fireBaseConfig/firebase-config.service';
 import { User } from '@codetrix-studio/capacitor-google-auth';
-
+import { documentId, where } from '@angular/fire/firestore';
+import { Encuesta } from 'src/app/models/encuesta.model';
+import { Empresa } from 'src/app/models/empresa.model';
+import { OpinaPage } from '../opina/opina.page';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +19,15 @@ import { User } from '@codetrix-studio/capacitor-google-auth';
 export class HomePage {
   platform = inject(Platform);
   utils = inject(UtilsService);
-  firebase = inject(FirebaseConfigService)
+  firebase = inject(FirebaseConfigService);
   scanResult = '';
   isMobile = false;
   usuario: User;
 
+  empresa: Empresa;
+  encuesta: Encuesta;
+  deshabilitado: boolean = false;
+  private subscriptions: Subscription[] = [];
 
   ngOnInit() {
     if (this.platform.is('capacitor')) {
@@ -44,18 +52,75 @@ export class HomePage {
     await modal.present();
 
     const { data } = await modal.onWillDismiss();
+
     if (data) {
-      this.scanResult = data?.barcode?.displayValue;
-      this.utils.routerlink(this.scanResult);
-      this.utils.presentToast({
-        message: 'QR escaneado exitosamente.',
-        duration: 2500,
-        color: 'success',
-        position: 'middle',
-        icon: 'qr-code-outline',
-      });
+      this.scanResult = data.scanResult;
+      this.redireccionEncuesta(this.scanResult);
     }
   }
+  redireccionEncuesta(codigo: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const path = 'encuestas';
+      const query = where('id', '==', codigo);
+      const sub = this.firebase.getCollectionData(path, query).subscribe({
+        next: async (res: Encuesta[]) => {
+          if (res.length > 0) {
+            this.encuesta = res[0]; // Asigna el primer usuario encontrado
+            await this.getEmpresa();
+            this.utils.presentToast({
+              message: 'QR escaneado exitosamente.',
+              duration: 2500,
+              color: 'success',
+              position: 'middle',
+              icon: 'qr-code-outline',
+            });
+            this.presentarEncuesta(res[0], this.empresa, this.deshabilitado);
+          } else {
+            this.encuesta = null; // Maneja el caso donde no se encuentra el usuario
+            this.utils.presentToast({
+              message: 'Escaneo interrumpido o erronéo',
+              duration: 2500,
+              color: 'danger',
+              position: 'middle',
+              icon: 'qr-code-outline',
+            });
+          }
+          resolve(); // Resuelve la promesa aquí
+        },
+        error: (err) => {
+          console.error('Error fetching data:', err);
+          reject(err); // Rechaza la promesa en caso de error
+        },
+      });
 
+      this.subscriptions.push(sub); // Guarda la suscripción
+    });
+  }
 
+  async getEmpresa(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const path = 'empresas';
+      const empresaId = this.encuesta.idEmpresa;
+      const query = where(documentId(), '==', empresaId);
+
+      const sub = this.firebase.getCollectionData(path, query).subscribe({
+        next: (res: Empresa[]) => {
+          this.empresa = res.length > 0 ? res[0] : null;
+          resolve();
+        },
+        error: (err) => {
+          console.error('Error fetching empresa:', err);
+          reject(err);
+        },
+      });
+      this.subscriptions.push(sub);
+    });
+  }
+
+  presentarEncuesta(encuesta: Encuesta, empresa: Empresa, deshabilitado: boolean) {
+    this.utils.presentarModal({
+      component: OpinaPage,
+      componentProps: { encuesta, empresa, deshabilitado },
+    });
+  }
 }
