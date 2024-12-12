@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { QrScannerComponent } from 'src/app/components/qr-scanner/qr-scanner.component';
 import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnDestroy {
   platform = inject(Platform);
   utils = inject(UtilsService);
   firebase = inject(FirebaseConfigService);
@@ -77,20 +77,18 @@ export class HomePage {
               position: 'middle',
               icon: 'qr-code-outline',
             });
+            loading.dismiss();
             this.presentarEncuesta(res[0], this.empresa, this.deshabilitado);
           } else {
             this.encuesta = null; // Maneja el caso donde no se encuentra el usuario
-            this.utils
-              .presentToast({
-                message: 'Escaneo interrumpido o erronéo',
-                duration: 2500,
-                color: 'danger',
-                position: 'middle',
-                icon: 'qr-code-outline',
-              })
-              .finally(() => {
-                loading.dismiss();
-              });
+            this.utils.presentToast({
+              message: 'Encuesta no encontrada',
+              duration: 2500,
+              color: 'danger',
+              position: 'middle',
+              icon: 'alert-circle-outline',
+            });
+            loading.dismiss();
           }
           resolve(); // Resuelve la promesa aquí
         },
@@ -134,5 +132,9 @@ export class HomePage {
       component: OpinaPage,
       componentProps: { encuesta, empresa, deshabilitado },
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 }

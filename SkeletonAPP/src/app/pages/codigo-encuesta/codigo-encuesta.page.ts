@@ -47,9 +47,8 @@ export class CodigoEncuestaPage implements OnDestroy{
             this.presentarEncuesta(res[0], this.empresa, this.deshabilitado);
           } else {
             this.encuesta = null; // Maneja el caso donde no se encuentra el usuario
-            console.log("No se encontro la encuesta.")
             this.utils.presentToast({
-              message: 'No se encontro la encuesta.',
+              message: 'Encuesta no encontrada',
               duration: 2500,
               color: 'danger',
               position: 'middle',
@@ -61,6 +60,7 @@ export class CodigoEncuestaPage implements OnDestroy{
         },
         error: (err) => {
           loading.dismiss();
+
           console.error('Error fetching user:', err);
           reject(err); // Rechaza la promesa en caso de error
         },
