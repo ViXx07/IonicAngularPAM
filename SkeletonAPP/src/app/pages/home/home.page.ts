@@ -58,7 +58,10 @@ export class HomePage {
       this.redireccionEncuesta(this.scanResult);
     }
   }
-  redireccionEncuesta(codigo: string): Promise<void> {
+  async redireccionEncuesta(codigo: string): Promise<void> {
+    const loading = await this.utils.loading();
+    await loading.present();
+
     return new Promise((resolve, reject) => {
       const path = 'encuestas';
       const query = where('id', '==', codigo);
@@ -77,17 +80,22 @@ export class HomePage {
             this.presentarEncuesta(res[0], this.empresa, this.deshabilitado);
           } else {
             this.encuesta = null; // Maneja el caso donde no se encuentra el usuario
-            this.utils.presentToast({
-              message: 'Escaneo interrumpido o erronéo',
-              duration: 2500,
-              color: 'danger',
-              position: 'middle',
-              icon: 'qr-code-outline',
-            });
+            this.utils
+              .presentToast({
+                message: 'Escaneo interrumpido o erronéo',
+                duration: 2500,
+                color: 'danger',
+                position: 'middle',
+                icon: 'qr-code-outline',
+              })
+              .finally(() => {
+                loading.dismiss();
+              });
           }
           resolve(); // Resuelve la promesa aquí
         },
         error: (err) => {
+          loading.dismiss();
           console.error('Error fetching data:', err);
           reject(err); // Rechaza la promesa en caso de error
         },
@@ -117,7 +125,11 @@ export class HomePage {
     });
   }
 
-  presentarEncuesta(encuesta: Encuesta, empresa: Empresa, deshabilitado: boolean) {
+  presentarEncuesta(
+    encuesta: Encuesta,
+    empresa: Empresa,
+    deshabilitado: boolean
+  ) {
     this.utils.presentarModal({
       component: OpinaPage,
       componentProps: { encuesta, empresa, deshabilitado },
